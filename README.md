@@ -11,7 +11,7 @@ Follow along with the workshop to make your own! This canonical version can serv
 Why do we not have to import Sequelize in our api files when we are still using, for example, `.findAll`?
 
 
-small change
+BIG change
 
 ## Setup
 
