@@ -1,19 +1,22 @@
+import AllProducts from './AllProducts.jsx';
 import { connect } from 'react-redux';
-import AllProducts from './AllProducts';
+import {fetchProducts} from '../store/products';
 
 const mapStateToProps = function(state){
     return {
         products: state.products
-    }
-}
+    };
+};
 
 const mapDispatchToProps = function(dispatch){
     return {
-        getAllProducts: function(){
-            dispatch(getAllProducts());
+        fetchProducts: function(){
+            dispatch(fetchProducts());
         }
-    }
-}
+    };
+};
 
-const AllProductsContainer = connect(mapDispatchToProps, mapStateToProps)(AllProducts);
- 
+const AllProductsContainer = connect(mapStateToProps, mapDispatchToProps)(AllProducts);
+
+export default AllProductsContainer;
+
