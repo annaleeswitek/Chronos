@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import store from '../store';
+import {fetchProducts} from '../store/products';
 
 export default class AllProducts extends Component {
 
     componentDidMount(){
-        this.props.getAllProducts();
+        this.props.fetchProducts();
     }
 
     render() {
+        console.log('props', this.props)
         const { products } = this.props;
         return (
         <div>

@@ -5,7 +5,7 @@ import history from '../history';
 const GET_PRODUCTS = 'GET_PRODUCTS';
 
 /* ---- Initial State ---- */
-const defaultProduct = {};
+// const defaultProduct = {};
 
 /* ---- Action Creators ---- */
 const getProducts = products => ({ type: GET_PRODUCTS, products});
@@ -23,10 +23,10 @@ export const fetchProducts = () => {
 };
 
 /* ---- Reducer ---- */
-export default function (state = defaultProduct, action) {
+export default function (state = [], action) {
     switch (action.type) {
         case GET_PRODUCTS:
-            return { ...state, products: action.products };
+            return action.products;
         default:
             return state;
     }

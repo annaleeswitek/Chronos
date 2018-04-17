@@ -1,5 +1,6 @@
-import AllProducts from './AllProducts';
+import AllProducts from './AllProducts.jsx';
 import { connect } from 'react-redux';
+import {fetchProducts} from '../store/products';
 
 const mapStateToProps = function(state){
     return {
@@ -9,11 +10,13 @@ const mapStateToProps = function(state){
 
 const mapDispatchToProps = function(dispatch){
     return {
-        getProducts: function(){
-            dispatch(getProducts());
+        fetchProducts: function(){
+            dispatch(fetchProducts());
         }
     };
 };
 
 const AllProductsContainer = connect(mapStateToProps, mapDispatchToProps)(AllProducts);
+
+export default AllProductsContainer;
 
