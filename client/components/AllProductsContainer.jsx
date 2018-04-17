@@ -15,5 +15,5 @@ const mapDispatchToProps = function(dispatch){
     };
 };
 
-const AllProductsContainer = connect(mapDispatchToProps, mapStateToProps)(AllProducts);
+const AllProductsContainer = connect(mapStateToProps, mapDispatchToProps)(AllProducts);
 
