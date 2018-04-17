@@ -8,18 +8,16 @@ export default class AllProducts extends Component {
     }
 
     render() {
-        console.log('props', this.props)
-        const { products } = this.props;
+        console.log('props', this.props);
+        let { products } = this.props;
         return (
-        <div>
-            {   products.length > 0
-                ? products.map((product, index) => (
-                    <div key={index}>{product.name}</div>
-                ))
-                : null
-                
-            }
-        </div>
-        )
-  }
+            <div>
+                {
+                    products.length > 0 ? products.map((product, index) => (
+                        <div key={index}>{product.title}</div>
+                    )) : null
+                }
+            </div>
+        );
+    }
 }
