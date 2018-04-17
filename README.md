@@ -9,7 +9,7 @@ Follow along with the workshop to make your own! This canonical version can serv
 # PARKING LOT
 
 Why do we not have to import Sequelize in our api files when we are still using, for example, `.findAll`?
-still wanna know!!
+
 
 ## Setup
 
