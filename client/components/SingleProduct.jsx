@@ -6,7 +6,7 @@ export default function SingleProduct (props) {
 
   return (
     <div className="product">
-      <h3>{ product.name }</h3>
+      <h3>{ product.title }</h3>
       <img src={ product.imgUrl } />
     </div>
   );
