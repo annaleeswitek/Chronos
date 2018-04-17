@@ -14,8 +14,9 @@ export default class AllProducts extends Component {
             <div>
                 {
                     products.length > 0 ? products.map((product, index) => (
-                        <div key={index}>
+                        <div key={product.id} product={product}>
                             <h3>{product.title}</h3>
+                            <img src={product.imgUrl} />
                             <li>{product.price}</li>
                             <p>{product.description}</p>
                         </div>

@@ -20,25 +20,25 @@ async function seed () {
 
   const productsCatalog = [
     {
-      title: 'one week',
+      title: 'One Week',
       price: 15.00,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vehicula, dui sed gravida maximus, diam dui ornare eros, eu euismod elit diam nec augue. Suspendisse rutrum nunc justo, id gravida turpis vehicula at. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque sed dui posuere, facilisis ex ut, semper tellus. Nunc sit amet bibendum lacus, ut cursus lorem. Aliquam sed porta elit. Cras aliquet sapien massa, quis faucibus tellus vestibulum et. Nulla quis ultricies urna.',
       quantity: 2,
-      imgUrl: 'img PENDING'
+      imgUrl: 'https://images.cb2.com/is/image/CB2/5MinHourGlassTurqseSandSHF16/?$web_product_hero$&161201171844&wid=625&hei=625'
     },
     {
-      title: 'tomorrow',
+      title: 'Tomorrow',
       price: 5.00,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vehicula, dui sed gravida maximus, diam dui ornare eros, eu euismod elit diam nec augue. Suspendisse rutrum nunc justo, id gravida turpis vehicula at. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque sed dui posuere, facilisis ex ut, semper tellus. Nunc sit amet bibendum lacus, ut cursus lorem. Aliquam sed porta elit. Cras aliquet sapien massa, quis faucibus tellus vestibulum et. Nulla quis ultricies urna.',
       quantity: 100,
-      imgUrl: 'img PENDING'
+      imgUrl: 'https://images.cb2.com/is/image/CB2/5MinHourGlassTurqseSandSHF16/?$web_product_hero$&161201171844&wid=625&hei=625'
     },
     {
-      title: 'your birthday',
+      title: 'Your Birthday',
       price: 500.00,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vehicula, dui sed gravida maximus, diam dui ornare eros, eu euismod elit diam nec augue. Suspendisse rutrum nunc justo, id gravida turpis vehicula at. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque sed dui posuere, facilisis ex ut, semper tellus. Nunc sit amet bibendum lacus, ut cursus lorem. Aliquam sed porta elit. Cras aliquet sapien massa, quis faucibus tellus vestibulum et. Nulla quis ultricies urna.',
-      quantity: 1,
-      imgUrl: 'img PENDING'
+      quantity: 3,
+      imgUrl: 'https://images.cb2.com/is/image/CB2/5MinHourGlassTurqseSandSHF16/?$web_product_hero$&161201171844&wid=625&hei=625'
     }
   ];
 
