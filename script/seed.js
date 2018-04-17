@@ -18,11 +18,6 @@ async function seed () {
   // Whoa! Because we `await` the promise that db.sync returns, the next line will not be
   // executed until that promise resolves!
 
-  // const users = await Promise.all([
-  //   User.create({email: 'cody@email.com', password: '123'}),
-  //   User.create({email: 'murphy@email.com', password: '123'})
-  // ]);
-
   const productsCatalog = [
     {
       title: 'one week',
@@ -50,8 +45,7 @@ async function seed () {
   const products = await Promise.all(
     productsCatalog.map(product => Product.create(product))
   );
-  // Wowzers! We can even `await` on the right-hand side of the assignment operator
-  // and store the result that the promise resolves to in a variable! This is nice!
+
   console.log(`seeded ${products.length} products`);
   console.log(`seeded successfully`);
 
@@ -70,11 +64,49 @@ async function seed () {
   const categories = await Promise.all(
     categoriesCatalog.map(category => Category.create(category))
   );
-  // Wowzers! We can even `await` on the right-hand side of the assignment operator
-  // and store the result that the promise resolves to in a variable! This is nice!
+
   console.log(`seeded ${categories.length} categories`);
   console.log(`seeded successfully`);
+
+  const usersCatalog = [
+    {
+      email: 'the.doctor@who.com',
+      password: 'knockKnock',
+      salt: 'pepper',
+      googleId: 'blahblahblah',
+      isAdmin: true
+    },
+    {
+      email: 'river.song@who.com',
+      password: 'spoilers',
+      salt: 'pepper',
+      googleId: 'blahblahblah',
+      isAdmin: true
+    },
+    {
+      email: 'amy.pond@who.com',
+      password: 'ginger',
+      salt: 'pepper',
+      googleId: 'blahblahblah',
+      isAdmin: false
+    },
+    {
+      email: 'clara.oswald@who.com',
+      password: 'theImpossibleGirl',
+      salt: 'pepper',
+      googleId: 'blahblahblah',
+      isAdmin: false
+    }
+  ];
+
+  const users = await Promise.all(
+    usersCatalog.map(user => User.create(user))
+  );
+
+  console.log(`seeded ${users.length} users`);
+  console.log(`seeded successfully`);
 }
+
 
 // Execute the `seed` function
 // `Async` functions always return a promise, so we can use `catch` to handle any errors
