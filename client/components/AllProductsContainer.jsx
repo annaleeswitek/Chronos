@@ -1,19 +1,19 @@
-import { connect } from 'react-redux';
 import AllProducts from './AllProducts';
+import { connect } from 'react-redux';
 
 const mapStateToProps = function(state){
     return {
         products: state.products
-    }
-}
+    };
+};
 
 const mapDispatchToProps = function(dispatch){
     return {
-        getAllProducts: function(){
-            dispatch(getAllProducts());
+        getProducts: function(){
+            dispatch(getProducts());
         }
-    }
-}
+    };
+};
 
 const AllProductsContainer = connect(mapDispatchToProps, mapStateToProps)(AllProducts);
- 
+

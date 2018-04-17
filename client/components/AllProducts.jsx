@@ -1,11 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import store from '../store';
 
 export default class AllProducts extends Component {
-    constructor(){
-        super();
-        this.state = store.getState()
-    }
 
     componentDidMount(){
         this.props.getAllProducts();
