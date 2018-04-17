@@ -16,3 +16,19 @@ router.get('/:productId', (req, res, next) => {
     .then( product => res.json(product) )
     .catch(next);
 });
+
+//adding new product - admin
+router.post('/', (req, res, next) => {
+    Product.findOrCreate({
+        where: {
+            title: req.body.title, 
+            price: req.body.price, 
+            imgUrl: req.body.imgUrl, 
+            description: req.body.description
+        }
+    })
+    .then(([newProduct, wasCreatedBool]) => {
+        res.json(newProduct)
+    })
+    .catch(next)
+})
