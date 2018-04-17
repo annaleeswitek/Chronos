@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import SingleProduct from './SingleProduct';
+import SingleProduct from './SingleProduct.jsx';
 
 const mapStateToProps = function(state) {
   return {
@@ -8,7 +8,7 @@ const mapStateToProps = function(state) {
       name: 'worst moment',
       imgUrl: 'img pending'
     }
-    // product: state.products.reduce( (accum, currProduct) => productId === currProduct.id ? currProduct : {}, {})
+    // product: state.products.find( product => product.id === productId) || { name: 'dummy product' })
   };
 };
 
@@ -18,6 +18,6 @@ const mapDispatchToProps = function(dispatch) {
   };
 };
 
-const SingleProductContainer = connect(mapStateToProps, mapDispatchToProps)(SingleProduct);
+const SingleProductContainer = connect(mapStateToProps, null)(SingleProduct);
 
 export default SingleProductContainer;

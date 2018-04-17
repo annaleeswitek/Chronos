@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import {Login, Signup, UserHome} from './components'
 import {me} from './store'
 import AllProductsContainer from './components/AllProductsContainer.jsx';
+import SingleProductContainer from './components/SingleProductContainer.jsx';
 
 /**
  * COMPONENT
@@ -23,6 +24,7 @@ class Routes extends Component {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route exact path="/products" component={AllProductsContainer} />
+        <Route path="/products/1" component={SingleProductContainer} />
         {
           isLoggedIn &&
             <Switch>
