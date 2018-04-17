@@ -8,3 +8,13 @@ router.get('/', (req, res, next) => {
     .then( categories => res.json(categories) )
     .catch(next);
 });
+
+router.get('/:id', (req, res, next) => {
+  Category.findById(req.body)
+    .then(theCategory => theCategory.getProducts())
+    .then(products => res.json(products))
+    .catch(next);
+});
+
+
+// I want to serve all the products that have a category Id
