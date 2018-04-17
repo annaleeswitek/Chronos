@@ -13,6 +13,10 @@ Why do we not have to import Sequelize in our api files when we are still using,
 
 
 
+BIG change
+
+
+
 
 ## Setup
 
