@@ -10,11 +10,8 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
-  Category.findById(req.body)
+  Category.findById(req.params.id)
     .then(theCategory => theCategory.getProducts())
     .then(products => res.json(products))
     .catch(next);
 });
-
-
-// I want to serve all the products that have a category Id
