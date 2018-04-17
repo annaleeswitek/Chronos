@@ -13,6 +13,7 @@ const app = express()
 const socketio = require('socket.io')
 module.exports = app
 
+// small change in server
 /**
  * In your development environment, you can keep all of your
  * app's secret API keys in a file called `secrets.js`, in your project
