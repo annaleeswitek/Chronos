@@ -1,7 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
 
-
 const Category = db.define('category', {
   name: {
     type: Sequelize.STRING,
@@ -11,6 +10,5 @@ const Category = db.define('category', {
     }
   }
 });
-
 
 module.exports = Category;
