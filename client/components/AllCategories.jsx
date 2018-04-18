@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 export default class AllCategories extends Component {
 
   componentDidMount(){
-    this.props.loadCategories();
+    console.log('props in all categories: ', this.props)
+    // this.props.loadCategories();
   }
 
   render () {
