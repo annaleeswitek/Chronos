@@ -1,10 +1,8 @@
 import { connect } from 'react-redux';
 import SingleProduct from './SingleProduct.jsx';
+import { fetchOneProduct } from '../store/singleProduct.js';
 
 const mapStateToProps = function(state, ownProps) {
-
-  const productId = Number(ownProps.match.params.productId);
-
   return {
     product: state.product
   };
@@ -12,12 +10,13 @@ const mapStateToProps = function(state, ownProps) {
 
 const mapDispatchToProps = function(dispatch) {
   return {
-    fetchProduct: function(productId){
-      
-    }
+    fetchOneProduct: function(productId){
+      const thunkAction = fetchOneProduct(productId);
+      dispatch(thunkAction);
+    } 
   };
 };
 
-const SingleProductContainer = connect(mapStateToProps, null)(SingleProduct);
+const SingleProductContainer = connect(mapStateToProps, mapDispatchToProps)(SingleProduct);
 
 export default SingleProductContainer;

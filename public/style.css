@@ -36,3 +36,16 @@ form div {
 #addButton {
     width: 10%
 }
+
+
+/* single product view */
+
+#singleProduct {
+    display: flex;
+    flex-direction: column
+}
+
+#editProductForm {
+    display: flex;
+    flex-direction: column
+}
