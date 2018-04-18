@@ -1,18 +1,17 @@
 import { connect } from 'react-redux';
 import AllCategories from './AllCategories.jsx';
-import { loadCategories } from '../store/';
+import { loadCategories } from '../store/categories';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    allCategories: state.allCategories
+    categories: state.categories
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    loadCategories: function () {
-      const thunk = loadCategories();
-      dispatch(thunk);
+    loadCategories() {
+      dispatch(loadCategories());
     }
   };
 };
