@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import EditProductContainer from './EditProductContainer.jsx';
-export default class SingleProduct extends Component {
+import { fetchOneProduct } from '../store/singleProduct.js';
+
+/* ---- COMPONENT ---- */
+
+class SingleProduct extends Component {
   
   componentDidMount(){
     this.props.fetchOneProduct(this.props.match.params.productId);
@@ -21,11 +27,11 @@ export default class SingleProduct extends Component {
               <h3>{ product.title }</h3>
               <img src={ product.imgUrl } />
             </section>
-          : null
+          : <h2>Product Not Found</h2>
         }
            
         {
-          user && user.isAdmin
+          user.isAdmin
           ? <EditProductContainer />
           : null
         }
@@ -35,9 +41,7 @@ export default class SingleProduct extends Component {
   }
 }
 
-import { connect } from 'react-redux';
-import SingleProduct from './SingleProduct.jsx';
-import { fetchOneProduct } from '../store/singleProduct.js';
+/* ---- CONTAINER ---- */
 
 const mapStateToProps = function(state, ownProps) {
   return {

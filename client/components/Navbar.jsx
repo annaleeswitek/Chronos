@@ -75,7 +75,7 @@ const mapDispatch = dispatch => {
   }
 }
 
-export default connect(mapState, mapDispatch)(Navbar)
+export default Navbar = connect(mapState, mapDispatch)(Navbar)
 
 /**
  * PROP TYPES

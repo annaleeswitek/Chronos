@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadOneCategory } from '../store/categories';
 
+
+/* ---- COMPONENT ---- */
+
 class SingleCategory extends Component {
 
   componentDidMount () {
@@ -20,7 +23,7 @@ class SingleCategory extends Component {
           : null
         }
 
-        { products && products.map(product => (<div key={product.id}>{product.title}</div>))
+        { products.map(product => (<div key={product.id}>{product.title}</div>))
         }
       </div>
 
@@ -29,6 +32,7 @@ class SingleCategory extends Component {
   }
 }
 
+/* ---- CONTAINER ---- */
 
 const mapStateToProps = state => {
   return {
