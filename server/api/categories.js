@@ -8,3 +8,10 @@ router.get('/', (req, res, next) => {
     .then( categories => res.json(categories) )
     .catch(next);
 });
+
+router.get('/:id', (req, res, next) => {
+  Category.findById(req.params.id)
+    .then(theCategory => theCategory.getProducts())
+    .then(products => res.json(products))
+    .catch(next);
+});

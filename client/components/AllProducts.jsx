@@ -24,8 +24,7 @@ export default class AllProducts extends Component {
                           <Link to={`/products/${product.id}`}>
                             <h3>{product.title}</h3>
                             <img src={product.imgUrl} />
-                            <li>{product.price}</li>
-                            <p>{product.description}</p>
+                            <div>$ {product.price}</div>
                           </Link>
                         </div>
                     )) : null

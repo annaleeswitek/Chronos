@@ -26,18 +26,15 @@ export default class SingleProduct extends Component {
             </section>
           : null
         }
-     
-       
-        
-          {
-            fakeUsers[0].isAdmin
-            ? <EditProductContainer />
-            : null
-          }
+           
+        {
+          fakeUsers[0].isAdmin
+          ? <EditProductContainer />
+          : null
+        }
        
       </div>
     );
   }
-  
 }
 

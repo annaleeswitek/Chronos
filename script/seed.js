@@ -24,22 +24,36 @@ async function seed () {
       price: 15.00,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vehicula, dui sed gravida maximus, diam dui ornare eros, eu euismod elit diam nec augue. Suspendisse rutrum nunc justo, id gravida turpis vehicula at. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque sed dui posuere, facilisis ex ut, semper tellus. Nunc sit amet bibendum lacus, ut cursus lorem. Aliquam sed porta elit. Cras aliquet sapien massa, quis faucibus tellus vestibulum et. Nulla quis ultricies urna.',
       quantity: 2,
-      imgUrl: 'https://images.cb2.com/is/image/CB2/5MinHourGlassTurqseSandSHF16/?$web_product_hero$&161201171844&wid=625&hei=625'
+      imgUrl: 'https://dummyimage.com/400x400/e2ffdb/000000.jpg&text=One+Week+(2018)'
     },
     {
       title: 'Tomorrow',
       price: 5.00,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vehicula, dui sed gravida maximus, diam dui ornare eros, eu euismod elit diam nec augue. Suspendisse rutrum nunc justo, id gravida turpis vehicula at. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque sed dui posuere, facilisis ex ut, semper tellus. Nunc sit amet bibendum lacus, ut cursus lorem. Aliquam sed porta elit. Cras aliquet sapien massa, quis faucibus tellus vestibulum et. Nulla quis ultricies urna.',
       quantity: 100,
-      imgUrl: 'https://images.cb2.com/is/image/CB2/5MinHourGlassTurqseSandSHF16/?$web_product_hero$&161201171844&wid=625&hei=625'
+      imgUrl: 'https://dummyimage.com/400x400/fdebff/000000.jpg&text=Tomorrow'
     },
     {
-      title: 'Your Birthday',
-      price: 500.00,
+      title: 'Your 21st Birthday (Past)',
+      price: 1000.00,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vehicula, dui sed gravida maximus, diam dui ornare eros, eu euismod elit diam nec augue. Suspendisse rutrum nunc justo, id gravida turpis vehicula at. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque sed dui posuere, facilisis ex ut, semper tellus. Nunc sit amet bibendum lacus, ut cursus lorem. Aliquam sed porta elit. Cras aliquet sapien massa, quis faucibus tellus vestibulum et. Nulla quis ultricies urna.',
-      quantity: 3,
-      imgUrl: 'https://images.cb2.com/is/image/CB2/5MinHourGlassTurqseSandSHF16/?$web_product_hero$&161201171844&wid=625&hei=625'
-    }
+      quantity: 16,
+      imgUrl: 'https://dummyimage.com/400x400/ffecdb/000000.jpg&text=21st+Birthday'
+    },
+    {
+      title: 'Your 21st Birthday (Future)',
+      price: 15000.00,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vehicula, dui sed gravida maximus, diam dui ornare eros, eu euismod elit diam nec augue. Suspendisse rutrum nunc justo, id gravida turpis vehicula at. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque sed dui posuere, facilisis ex ut, semper tellus. Nunc sit amet bibendum lacus, ut cursus lorem. Aliquam sed porta elit. Cras aliquet sapien massa, quis faucibus tellus vestibulum et. Nulla quis ultricies urna.',
+      quantity: 9,
+      imgUrl: 'https://dummyimage.com/400x400/ffecdb/000000.jpg&text=21st+Birthday'
+    },
+    {
+      title: 'Any Week in the Year 2050',
+      price: 750.00,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vehicula, dui sed gravida maximus, diam dui ornare eros, eu euismod elit diam nec augue. Suspendisse rutrum nunc justo, id gravida turpis vehicula at. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque sed dui posuere, facilisis ex ut, semper tellus. Nunc sit amet bibendum lacus, ut cursus lorem. Aliquam sed porta elit. Cras aliquet sapien massa, quis faucibus tellus vestibulum et. Nulla quis ultricies urna.',
+      quantity: 11,
+      imgUrl: 'https://dummyimage.com/400x400/dbf6ff/000000.jpg&text=2050+(One+Week)'
+    },
   ];
 
   const products = await Promise.all(
