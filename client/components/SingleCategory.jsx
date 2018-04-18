@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { loadOneCategory } from '../store/categories';
 
-
-export default class SingleCategory extends Component {
+class SingleCategory extends Component {
 
   componentDidMount () {
     const categoryId = this.props.match.params.categoryId;
@@ -27,3 +28,24 @@ export default class SingleCategory extends Component {
     );
   }
 }
+
+
+const mapStateToProps = state => {
+  return {
+    selectedCategory: state.selectedCategory
+  };
+};
+
+const mapDispatchToProps = function(dispatch) {
+  return {
+    loadOneCategory(categoryId){
+      const thunkAction = loadOneCategory(categoryId);
+      dispatch(thunkAction);
+    }
+  };
+};
+
+const SingleCategoryContainer = connect(mapStateToProps, mapDispatchToProps)(SingleCategory);
+
+export default SingleCategoryContainer;
+
