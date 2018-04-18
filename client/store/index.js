@@ -5,7 +5,7 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import user from './user';
 import categories from './categories';
 
-const reducer = combineReducers({user, categories});
+
 import products from './products';
 
 const fakeUsers = [
@@ -21,7 +21,7 @@ const fakeUsers = [
   }
 ];
 
-const reducer = combineReducers({ user, products, users: fakeUsers });
+const reducer = combineReducers({ user, products, users: fakeUsers, categories });
 const middleware = composeWithDevTools(applyMiddleware(
   thunkMiddleware,
   createLogger({collapsed: true})
