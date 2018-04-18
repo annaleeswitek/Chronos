@@ -8,6 +8,7 @@ import {me} from './store'
 import AllCategoriesContainer from './components/AllCategoriesContainer.jsx';
 import AllProductsContainer from './components/AllProductsContainer.jsx';
 import SingleProductContainer from './components/SingleProductContainer.jsx';
+import SingleCategoryContainer from './components/SingleCategoryContainer.jsx';
 
 
 /**
@@ -26,8 +27,9 @@ class Routes extends Component {
         {/* Routes placed here are available to all visitors */}
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/categories" component={AllCategoriesContainer} />
+        <Route exact path="/categories" component={AllCategoriesContainer} />
         <Route path="/products/:productId" component={SingleProductContainer} />
+        <Route path="/categories/:categoryId" component={SingleCategoryContainer} />
         <Route exact path="/products" component={AllProductsContainer} />
         {
           isLoggedIn &&
@@ -73,4 +75,4 @@ Routes.propTypes = {
   loadInitialData: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired
 }
- 
+
