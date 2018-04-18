@@ -23,11 +23,10 @@ class SingleCategory extends Component {
           : null
         }
 
-        { products.map(product => (<div key={product.id}>{product.title}</div>))
+        {
+          products && products.map(product => (<div key={product.id}>{product.title}</div>))
         }
       </div>
-
-
     );
   }
 }
