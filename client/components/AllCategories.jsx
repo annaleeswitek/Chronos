@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loadCategories } from '../store/categories';
 
@@ -12,6 +12,7 @@ class AllCategories extends Component {
   }
 
   render () {
+    console.log('this.props.location', this.props.location);
     const { categories } = this.props;
     return (
       <div>
@@ -43,5 +44,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+
 const Container = connect(mapStateToProps, mapDispatchToProps)(AllCategories);
-export default Container;
+const containerWithRouter = withRouter(Container);
+export default containerWithRouter;
