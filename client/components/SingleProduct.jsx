@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export default function SingleProduct (props) {
+export default class SingleProduct extends Component {
+  
+  componentDidMount(){
+    this.props.fetchProduct(this.props.match.params.productId);
+  }
 
-  const product = props.product;
+  render(){
+    const product = Object.keys(this.props.product).length > 0
+                    ? this.props.product
+                    : null;
 
-  return (
-    <div className="product">
-      <h3>{ product.title }</h3>
-      <img src={ product.imgUrl } />
-    </div>
-  );
+    return (
+      <div className="product">
+        <h3>{ product.title }</h3>
+        <img src={ product.imgUrl } />
+      </div>
+    );
+  }
+  
 }
 

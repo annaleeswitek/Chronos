@@ -6,20 +6,17 @@ const mapStateToProps = function(state, ownProps) {
   const productId = Number(ownProps.match.params.productId);
 
   return {
-    // product: {
-    //   id: 50000000,
-    //   name: 'worst moment',
-    //   imgUrl: 'img pending'
-    // }
-    product: state.products.find( product => product.id === productId) || { name: 'dummy product' }
+    product: state.product
   };
 };
 
-// const mapDispatchToProps = function(dispatch) {
-//   return {
-
-//   };
-// };
+const mapDispatchToProps = function(dispatch) {
+  return {
+    fetchProduct: function(productId){
+      
+    }
+  };
+};
 
 const SingleProductContainer = connect(mapStateToProps, null)(SingleProduct);
 
