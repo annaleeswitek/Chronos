@@ -11,7 +11,7 @@ export default class AllCategories extends Component {
     const { categories } = this.props;
     return (
       <div>
-        {   categories.length > 0
+        {   categories && categories.length > 0
             ? categories.map((category) => (
               <div key={category.id}>
                 <Link to={'/categories/' + category.id}><div>{category.name}</div></Link>

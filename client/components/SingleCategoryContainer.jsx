@@ -8,10 +8,11 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = function(dispatch) {
   return {
-    loadOneCategory() {
-      dispatch(loadOneCategory());
+    loadOneCategory: function(categoryId){
+      const thunkAction = loadOneCategory(categoryId);
+      dispatch(thunkAction);
     }
   };
 };

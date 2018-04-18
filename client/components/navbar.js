@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
+import AllCategories from './AllCategories.jsx';
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
   <div>
@@ -16,6 +17,10 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
           <a href="#" onClick={handleClick}>
             Logout
           </a>
+          {
+            <AllCategories />
+          }
+
         </div>
       ) : (
         <div>
@@ -23,6 +28,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
           <Link to="/login">Login</Link>
           <Link to="/signup">Sign Up</Link>
           <Link to="/products">Products</Link>
+          <AllCategories />
         </div>
       )}
     </nav>
