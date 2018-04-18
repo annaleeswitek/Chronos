@@ -1,28 +1,31 @@
-import React, { Component } from 'react'
-import store from '../store';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import {fetchProducts} from '../store/products';
+// import AddProduct from './AddProduct.jsx'
 
 export default class AllProducts extends Component {
-    constructor(){
-        super();
-        this.state = store.getState()
-    }
 
     componentDidMount(){
-        this.props.getAllProducts();
+        this.props.fetchProducts();
     }
 
     render() {
-        const { products } = this.props;
+        let { products } = this.props;
         return (
-        <div>
-            {   products.length > 0
-                ? products.map((product, index) => (
-                    <div key={index}>{product.name}</div>
-                ))
-                : null
-                
-            }
-        </div>
-        )
-  }
+            <div>
+                {
+                    products.length > 0 ? products.map((product, index) => (
+                        <div key={product.id} product={product}>
+                          <Link to={`/products/${product.id}`}>
+                            <h3>{product.title}</h3>
+                            <img src={product.imgUrl} />
+                            <li>{product.price}</li>
+                            <p>{product.description}</p>
+                          </Link>
+                        </div>
+                    )) : null
+                }
+            </div>
+        );
+    }
 }

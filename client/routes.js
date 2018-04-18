@@ -4,8 +4,13 @@ import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome} from './components'
 import {me} from './store'
+<<<<<<< HEAD
 import AllCategoriesContainer from './components/AllCategoriesContainer.jsx';
 
+=======
+import AllProductsContainer from './components/AllProductsContainer.jsx';
+import SingleProductContainer from './components/SingleProductContainer.jsx';
+>>>>>>> master
 
 /**
  * COMPONENT
@@ -23,7 +28,13 @@ class Routes extends Component {
         {/* Routes placed here are available to all visitors */}
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
+<<<<<<< HEAD
         <Route path="/categories" component={AllCategoriesContainer} />
+=======
+        <Route path="/products/:productId" component={SingleProductContainer} />
+        <Route exact path="/products" component={AllProductsContainer} />
+
+>>>>>>> master
         {
           isLoggedIn &&
             <Switch>
