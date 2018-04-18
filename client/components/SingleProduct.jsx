@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
-import EditProductContainer from './EditProductContainer.jsx';
-import { fetchOneProduct } from '../store/singleProduct.js';
+import EditProductContainer from './EditProduct.jsx';
+import { fetchOneProduct } from '../store/singleProduct';
 
 /* ---- COMPONENT ---- */
 

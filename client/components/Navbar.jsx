@@ -57,14 +57,14 @@ class Navbar extends Component {
 /**
  * CONTAINER
  */
-const mapState = state => {
+const mapStateToProps = state => {
   return {
     isLoggedIn: !!state.user.id,
     categories: state.categories
   }
 }
 
-const mapDispatch = dispatch => {
+const mapDispatchToProps = dispatch => {
   return {
     handleClick() {
       dispatch(logout());
@@ -75,7 +75,7 @@ const mapDispatch = dispatch => {
   }
 }
 
-export default Navbar = connect(mapState, mapDispatch)(Navbar)
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
 
 /**
  * PROP TYPES
