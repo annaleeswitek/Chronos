@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {fetchProducts} from '../store/products';
-// import AddProduct from './AddProduct.jsx'
+import AddProductContainer from './AddProductContainer.jsx'
 
 export default class AllProducts extends Component {
 
@@ -10,21 +10,35 @@ export default class AllProducts extends Component {
     }
 
     render() {
+        const fakeUsers = [
+            {email: 'wow@yahoo.com', password: '123', isAdmin: true }, 
+            {email: 'yay@yay.com' , password: '123', isAdmin: false }
+        ]
         let { products } = this.props;
         return (
-            <div>
+            <div id='allProducts'>
+                <section>
                 {
                     products.length > 0 ? products.map((product, index) => (
                         <div key={product.id} product={product}>
                           <Link to={`/products/${product.id}`}>
                             <h3>{product.title}</h3>
                             <img src={product.imgUrl} />
-                            <li>{product.price}</li>
-                            <p>{product.description}</p>
+                            <div>$ {product.price}</div>
                           </Link>
                         </div>
                     )) : null
                 }
+                </section>
+                
+                <section>
+                {
+                    fakeUsers[0].isAdmin
+                    ? <AddProductContainer/>
+                    : null
+                }
+                </section>
+                
             </div>
         );
     }

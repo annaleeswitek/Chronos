@@ -9,12 +9,12 @@ class AddProduct extends Component {
         return (
             <div>
                 <h3>Add New Product</h3>
-                <form id="addProduct">
+                <form id="addProduct" onSubmit={this.props.addProduct}>
                     <label className='col-xs-2 control-label'><h5><b>Name</b></h5>
                             <input name='title' type="text"  placeholder='product name (required)' />
                     </label>
 
-                    <label className='col-xs-2 control-label'><h5><b>Name</b></h5>
+                    <label className='col-xs-2 control-label'><h5><b>Price</b></h5>
                             <input name='price' type="text"  placeholder='product price (required)' />
                     </label>
 
@@ -25,6 +25,12 @@ class AddProduct extends Component {
                     <label className='col-xs-2 control-label'><h5><b>Description</b></h5>
                             <textarea name='description' type="text"  placeholder='product description' />
                     </label>
+
+                     <label className='col-xs-2 control-label'><h5><b>Image</b></h5>
+                            <textarea name='imgUrl' type="text"  placeholder='product image' />
+                    </label>
+
+                    <button type='submit' id="addButton">Add Product to Catalog</button>
                 </form>
             </div>
         )

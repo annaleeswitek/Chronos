@@ -1,21 +1,51 @@
 body {
-  font-family: sans-serif;
+    font-family: sans-serif;
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 label {
-  display: block;
+    display: block;
 }
 
 nav a {
-  display: inline-block;
-  margin: 1em;
+    display: inline-block;
+    margin: 1em;
 }
 
 form div {
-  margin: 1em;
-  display: inline-block;
+    margin: 1em;
+    display: inline-block;
+}
+
+
+/* all products view */
+
+#allProducts {
+    display: flex;
+    flex-direction: column
+}
+
+#addProduct {
+    display: flex;
+    flex-direction: column
+}
+
+#addButton {
+    width: 10%
+}
+
+
+/* single product view */
+
+#singleProduct {
+    display: flex;
+    flex-direction: column
+}
+
+#editProductForm {
+    display: flex;
+    flex-direction: column
 }

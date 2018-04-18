@@ -4,10 +4,15 @@ import thunkMiddleware from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import user from './user';
 import categories from './categories';
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> master
 import products from './products';
+import product from './singleProduct';
 
+<<<<<<< HEAD
 const fakeUsers = [
   {
     email: 'wow@gmail.com',
@@ -22,6 +27,9 @@ const fakeUsers = [
 ];
 
 const reducer = combineReducers({ user, products, users: fakeUsers, categories });
+=======
+const reducer = combineReducers({ user, products, product, categories });
+>>>>>>> master
 const middleware = composeWithDevTools(applyMiddleware(
   thunkMiddleware,
   createLogger({collapsed: true})
