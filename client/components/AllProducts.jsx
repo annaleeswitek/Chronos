@@ -13,11 +13,11 @@ class AllProducts extends Component {
     render() {
         let { products, user } = this.props;
         return (
-            <div id="allProducts">
-                <section>
+            <div id="allProducts" className="container">
+                <div className="row">
                 {
                     products.length > 0 ? products.map((product) => (
-                        <div key={product.id} product={product}>
+                        <div key={product.id} product={product} className="col-sm">
                           <Link to={`/products/${product.id}`}>
                             <h3>{product.title}</h3>
                             <img src={product.imgUrl} />
@@ -26,7 +26,7 @@ class AllProducts extends Component {
                         </div>
                     )) : null
                 }
-                </section>
+                </div>
                 
                 <section>
                 {
