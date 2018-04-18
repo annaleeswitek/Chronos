@@ -4,23 +4,39 @@ import { Link } from 'react-router-dom';
 export default class AllCategories extends Component {
 
   componentDidMount(){
-    console.log('props in all categories: ', this.props)
-    // this.props.loadCategories();
+
   }
 
   render () {
     const { categories } = this.props;
     return (
       <div>
-        {   categories && categories.length > 0
-            ? categories.map((category) => (
+      {
+          categories.map((category) => (
               <div key={category.id}>
-                <Link to={'/categories/' + category.id}><div>{category.name}</div></Link>
+                <Link to={'/categories/' + category.id}>{category.name}</Link>
               </div>
             ))
-            : null
         }
       </div>
     );
   }
 }
+
+import { connect } from 'react-redux';
+import AllCategories from './AllCategories.jsx';
+import { loadCategories } from '../store/categories';
+
+const mapStateToProps = ({categories}) => ({categories});
+
+const mapDispatchToProps = dispatch => {
+  return {
+    loadCategories() {
+      dispatch(loadCategories());
+    }
+  };
+};
+
+const Container = connect(mapStateToProps, mapDispatchToProps)(AllCategories);
+
+export default Container;
