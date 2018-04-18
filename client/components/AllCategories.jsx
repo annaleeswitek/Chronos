@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Link from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default class AllCategories extends Component {
 
@@ -13,7 +13,9 @@ export default class AllCategories extends Component {
       <div>
         {   categories.length > 0
             ? categories.map((category) => (
-                <div key={category.id}>{category.name}</div>
+              <div key={category.id}>
+                <Link to={'/categories/' + category.id}><div>{category.name}</div></Link>
+              </div>
             ))
             : null
         }
