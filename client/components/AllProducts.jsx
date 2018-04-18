@@ -27,15 +27,14 @@ class AllProducts extends Component {
                     )) : null
                 }
                 </section>
-                
+
                 <section>
                 {
-                    user.isAdmin
-                    ? <AddProductContainer/>
-                    : null
+                    user.isAdmin &&
+                    <AddProductContainer />
                 }
                 </section>
-                
+
             </div>
         );
     }
