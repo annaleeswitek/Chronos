@@ -1,7 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+import { addProduct } from '../store/addProduct';
 
+/* ---- Component ---- */
 
-class AddProduct extends Component {
+const AddProduct = () => ({
     render() {
         return (
         <div>
@@ -32,16 +35,11 @@ class AddProduct extends Component {
             </div>
         );
     }
-}
+});
 
-export default AddProduct;
+/* ---- Container ---- */
 
-import { connect } from 'react-redux';
-// at this point, we're in all products view and state.products = all products
-import { addProduct } from '../store/addProduct';
-import AddProduct from './AddProduct.jsx';
-
-const mapStateToProps = function(state, ownProps) {
+const mapStateToProps = function(state) {
     return {
         products: state.products
     }
@@ -61,8 +59,8 @@ const mapDispatchToProps = function(dispatch, ownProps){
             const action = addProduct({title, price, description, quantity, imgUrl}, ownProps.history);
             dispatch(action);
         }
-    }
-}
+    };
+};
 
 const AddProductContainer = connect(mapStateToProps, mapDispatchToProps)(AddProduct);
 export default AddProductContainer;

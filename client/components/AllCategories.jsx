@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { loadCategories } from '../store/categories';
 
-export default class AllCategories extends Component {
+/* ---- Component ---- */
+
+class AllCategories extends Component {
 
   componentDidMount(){
-
+    this.props.loadCategories();
   }
 
   render () {
@@ -23,11 +27,13 @@ export default class AllCategories extends Component {
   }
 }
 
-import { connect } from 'react-redux';
-import AllCategories from './AllCategories.jsx';
-import { loadCategories } from '../store/categories';
+/* ---- Container ---- */
 
-const mapStateToProps = ({categories}) => ({categories});
+const mapStateToProps = function(state) {
+  return {
+      categories: state.categories
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -38,5 +44,4 @@ const mapDispatchToProps = dispatch => {
 };
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(AllCategories);
-
 export default Container;
