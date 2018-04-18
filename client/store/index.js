@@ -3,6 +3,9 @@ import createLogger from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import user from './user';
+import categories from './categories';
+
+const reducer = combineReducers({user, categories});
 import products from './products';
 
 const fakeUsers = [
@@ -10,7 +13,7 @@ const fakeUsers = [
     email: 'wow@gmail.com',
     password: '1234',
     isAdmin: true
-  }, 
+  },
   {
     email: '1234@aol.com',
     password: 'wow',
