@@ -1,25 +1,22 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {fetchProducts} from '../store/products';
-import AddProductContainer from './AddProductContainer.jsx'
+import { connect } from 'react-redux';
+import AddProductContainer from './AddProduct.jsx';
 
-export default class AllProducts extends Component {
+class AllProducts extends Component {
 
     componentDidMount(){
         this.props.fetchProducts();
     }
 
     render() {
-        const fakeUsers = [
-            {email: 'wow@yahoo.com', password: '123', isAdmin: true }, 
-            {email: 'yay@yay.com' , password: '123', isAdmin: false }
-        ]
         let { products, user } = this.props;
         return (
-            <div id='allProducts'>
+            <div id="allProducts">
                 <section>
                 {
-                    products.length > 0 ? products.map((product, index) => (
+                    products.length > 0 ? products.map((product) => (
                         <div key={product.id} product={product}>
                           <Link to={`/products/${product.id}`}>
                             <h3>{product.title}</h3>
@@ -33,7 +30,7 @@ export default class AllProducts extends Component {
                 
                 <section>
                 {
-                    user && user.isAdmin
+                    user.isAdmin
                     ? <AddProductContainer/>
                     : null
                 }
@@ -43,9 +40,6 @@ export default class AllProducts extends Component {
         );
     }
 }
-import AllProducts from './AllProducts.jsx';
-import { connect } from 'react-redux';
-import {fetchProducts} from '../store/products';
 
 const mapStateToProps = function(state){
     return {
@@ -63,5 +57,4 @@ const mapDispatchToProps = function(dispatch){
 };
 
 const AllProductsContainer = connect(mapStateToProps, mapDispatchToProps)(AllProducts);
-
 export default AllProductsContainer;
