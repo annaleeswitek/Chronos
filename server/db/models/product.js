@@ -19,10 +19,10 @@ const Product = db.define('product', {
     },
     quantity: {
         type: Sequelize.INTEGER,
-        defaultValue: 0
+        defaultValue: 0 // min validation -- KHWB
     },
     imgUrl: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING // defaultValue or hook for practice -- KHWB
     }
 });
 

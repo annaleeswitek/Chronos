@@ -19,7 +19,7 @@ export default class AllProducts extends Component {
             <div id='allProducts'>
                 <section>
                 {
-                    products.length > 0 ? products.map((product, index) => (
+                   products.map((product) => (
                         <div key={product.id} product={product}>
                           <Link to={`/products/${product.id}`}>
                             <h3>{product.title}</h3>
@@ -27,15 +27,14 @@ export default class AllProducts extends Component {
                             <div>$ {product.price}</div>
                           </Link>
                         </div>
-                    )) : null
+                    ))
                 }
                 </section>
                 
                 <section>
                 {
-                    user && user.isAdmin
-                    ? <AddProductContainer/>
-                    : null
+                   user.isAdmin &&
+                    <AddProductContainer/>
                 }
                 </section>
                 

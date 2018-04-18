@@ -27,6 +27,7 @@ export default function (state = [], action) {
     switch (action.type) {
         case GET_PRODUCTS:
             return action.products;
+            // update single product will map -- KHHW
         default:
             return state;
     }

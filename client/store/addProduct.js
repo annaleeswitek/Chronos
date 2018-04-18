@@ -5,7 +5,7 @@ import { getOneProduct } from './singleProduct';
 const ADD_PRODUCT = 'ADD_PRODUCT';
 
 /* ---- Action Creators ---- */
-export const addProduct = function(product, history){
+export const addProduct = function(product, history){ // move to single product -- KHWB
     return function thunk(dispatch){
         axios.post('/api/products', product)
             .then(res => res.data)

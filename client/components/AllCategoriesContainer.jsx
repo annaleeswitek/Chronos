@@ -8,6 +8,9 @@ const mapStateToProps = state => {
   };
 };
 
+const mapStateToProps = ({categories}) => ({categories}); // alternate to the above -- KHWB
+
+
 const mapDispatchToProps = dispatch => {
   return {
     loadCategories() {

@@ -29,8 +29,10 @@ class Routes extends Component {
         <Route path="/signup" component={Signup} />
         <Route exact path="/categories" component={AllCategoriesContainer} />
         <Route path="/products/:productId" component={SingleProductContainer} />
+      {/*consider addign products to this path, for descriptive restful path -- KHWB*/}
         <Route path="/categories/:categoryId" component={SingleCategoryContainer} />
         <Route exact path="/products" component={AllProductsContainer} />
+        {/*{isLoggedIn &&  <Route path="/home" component={UserHome} />} -- KHWB (possibility)*/}
         {
           isLoggedIn &&
             <Switch>

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { editProduct } from '../store/editProduct';
 import EditProduct from './EditProduct.jsx';
 
-const mapStateToProps = function(state, ownProps) {
+const mapStateToProps = function(state, ownProps) { // don't pull in more params if we don't need them -- KHWB
     return {
         product: state.product
     }
@@ -13,7 +13,7 @@ const mapDispatchToProps = function(dispatch, ownProps){
     return {
         editProduct: function(product, event){
             event.preventDefault();
-            product.title = event.target.title.value ? event.target.title.value : product.title;
+            product.title = event.target.title.value || product.title; // consider || instead of ? : -- KHWB
             product.price = event.target.price.value ? event.target.price.value : product.price;
             product.imgUrl = event.target.imgUrl.value ? event.target.imgUrl.value : product.imgUrl;
             product.quantity = event.target.quantity.value ? event.target.quantity.value: product.quantity;

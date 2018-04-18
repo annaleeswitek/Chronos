@@ -14,7 +14,7 @@ const setCategories = (categories) => {
   };
 };
 
-const selectCategory = (categoryToSelect) => {
+const selectCategory = (categoryToSelect) => { // delete me -- KHWB
   return {
     type: SELECT_CATEGORY,
     selectedCategory: categoryToSelect
@@ -31,11 +31,11 @@ export const loadCategories = () => {
         const action = setCategories(categories);
         dispatch(action);
       })
-      .catch(err => console.error(err));
+      .catch(err => console.error(err)); // note that this is just for devs, so show the client a message -- KHWB
   };
 };
 
-export const loadOneCategory = (categoryId) => {
+export const loadOneCategory = (categoryId) => { // delete me -- KHWB
   return function thunk (dispatch) {
     return axios.get(`/api/categories/${categoryId}`)
       .then(res => res.data)
@@ -60,7 +60,7 @@ const categoriesReducer = function(state = [], action) {
   }
 };
 
-export const selectedCategoryReducer = function(state = {}, action) {
+export const selectedCategoryReducer = function(state = {}, action) { // delete me -- KHWB
   switch (action.type) {
     case SELECT_CATEGORY:
       return action.selectedCategory;

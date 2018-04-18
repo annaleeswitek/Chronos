@@ -5,7 +5,7 @@ module.exports = router;
 
 router.get('/', (req, res, next) => {
     Product.findAll({
-        include: [{ all: true }]
+        include: [{ all: true }] // as we continue might not be what we want (thinking orders / cart) -- KHWB
     })
     .then( products => res.json(products) )
     .catch(next);
@@ -18,8 +18,14 @@ router.get('/:productId', (req, res, next) => {
 });
 
 //adding new product - admin
-router.post('/', (req, res, next) => {
-    Product.findOrCreate({
+// HAVE to have validation on the back if you want to be secure -- KHWB
+
+router.post('/', (req, res, next) => { // pull me out and reuse me in other places. Maybe put me in a utils file -- KHWB
+    if (!req.user) // throw 401 -- unauthorized
+    if (!req.user.isAdmin) // throw 403 -- forbidden
+    next()
+}, (req, res, next) => {
+    Product.findOrCreate({ // create(req.body)
         where: {
             title: req.body.title, 
             price: req.body.price, 
@@ -28,7 +34,7 @@ router.post('/', (req, res, next) => {
         }
     })
     .then(([newProduct, wasCreatedBool]) => {
-        res.json(newProduct)
+        res.json(newProduct) // would expect without brackets for consistency as above -- KHWB
     })
     .catch(next)
 })
@@ -42,7 +48,9 @@ router.put('/:productId', (req, res, next) => {
         quantity: req.body.quantity,
         imgUrl: req.body.imgUrl
         
-    }, {
+    } // consider req.body instead -- KHWB
+
+    , {
         where: {id: req.params.productId}, 
         returning: true, 
         plain: true

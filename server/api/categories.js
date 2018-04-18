@@ -17,7 +17,11 @@ router.get('/', (req, res, next) => {
 // });
 
 router.get('/:id', (req, res, next) => {
-  Category.findOne({
+  // backend filtering --> you don't have the overhead of all products on your frontend -- KHWB
+  // you still have a decent amount of overhead
+    // next step -- pagination --> you give a token for which products you sent, so you only send a reasonable chunk of info at a time
+    // our e-commerce won't have millions of products so this is perfect for our use case
+  Category.findOne({ // findById(id, {include:[]}) -- KHWB
     where: {
       id: req.params.id
     },
@@ -27,6 +31,7 @@ router.get('/:id', (req, res, next) => {
   .catch(next);
 });
 
+// clean me in master -- KHWB
 // router.get('/:id', (req, res, next) => {
 //   Category.findOne({
 //     where: {

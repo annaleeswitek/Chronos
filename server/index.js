@@ -28,7 +28,7 @@ if (process.env.NODE_ENV !== 'production') require('../secrets')
 passport.serializeUser((user, done) => done(null, user.id))
 passport.deserializeUser((id, done) =>
   db.models.user.findById(id)
-    .then(user => done(null, user))
+    .then(user => done(null, user)) // now we have req.user => (undefined || {user}) --KHWB
     .catch(done))
 
 const createApp = () => {

@@ -1,6 +1,7 @@
 // to be rendered in all products view
 import React, { Component } from 'react'
 
+// consider when clicking addproduct to use event.target.title.value, etc to get info off form (not needing store nor local state) -- KHWB
 
 class AddProduct extends Component {
 

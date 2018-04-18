@@ -20,7 +20,7 @@ export const fetchOneProduct = function(productId){
                 const action = getOneProduct(product);
                 store.dispatch(action);
             })
-            .catch(err => {
+            .catch(err => { // consistency with 1-liners of the same type -- KHHW
                 console.error(err);
             })
     }

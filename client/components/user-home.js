@@ -1,3 +1,6 @@
+// make camel not kebab case (name of file) -- KHWB
+
+// note that this has the container inside, so separate to make consistent with your design -- KHWB
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
@@ -7,7 +10,7 @@ import {connect} from 'react-redux'
  */
 export const UserHome = (props) => {
   const {email} = props
-
+  if (!props.isLoggedIn) // redirect --> push history; or just have a page you show about not being able to see a thing
   return (
     <div>
       <h3>Welcome, {email}</h3>

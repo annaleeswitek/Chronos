@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 
 export default class EditProduct extends Component {
-    
+    // WHAT?!?!?! 8 spaces? -- KHWB
+    // consider prettier plugin -- KHWB
         render() {
                 const { product } = this.props;
                 return (
