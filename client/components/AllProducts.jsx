@@ -14,7 +14,7 @@ export default class AllProducts extends Component {
             {email: 'wow@yahoo.com', password: '123', isAdmin: true }, 
             {email: 'yay@yay.com' , password: '123', isAdmin: false }
         ]
-        let { products } = this.props;
+        let { products, user } = this.props;
         return (
             <div id='allProducts'>
                 <section>
@@ -33,7 +33,7 @@ export default class AllProducts extends Component {
                 
                 <section>
                 {
-                    fakeUsers[0].isAdmin
+                    user && user.isAdmin
                     ? <AddProductContainer/>
                     : null
                 }

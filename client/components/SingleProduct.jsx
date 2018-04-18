@@ -7,10 +7,7 @@ export default class SingleProduct extends Component {
   }
 
   render(){
-    const fakeUsers = [
-      {email: 'wow@yahoo.com', password: '123', isAdmin: true }, 
-      {email: 'yay@yay.com' , password: '123', isAdmin: false }
-  ]
+  const { user } = this.props;
 
     const product = Object.keys(this.props.product).length > 0
                     ? this.props.product
@@ -28,7 +25,7 @@ export default class SingleProduct extends Component {
         }
            
         {
-          fakeUsers[0].isAdmin
+          user && user.isAdmin
           ? <EditProductContainer />
           : null
         }

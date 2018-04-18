@@ -4,7 +4,8 @@ import { fetchOneProduct } from '../store/singleProduct.js';
 
 const mapStateToProps = function(state, ownProps) {
   return {
-    product: state.product
+    product: state.product, 
+    user: state.user
   };
 };
 

@@ -5,7 +5,7 @@ import {fetchProducts} from '../store/products';
 const mapStateToProps = function(state){
     return {
         products: state.products,
-        // user: users[0]
+        user: state.user
     };
 };
 
