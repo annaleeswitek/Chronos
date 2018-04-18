@@ -6,35 +6,26 @@ import { fetchOneProduct } from '../store/singleProduct';
 /* ---- COMPONENT ---- */
 
 class SingleProduct extends Component {
-  
+
   componentDidMount(){
     this.props.fetchOneProduct(this.props.match.params.productId);
   }
 
   render(){
-  const { user } = this.props;
-
-    const product = Object.keys(this.props.product).length > 0
-                    ? this.props.product
-                    : undefined;
+  const { user, product } = this.props;
 
     return (
-      <div id='singleProduct'>
-      
-        { product 
+      <div id="singleProduct">
+        { product.id
           ?  <section className="product">
               <h3>{ product.title }</h3>
               <img src={ product.imgUrl } />
             </section>
           : <h2>Product Not Found</h2>
         }
-           
         {
-          user.isAdmin
-          ? <EditProductContainer />
-          : null
+          user.isAdmin && <EditProductContainer />
         }
-       
       </div>
     );
   }
@@ -42,9 +33,9 @@ class SingleProduct extends Component {
 
 /* ---- CONTAINER ---- */
 
-const mapStateToProps = function(state, ownProps) {
+const mapStateToProps = function(state) {
   return {
-    product: state.product, 
+    product: state.product,
     user: state.user
   };
 };
@@ -54,12 +45,11 @@ const mapDispatchToProps = function(dispatch) {
     fetchOneProduct: function(productId){
       const thunkAction = fetchOneProduct(productId);
       dispatch(thunkAction);
-    } 
+    }
   };
 };
 
 const SingleProductContainer = connect(mapStateToProps, mapDispatchToProps)(SingleProduct);
 
 export default SingleProductContainer;
-
 
