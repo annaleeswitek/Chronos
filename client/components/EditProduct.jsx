@@ -64,3 +64,4 @@ const mapDispatchToProps = function(dispatch, ownProps){
 
 const EditProductContainer = connect(mapStateToProps, mapDispatchToProps)(EditProduct);
 export default EditProductContainer;
+

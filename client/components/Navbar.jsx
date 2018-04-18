@@ -9,7 +9,6 @@ import { loadCategories } from '../store/categories';
 class Navbar extends Component {
 
   componentDidMount(){
-    console.log('props in navbar', this.props);
     this.props.loadCategories();
   }
 
