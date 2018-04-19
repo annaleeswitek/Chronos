@@ -5,33 +5,15 @@ import { Link } from 'react-router-dom';
 import { logout } from '../store';
 import AllCategories from './AllCategories.jsx';
 
-
-class Navbar extends Component {
-  constructor(){
-    super();
-    this.state = {
-      showCategories: false
-    }
-    this.showCategories = this.showCategories.bind(this);
-  }
-
-  showCategories(){
-    this.setState({ showCategories: !this.state.showCategories });
-  }
-
+/* ---- Component ---- */
+const Navbar = () => ({
 
   render(){
-    const { handleClick, isLoggedIn } = this.props;
+    const { handleClick, isLoggedIn, categories } = this.props;
     return (
-
-      <div>
+      <div id="">
         <h1>Chronos</h1>
         <nav>
-
-      <div id="navBarAll">
-        <h1 id="navBarName">Chronos</h1>
-        <nav id="navBar" onMouseLeave={this.showCategories}>
-
           {isLoggedIn ? (
             <div>
               {/* The navbar will show these links after you log in */}
@@ -47,10 +29,8 @@ class Navbar extends Component {
               <Link to="/signup">Sign Up</Link>
             </div>
           )}
-         <div id="navBarAll">
-            <Link to="/products" onMouseOver={this.showCategories}>Catalog</Link>
-            {this.state.showCategories && <AllCategories />}
-          </div>
+          <Link to="/products">Catalog</Link>
+          <AllCategories />
         </nav>
         <hr />
     </div>
@@ -60,7 +40,7 @@ class Navbar extends Component {
 
 /* ---- Container ---- */
 const mapStateToProps = state => ({
-  isLoggedIn: !!state.user.id,
+  // isLoggedIn: !!state.user.id,
   categories: state.categories
 });
 
