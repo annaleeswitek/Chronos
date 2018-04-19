@@ -15,7 +15,7 @@ class AllCategories extends Component {
     
     const { categories } = this.props;
     return (
-      <div>
+      <div id="allCategories">
       {
           categories.map((category) => (
               <div key={category.id}>

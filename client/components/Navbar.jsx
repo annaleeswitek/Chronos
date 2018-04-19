@@ -21,8 +21,8 @@ class Navbar extends Component {
   render(){
     const { handleClick, isLoggedIn, categories } = this.props;
     return (
-      <div>
-        <h1>Chronos</h1>
+      <div id="navBarAll">
+        <h1 id="navBarName">Chronos</h1>
         <nav id="navBar" onMouseLeave={this.showCategories}>
           {isLoggedIn ? (
             <div>
@@ -39,9 +39,8 @@ class Navbar extends Component {
               <Link to="/signup">Sign Up</Link>
             </div>
           )}
-          <div id="alwaysShow">
+         <div id="navBarAll">
             <Link to="/products" onMouseOver={this.showCategories}>Catalog</Link>
-            
             {this.state.showCategories && <AllCategories />}
           </div>
         </nav>
