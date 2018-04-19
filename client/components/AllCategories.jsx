@@ -13,11 +13,11 @@ class AllCategories extends Component {
   }
 
   render () {
-    console.log('this.props.location', this.props.location);
+
     const { categories } = this.props;
     return (
-      <div>
-        {
+      <div id="allCategories">
+      {
           categories.map((category) => (
             <div key={category.id}>
               <Link to={`/categories/${category.id}`}>{category.name}</Link>
