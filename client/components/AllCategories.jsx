@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { loadCategories } from '../store/categories';
 
@@ -16,12 +17,12 @@ class AllCategories extends Component {
     const { categories } = this.props;
     return (
       <div>
-      {
+        {
           categories.map((category) => (
-              <div key={category.id}>
-                <Link to={'/categories/' + category.id}>{category.name}</Link>
-              </div>
-            ))
+            <div key={category.id}>
+              <Link to={'/categories/' + category.id}>{category.name}</Link>
+            </div>
+          ))
         }
       </div>
     );

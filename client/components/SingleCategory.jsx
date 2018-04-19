@@ -24,8 +24,13 @@ class SingleCategory extends Component {
         }
 
         {
-          products && products.map(product => (<div key={product.id}>{product.title}</div>))
+          products && products.map(product => (<div key={product.id}>
+            <section className="product">
+              <img src={ product.imgUrl } />
+            </section>
+          </div>))
         }
+
       </div>
     );
   }
@@ -48,7 +53,7 @@ const mapDispatchToProps = function(dispatch) {
   };
 };
 
-const SingleCategoryContainer = connect(mapStateToProps, mapDispatchToProps)(SingleCategory);
+const Container = connect(mapStateToProps, mapDispatchToProps)(SingleCategory);
 
-export default SingleCategoryContainer;
+export default Container;
 
