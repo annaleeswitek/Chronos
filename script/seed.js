@@ -54,6 +54,13 @@ async function seed () {
       quantity: 11,
       imgUrl: 'https://dummyimage.com/400x400/dbf6ff/000000.jpg&text=2050+(One+Week)'
     },
+    {
+      title: "Trump's Last Day In Office",
+      price: 1500000.00,
+      description: 'Price only applies if you are a registered Republican',
+      quantity: 1,
+      imgUrl: "https://dummyimage.com/400x400/ffecdb/000000.jpg&text=Trump's+Last+Day+In+Office"
+    }
   ];
 
   const products = await Promise.all(
