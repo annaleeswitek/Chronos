@@ -1,7 +1,6 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-// at this point, we're in all products view and state.products = all products
-import { editProduct } from "../store/editProduct";
+import React from 'react';
+import { connect } from 'react-redux';
+import { editProduct } from '../store/singleProduct';
 
 const EditProduct = () => ({
   render() {
@@ -47,26 +46,21 @@ const EditProduct = () => ({
   }
 });
 
-const mapStateToProps = function(state) {
-  return {
-    product: state.product
-  };
-};
+/* ---- Container ---- */
+const mapStateToProps = state => ({product: state.product});
 
-const mapDispatchToProps = function(dispatch) {
-  return {
-    editProduct: function(product, event) {
-      event.preventDefault();
-      product.title = event.target.title.value || product.title;
-      product.price = event.target.price.value || product.price;
-      product.imgUrl = event.target.imgUrl.value || product.imgUrl;
-      product.quantity = event.target.quantity.value || product.quantity;
-      product.description = event.target.description.value || product.description;
-      const action = editProduct(product);
-      dispatch(action);
-    }
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  editProduct: (product, event) => {
+    event.preventDefault();
+    product.title = event.target.title.value || product.title;
+    product.price = event.target.price.value || product.price;
+    product.imgUrl = event.target.imgUrl.value || product.imgUrl;
+    product.quantity = event.target.quantity.value || product.quantity;
+    product.description = event.target.description.value || product.description;
+    const action = editProduct(product);
+    dispatch(action);
+  }
+});
 
 const EditProductContainer = connect(mapStateToProps, mapDispatchToProps)(EditProduct);
 export default EditProductContainer;

@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import {fetchProducts} from '../store/products';
 import { connect } from 'react-redux';
 import AddProductContainer from './AddProduct.jsx';
+import { Container, Grid, Row, Col } from 'react-bootstrap';
+
+/* ---- Component ---- */
 
 class AllProducts extends Component {
 
@@ -13,25 +16,26 @@ class AllProducts extends Component {
     render() {
         let { products, user } = this.props;
         return (
-            <div id="allProducts">
-                <section>
+            <div className="container" id="allProductsView">
+                <Grid>
+                    <Row className="show-grid">
                 {
-                    products.length > 0 ? products.map((product) => (
-                        <div key={product.id} product={product}>
+                    products.map((product) => (
+                        <Col sm={10} md={4}  key={product.id} id="singleProduct">
                           <Link to={`/products/${product.id}`}>
                             <h3>{product.title}</h3>
                             <img src={product.imgUrl} />
                             <div>$ {product.price}</div>
                           </Link>
-                        </div>
-                    )) : null
+                        </Col>
+                    ))
                 }
-                </section>
-
+                    </Row>
+                </Grid>
+                
                 <section>
                 {
-                    user.isAdmin &&
-                    <AddProductContainer />
+                    user.isAdmin && <AddProductContainer />
                 }
                 </section>
 
@@ -40,20 +44,15 @@ class AllProducts extends Component {
     }
 }
 
-const mapStateToProps = function(state){
-    return {
-        products: state.products,
-        user: state.user
-    };
-};
+/* ---- Container ---- */
+const mapStateToProps = state => ({
+    products: state.products,
+    user: state.user
+});
 
-const mapDispatchToProps = function(dispatch){
-    return {
-        fetchProducts: function(){
-            dispatch(fetchProducts());
-        }
-    };
-};
+const mapDispatchToProps = dispatch => ({
+    fetchProducts: () => dispatch(fetchProducts())
+});
 
 const AllProductsContainer = connect(mapStateToProps, mapDispatchToProps)(AllProducts);
 export default AllProductsContainer;

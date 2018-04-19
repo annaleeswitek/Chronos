@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-/**
- * COMPONENT
- */
+/* ---- Component ---- */
 export const UserHome = (props) => {
   const {email} = props;
 
@@ -15,20 +13,14 @@ export const UserHome = (props) => {
   );
 };
 
-/**
- * CONTAINER
- */
-const mapState = (state) => {
-  return {
-    email: state.user.email
-  };
-};
+/* ---- Container ---- */
+const mapState = state => ({
+  email: state.user.email
+});
 
 export default connect(mapState)(UserHome);
 
-/**
- * PROP TYPES
- */
+/* ---- Prop Types ---- */
 UserHome.propTypes = {
   email: PropTypes.string
 };

@@ -19,10 +19,14 @@ const Product = db.define('product', {
     },
     quantity: {
         type: Sequelize.INTEGER,
-        defaultValue: 0
+        defaultValue: 0,
+        validate: {
+            min: 0
+        }
     },
     imgUrl: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        defaultValue: 'https://dummyimage.com/400x400/e3ffec/000000&text=This+Is+a+Default+Image'
     }
 });
 

@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import EditProductContainer from './EditProduct.jsx';
 import { fetchOneProduct } from '../store/singleProduct';
 
-/* ---- COMPONENT ---- */
-
+/* ---- Component ---- */
 class SingleProduct extends Component {
 
   componentDidMount(){
@@ -31,25 +30,19 @@ class SingleProduct extends Component {
   }
 }
 
-/* ---- CONTAINER ---- */
+/* ---- Container ---- */
+const mapStateToProps = state => ({
+  product: state.product,
+  user: state.user
+});
 
-const mapStateToProps = function(state) {
-  return {
-    product: state.product,
-    user: state.user
-  };
-};
-
-const mapDispatchToProps = function(dispatch) {
-  return {
-    fetchOneProduct: function(productId){
-      const thunkAction = fetchOneProduct(productId);
-      dispatch(thunkAction);
-    }
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  fetchOneProduct: productId => {
+    const thunkAction = fetchOneProduct(productId);
+    dispatch(thunkAction);
+  }
+});
 
 const SingleProductContainer = connect(mapStateToProps, mapDispatchToProps)(SingleProduct);
-
 export default SingleProductContainer;
 
