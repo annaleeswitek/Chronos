@@ -12,7 +12,7 @@ class AllCategories extends Component {
   }
 
   render () {
-    console.log('this.props.location', this.props.location);
+    
     const { categories } = this.props;
     return (
       <div>

@@ -6,13 +6,24 @@ import {logout} from '../store'
 import AllCategories from './AllCategories.jsx';
 
 class Navbar extends Component {
+  constructor(){
+    super();
+    this.state = {
+      showCategories: false
+    }
+    this.showCategories = this.showCategories.bind(this);
+  }
+
+  showCategories(){
+    this.setState({ showCategories: !this.state.showCategories });
+  }
 
   render(){
     const { handleClick, isLoggedIn, categories } = this.props;
     return (
       <div>
         <h1>Chronos</h1>
-        <nav>
+        <nav id="navBar" onMouseLeave={this.showCategories}>
           {isLoggedIn ? (
             <div>
               {/* The navbar will show these links after you log in */}
@@ -28,8 +39,11 @@ class Navbar extends Component {
               <Link to="/signup">Sign Up</Link>
             </div>
           )}
-          <Link to="/products">Catalog</Link>
-          <AllCategories />
+          <div id="alwaysShow">
+            <Link to="/products" onMouseOver={this.showCategories}>Catalog</Link>
+            
+            {this.state.showCategories && <AllCategories />}
+          </div>
         </nav>
         <hr />
     </div>
