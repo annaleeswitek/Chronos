@@ -23,7 +23,27 @@ form div {
 
 /* all products view */
 
-#allProducts {
+#allProductsView {
+    display: flex;
+}
+
+#singleProduct {
+    margin: 2em 2em 2em 0.5em;
+    flex-shrink: 2
+}
+
+#addProductFormPage {
+    position: fixed;
+    /* padding-right: 10em */
+}
+
+#addProductForm {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* #allProducts {
     display: flex;
     flex-direction: column
 }
@@ -35,12 +55,13 @@ form div {
 
 #addButton {
     width: 10%
-}
+} */
 
 
 /* single product view */
 
-#singleProduct {
+
+/* #singleProduct {
     display: flex;
     flex-direction: column
 }
@@ -48,4 +69,4 @@ form div {
 #editProductForm {
     display: flex;
     flex-direction: column
-}
+} */
