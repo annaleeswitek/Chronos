@@ -1,14 +1,15 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-import {logout} from '../store'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { logout } from '../store';
 import AllCategories from './AllCategories.jsx';
 
-class Navbar extends Component {
+/* ---- Component ---- */
+const Navbar = () => ({
 
   render(){
-    const { handleClick, isLoggedIn, categories } = this.props;
+    const { handleClick, isLoggedIn } = this.props;
     return (
       <div id="">
         <h1>Chronos</h1>
@@ -35,36 +36,27 @@ class Navbar extends Component {
     </div>
     );
   }
-}
+});
 
+/* ---- Container ---- */
+const mapStateToProps = state => ({
+  isLoggedIn: !!state.user.id,
+  categories: state.categories
+});
 
-/**
- * CONTAINER
- */
-const mapStateToProps = state => {
-  return {
-    isLoggedIn: !!state.user.id,
-    categories: state.categories
+const mapDispatchToProps = dispatch => ({
+  handleClick() {
+    dispatch(logout());
+  },
+  loadCategories() {
+    dispatch(this.loadCategories());
   }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    handleClick() {
-      dispatch(logout());
-    },
-    loadCategories(){
-      dispatch(loadCategories());
-    }
-  }
-}
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
 
-/**
- * PROP TYPES
- */
+/* ---- Prop Types ---- */
 Navbar.propTypes = {
   handleClick: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired
-}
+};

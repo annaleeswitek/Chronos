@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { loadCategories } from '../store/categories';
 
 /* ---- Component ---- */
-
 class AllCategories extends Component {
 
   componentDidMount(){
@@ -30,21 +29,11 @@ class AllCategories extends Component {
 
 
 /* ---- Container ---- */
+const mapStateToProps = state => ({categories: state.categories});
 
-const mapStateToProps = function(state) {
-  return {
-      categories: state.categories
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    loadCategories() {
-      dispatch(loadCategories());
-    }
-  };
-};
-
+const mapDispatchToProps = dispatch => ({loadCategories() {
+  dispatch(loadCategories());
+}});
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(AllCategories);
 const containerWithRouter = withRouter(Container);

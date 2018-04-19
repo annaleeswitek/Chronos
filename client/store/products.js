@@ -4,9 +4,6 @@ import history from '../history';
 /* ---- Action Tyoes ---- */
 const GET_PRODUCTS = 'GET_PRODUCTS';
 
-/* ---- Initial State ---- */
-// const defaultProduct = {};
-
 /* ---- Action Creators ---- */
 const getProducts = products => ({ type: GET_PRODUCTS, products});
 

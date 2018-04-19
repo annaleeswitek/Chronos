@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import { loadOneCategory } from '../store/categories';
 
 
-/* ---- COMPONENT ---- */
-
+/* ---- Component ---- */
 class SingleCategory extends Component {
 
   componentDidMount () {
@@ -22,7 +21,6 @@ class SingleCategory extends Component {
           ? <h1>{selectedCategory.name}</h1>
           : null
         }
-
         {
           products && products.map(product => (<div key={product.id}>{product.title}</div>))
         }
@@ -31,24 +29,18 @@ class SingleCategory extends Component {
   }
 }
 
-/* ---- CONTAINER ---- */
+/* ---- Container ---- */
+const mapStateToProps = state => ({
+  selectedCategory: state.selectedCategory
+});
 
-const mapStateToProps = state => {
-  return {
-    selectedCategory: state.selectedCategory
-  };
-};
-
-const mapDispatchToProps = function(dispatch) {
-  return {
-    loadOneCategory(categoryId){
-      const thunkAction = loadOneCategory(categoryId);
-      dispatch(thunkAction);
-    }
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  loadOneCategory(categoryId) {
+    const thunkAction = loadOneCategory(categoryId);
+    dispatch(thunkAction);
+  }
+});
 
 const SingleCategoryContainer = connect(mapStateToProps, mapDispatchToProps)(SingleCategory);
-
 export default SingleCategoryContainer;
 

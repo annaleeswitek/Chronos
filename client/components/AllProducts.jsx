@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import AddProductContainer from './AddProduct.jsx';
 import { Container, Grid, Row, Col } from 'react-bootstrap';
 
+/* ---- Component ---- */
+
 class AllProducts extends Component {
 
     componentDidMount(){
@@ -18,7 +20,7 @@ class AllProducts extends Component {
                 <Grid>
                     <Row className="show-grid">
                 {
-                    products.length > 0 ? products.map((product) => (
+                    products.map((product) => (
                         <Col sm={10} md={4}  key={product.id} id="singleProduct">
                           <Link to={`/products/${product.id}`}>
                             <h3>{product.title}</h3>
@@ -26,15 +28,14 @@ class AllProducts extends Component {
                             <div>$ {product.price}</div>
                           </Link>
                         </Col>
-                    )) : null
+                    ))
                 }
                     </Row>
                 </Grid>
                 
                 <section>
                 {
-                    user.isAdmin &&
-                    <AddProductContainer />
+                    user.isAdmin && <AddProductContainer />
                 }
                 </section>
 
@@ -43,20 +44,15 @@ class AllProducts extends Component {
     }
 }
 
-const mapStateToProps = function(state){
-    return {
-        products: state.products,
-        user: state.user
-    };
-};
+/* ---- Container ---- */
+const mapStateToProps = state => ({
+    products: state.products,
+    user: state.user
+});
 
-const mapDispatchToProps = function(dispatch){
-    return {
-        fetchProducts: function(){
-            dispatch(fetchProducts());
-        }
-    };
-};
+const mapDispatchToProps = dispatch => ({
+    fetchProducts: () => dispatch(fetchProducts())
+});
 
 const AllProductsContainer = connect(mapStateToProps, mapDispatchToProps)(AllProducts);
 export default AllProductsContainer;
