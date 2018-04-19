@@ -21,16 +21,16 @@ router.get('/:productId', (req, res, next) => {
 router.post('/', (req, res, next) => {
     Product.findOrCreate({
         where: {
-            title: req.body.title, 
-            price: req.body.price, 
-            imgUrl: req.body.imgUrl, 
+            title: req.body.title,
+            price: req.body.price,
+            imgUrl: req.body.imgUrl,
             description: req.body.description
         }
     })
     .then(([newProduct, wasCreatedBool]) => {
-        res.json(newProduct)
+        res.json(newProduct);
     })
-    .catch(next)
+    .catch(next);
 })
 
 // editing product - admin
@@ -41,16 +41,16 @@ router.put('/:productId', (req, res, next) => {
         description: req.body.description,
         quantity: req.body.quantity,
         imgUrl: req.body.imgUrl
-        
+
     }, {
-        where: {id: req.params.productId}, 
-        returning: true, 
+        where: {id: req.params.productId},
+        returning: true,
         plain: true
     }
     )
     .then(([numOfAffected, updatedProduct]) => {
-        console.log('updated campus:', updatedProduct)
+        console.log('updated campus:', updatedProduct);
         res.json(updatedProduct);
     })
     .catch(next);
-})
+});
