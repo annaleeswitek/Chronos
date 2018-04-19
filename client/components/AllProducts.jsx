@@ -4,6 +4,7 @@ import {fetchProducts} from '../store/products';
 import { connect } from 'react-redux';
 import AddProductContainer from './AddProduct.jsx';
 import { Container, Grid, Row, Col } from 'react-bootstrap';
+import Searchbar from './SearchProducts.jsx';
 
 /* ---- Component ---- */
 class AllProducts extends Component {
@@ -31,6 +32,7 @@ class AllProducts extends Component {
 
         return (
           <div className="container" id="allProductsView">
+          <Searchbar />
             <Grid>
             <Row className="show-grid">
             {
