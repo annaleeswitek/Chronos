@@ -28,6 +28,7 @@ class AllCategories extends Component {
   }
 }
 
+
 /* ---- Container ---- */
 
 const mapStateToProps = function(state) {
