@@ -10,7 +10,7 @@ class Navbar extends Component {
   render(){
     const { handleClick, isLoggedIn, categories } = this.props;
     return (
-      <div>
+      <div id="">
         <h1>Chronos</h1>
         <nav>
           {isLoggedIn ? (

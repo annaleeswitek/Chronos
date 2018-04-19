@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import {fetchProducts} from '../store/products';
 import { connect } from 'react-redux';
 import AddProductContainer from './AddProduct.jsx';
+import { Container, Grid, Row, Col } from 'react-bootstrap';
 
 class AllProducts extends Component {
 
@@ -13,20 +14,23 @@ class AllProducts extends Component {
     render() {
         let { products, user } = this.props;
         return (
-            <div id="allProducts" className="container">
-                <div className="row">
+            <div className="container" id="allProductsView">
+                <Grid>
+                    <Row className="show-grid">
                 {
                     products.length > 0 ? products.map((product) => (
-                        <div key={product.id} product={product} className="col-sm">
+                        <Col sm={10} md={4}  key={product.id} id="singleProduct">
                           <Link to={`/products/${product.id}`}>
                             <h3>{product.title}</h3>
                             <img src={product.imgUrl} />
                             <div>$ {product.price}</div>
                           </Link>
-                        </div>
+                        </Col>
                     )) : null
                 }
-
+                    </Row>
+                </Grid>
+                
                 <section>
                 {
                     user.isAdmin &&
