@@ -24,7 +24,7 @@ class Navbar extends Component {
         
         return (
             <div id="navBarAll">
-                <h1 id="navBarName">Chronos</h1>
+                <Link to="/" id="navBarName"><h1>Chronos</h1></Link>
                 <nav id="navBar" onMouseLeave={this.showCategories}>
                 {
                 isLoggedIn ? (
@@ -43,7 +43,9 @@ class Navbar extends Component {
                 }
                 <div id="alwaysShow">
                     <Link to="/products" onMouseOver={this.showCategories}>Catalog</Link>
-                    { this.state.showCategories && <AllCategories />}
+                    <div id="categoriesInNav">
+                        { this.state.showCategories && <AllCategories />}
+                    </div>
                 </div>
                 </nav>
             </div>  
