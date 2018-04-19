@@ -25,6 +25,7 @@ form div {
 
 #allProductsView {
     display: flex;
+    justify-content: flex-start
 }
 
 #singleProduct {
@@ -33,8 +34,7 @@ form div {
 }
 
 #addProductFormPage {
-    position: fixed;
-    /* padding-right: 10em */
+    position: fixed
 }
 
 #addProductForm {
