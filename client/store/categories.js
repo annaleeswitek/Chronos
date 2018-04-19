@@ -3,7 +3,6 @@ import axios from 'axios';
 // Action Types
 
 const SET_CATEGORIES = 'SET_CATEGORIES';
-const SELECT_CATEGORY = 'SELECT_CATEGORY';
 
 // Action Creators
 
@@ -11,13 +10,6 @@ const setCategories = (categories) => {
   return {
     type: SET_CATEGORIES,
     categories
-  };
-};
-
-const selectCategory = (categoryToSelect) => {
-  return {
-    type: SELECT_CATEGORY,
-    selectedCategory: categoryToSelect
   };
 };
 
@@ -34,20 +26,6 @@ export const loadCategories = () => {
       .catch(err => console.error(err));
   };
 };
-
-export const loadOneCategory = (categoryId) => {
-  return function thunk (dispatch) {
-    return axios.get(`/api/categories/${categoryId}`)
-      .then(res => res.data)
-      .then(theCategory => {
-        const action = selectCategory(theCategory);
-        dispatch(action);
-      })
-      .catch(err => console.error(err));
-  };
-};
-
-
 // Reducers
 
 const categoriesReducer = function(state = [], action) {
@@ -57,14 +35,6 @@ const categoriesReducer = function(state = [], action) {
       return action.categories;
     default:
     return state;
-  }
-};
-
-export const selectedCategoryReducer = function(state = {}, action) {
-  switch (action.type) {
-    case SELECT_CATEGORY:
-      return action.selectedCategory;
-    default: return state;
   }
 };
 

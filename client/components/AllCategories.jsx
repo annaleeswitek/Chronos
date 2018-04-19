@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loadCategories } from '../store/categories';
 
@@ -12,16 +12,16 @@ class AllCategories extends Component {
   }
 
   render () {
-    
+
     const { categories } = this.props;
     return (
       <div id="allCategories">
       {
           categories.map((category) => (
-              <div key={category.id}>
-                <Link to={'/categories/' + category.id}>{category.name}</Link>
-              </div>
-            ))
+            <div key={category.id}>
+              <Link to={`/categories/${category.id}`}>{category.name}</Link>
+            </div>
+          ))
         }
       </div>
     );
@@ -46,5 +46,5 @@ const mapDispatchToProps = dispatch => {
 
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(AllCategories);
-const containerWithRouter = withRouter(Container);
-export default containerWithRouter;
+
+export default Container;
