@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadOneCategory } from '../store/categories';
+import { loadOneCategory } from '../store/singleCategory';
 
 
 /* ---- Component ---- */
