@@ -6,6 +6,12 @@ import { loadOneCategory } from '../store/categories';
 /* ---- Component ---- */
 class SingleCategory extends Component {
 
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.match.params.categoryId !== this.props.match.params.categoryId){
+      nextProps.loadOneCategory(nextProps.match.params.categoryId);
+    }
+  }
+
   componentDidMount () {
     const categoryId = this.props.match.params.categoryId;
     this.props.loadOneCategory(categoryId);
@@ -22,8 +28,13 @@ class SingleCategory extends Component {
           : null
         }
         {
-          products && products.map(product => (<div key={product.id}>{product.title}</div>))
+          products && products.map(product => (<div key={product.id}>
+            <section className="product">
+              <img src={ product.imgUrl } />
+            </section>
+          </div>))
         }
+
       </div>
     );
   }
@@ -41,6 +52,8 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
+
 const SingleCategoryContainer = connect(mapStateToProps, mapDispatchToProps)(SingleCategory);
 export default SingleCategoryContainer;
+
 

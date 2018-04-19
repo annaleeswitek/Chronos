@@ -5,15 +5,33 @@ import { Link } from 'react-router-dom';
 import { logout } from '../store';
 import AllCategories from './AllCategories.jsx';
 
-/* ---- Component ---- */
-const Navbar = () => ({
+
+class Navbar extends Component {
+  constructor(){
+    super();
+    this.state = {
+      showCategories: false
+    }
+    this.showCategories = this.showCategories.bind(this);
+  }
+
+  showCategories(){
+    this.setState({ showCategories: !this.state.showCategories });
+  }
+
 
   render(){
     const { handleClick, isLoggedIn } = this.props;
     return (
-      <div id="">
+
+      <div>
         <h1>Chronos</h1>
         <nav>
+
+      <div id="navBarAll">
+        <h1 id="navBarName">Chronos</h1>
+        <nav id="navBar" onMouseLeave={this.showCategories}>
+
           {isLoggedIn ? (
             <div>
               {/* The navbar will show these links after you log in */}
@@ -29,8 +47,10 @@ const Navbar = () => ({
               <Link to="/signup">Sign Up</Link>
             </div>
           )}
-          <Link to="/products">Catalog</Link>
-          <AllCategories />
+         <div id="navBarAll">
+            <Link to="/products" onMouseOver={this.showCategories}>Catalog</Link>
+            {this.state.showCategories && <AllCategories />}
+          </div>
         </nav>
         <hr />
     </div>
