@@ -12,10 +12,6 @@ export class Searchbar extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    // componentDidMount() {
-    //     this.props.fetchProducts();
-    // }
-
     handleChange(event) {
         const value = event.target.value;
           this.setState({ inputValue: value });

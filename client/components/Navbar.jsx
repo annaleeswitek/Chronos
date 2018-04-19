@@ -42,7 +42,7 @@ const Navbar = () => ({
 
 /* ---- Container ---- */
 const mapStateToProps = state => ({
-  // isLoggedIn: !!state.user.id,
+  isLoggedIn: !!state.user.id,
   categories: state.categories
 });
 
