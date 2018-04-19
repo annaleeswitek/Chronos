@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logout } from '../store';
 import AllCategories from './AllCategories.jsx';
+import { Searchbar } from './SearchProducts.jsx';
 
 /* ---- Component ---- */
 const Navbar = () => ({
@@ -31,6 +32,7 @@ const Navbar = () => ({
           )}
           <Link to="/products">Catalog</Link>
           <AllCategories />
+          <Searchbar />
         </nav>
         <hr />
     </div>

@@ -1,34 +1,20 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import {fetchProducts} from '../store/products';
+import { fetchProducts } from '../store/products';
 import { connect } from 'react-redux';
 import AddProductContainer from './AddProduct.jsx';
 import { Container, Grid, Row, Col } from 'react-bootstrap';
-import Searchbar from './SearchProducts.jsx';
+import { Searchbar } from './SearchProducts.jsx';
 
 /* ---- Component ---- */
 class AllProducts extends Component {
-    constructor() {
-        super();
-        this.state = {
-            inputValue: ''
-        };
-        this.handleChange = this.handleChange.bind(this);
-    }
 
   componentDidMount(){
     this.props.fetchProducts();
   }
 
-  handleChange(event) {
-      const value = event.target.value;
-        this.setState({ inputValue: value });
-  }
-
     render() {
       let { products, user } = this.props;
-      const inputValue = this.state.inputValue;
-      const filteredProducts = this.props.products.filter(product => product.title.match(inputValue));
 
         return (
           <div className="container" id="allProductsView">
