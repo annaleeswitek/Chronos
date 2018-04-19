@@ -32,7 +32,7 @@ class AllProducts extends Component {
                 }
                     </Row>
                 </Grid>
-                
+
                 <section>
                 {
                     user.isAdmin && <AddProductContainer />

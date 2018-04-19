@@ -55,5 +55,3 @@ const mapDispatchToProps = dispatch => ({
 
 const SingleCategoryContainer = connect(mapStateToProps, mapDispatchToProps)(SingleCategory);
 export default SingleCategoryContainer;
-
-
