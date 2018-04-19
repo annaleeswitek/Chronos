@@ -29,7 +29,7 @@ class Navbar extends Component {
             </div>
           )}
           <Link to="/products">Catalog</Link>
-          <AllCategories />
+          <AllCategories location={location} />
         </nav>
         <hr />
     </div>
