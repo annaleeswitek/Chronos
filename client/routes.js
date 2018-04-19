@@ -28,12 +28,10 @@ class Routes extends Component {
         <Route path="/products/:productId" component={SingleProductContainer} />
         <Route exact path="/categories/:categoryId" component={SingleCategoryContainer} />
         <Route exact path="/products" component={AllProductsContainer} />
+        {/* Routes placed here are only available after logging in */}
         {
-          isLoggedIn &&
-            <Switch>
-              {/* Routes placed here are only available after logging in */}
-              <Route path="/home" component={UserHome} />
-            </Switch>
+          isLoggedIn && <Route path="/home" component={UserHome} />
+
         }
         {/* Displays our Login component as a fallback */}
         <Route component={Login} />
