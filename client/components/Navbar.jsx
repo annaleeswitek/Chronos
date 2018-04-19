@@ -39,15 +39,10 @@ class Navbar extends Component {
               <Link to="/signup">Sign Up</Link>
             </div>
           )}
-<<<<<<< HEAD
-          <Link to="/products">Catalog</Link>
-          <AllCategories location={location} />
-=======
          <div id="navBarAll">
             <Link to="/products" onMouseOver={this.showCategories}>Catalog</Link>
             {this.state.showCategories && <AllCategories />}
           </div>
->>>>>>> master
         </nav>
         <hr />
     </div>
