@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { loadCategories } from '../store/categories';
 
@@ -47,5 +46,5 @@ const mapDispatchToProps = dispatch => {
 
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(AllCategories);
-const containerWithRouter = withRouter(Container);
-export default containerWithRouter;
+
+export default Container;

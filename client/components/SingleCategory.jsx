@@ -7,6 +7,12 @@ import { loadOneCategory } from '../store/categories';
 
 class SingleCategory extends Component {
 
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.match.params.categoryId !== this.props.match.params.categoryId){
+      nextProps.loadOneCategory(nextProps.match.params.categoryId);
+    }
+  }
+
   componentDidMount () {
     const categoryId = this.props.match.params.categoryId;
     this.props.loadOneCategory(categoryId);
@@ -54,6 +60,7 @@ const mapDispatchToProps = function(dispatch) {
 };
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(SingleCategory);
+
 
 export default Container;
 
