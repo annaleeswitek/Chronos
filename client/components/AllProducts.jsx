@@ -32,7 +32,6 @@ class AllProducts extends Component {
 
         return (
           <div className="container" id="allProductsView">
-          <Searchbar />
             <Grid>
             <Row className="show-grid">
             {
