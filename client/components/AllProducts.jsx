@@ -7,7 +7,7 @@ import { Container, Grid, Row, Col } from 'react-bootstrap';
 import { Searchbar } from './SearchProducts.jsx';
 
 /* ---- Component ---- */
-class AllProducts extends Component {
+export class AllProducts extends Component {
 
   componentDidMount(){
     this.props.fetchProducts();
@@ -15,7 +15,7 @@ class AllProducts extends Component {
 
     render() {
       let { products, user } = this.props;
-
+    
         return (
           <div className="container" id="allProductsView">
             <Grid>
