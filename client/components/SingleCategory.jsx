@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadOneCategory } from '../store/categories';
+import { withRouter } from 'react-router-dom';
 
 
 /* ---- COMPONENT ---- */
@@ -12,10 +13,12 @@ class SingleCategory extends Component {
     this.props.loadOneCategory(categoryId);
   }
 
+  
+
   render () {
     const { selectedCategory } = this.props;
     const products = selectedCategory.products;
-
+    
     return (
       <div>
         { selectedCategory

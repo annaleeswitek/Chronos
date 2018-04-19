@@ -46,5 +46,5 @@ const mapDispatchToProps = dispatch => {
 
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(AllCategories);
-const containerWithRouter = withRouter(Container);
-export default containerWithRouter;
+export default withRouter(Container);
+

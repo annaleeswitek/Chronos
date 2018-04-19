@@ -4,17 +4,30 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import AllCategories from './AllCategories.jsx';
+import { loadCategories } from '../store/categories';
 
 class Navbar extends Component {
+  constructor(){
+    super();
+    this.state = {
+      showCategories: false
+    }
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+
+  handleClick(){
+    this.setState({ showCategories: !this.state.showCategories })
+  }
 
   render(){
-    const { handleClick, isLoggedIn, categories } = this.props;
+    const { handleClick, isLoggedIn } = this.props;
     return (
       <div>
         <h1>Chronos</h1>
-        <nav>
+        <nav id="navBar">
           {isLoggedIn ? (
-            <div>
+            <div id="isLoggedOut">
               {/* The navbar will show these links after you log in */}
               <Link to="/home">Home</Link>
               <a href="#" onClick={handleClick}>
@@ -22,14 +35,18 @@ class Navbar extends Component {
               </a>
             </div>
           ) : (
-            <div>
+            <div id="isLoggedOut">
               {/* The navbar will show these links before you log in */}
               <Link to="/login">Login</Link>
               <Link to="/signup">Sign Up</Link>
             </div>
           )}
           <Link to="/products">Catalog</Link>
-          <AllCategories />
+          <a href="#" onClick={this.handleClick}>Categories</a>
+          {
+          this.state.showCategories && <AllCategories />
+            
+        }
         </nav>
         <hr />
     </div>

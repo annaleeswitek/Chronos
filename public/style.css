@@ -21,6 +21,13 @@ form div {
 }
 
 
+/* nav bar */
+
+#navBar {
+    display: flex
+}
+
+
 /* all products view */
 
 #allProducts {
