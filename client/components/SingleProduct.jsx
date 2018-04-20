@@ -1,5 +1,7 @@
+'use strict';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import { EditProduct } from './index';
 import { fetchOneProduct } from '../store';
 
@@ -17,16 +19,25 @@ class SingleProduct extends Component {
       <div className="product">
         { product.id
           ?  <section id="product">
-              <h3>{ product.title }</h3>
-              <img src={ product.imgUrl } />
-              <h4>{ product.price }</h4>
-              <h4>{ product.description }</h4>
+              <div id="allButDesc">
+                <h3>{ product.title }</h3>
+                <img src={ product.imgUrl } />
+                <h4>${ product.price }</h4>
+                <a href="#">Add To Cart</a>
+              </div>
+              <div id="description">
+                <h4>{ product.description }</h4>
+                
+              </div>
             </section>
           : <h2>Product Not Found</h2>
         }
+        <div id="editProduct">
         {
-          user.isAdmin && <EditProduct />
+          //passing location as a prop here because i need to make sure that edit product has access to product
+          user.isAdmin && <EditProductContainer location={location}/>
         }
+        </div>
       </div>
     );
   }

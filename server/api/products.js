@@ -35,21 +35,13 @@ router.post('/', (req, res, next) => {
 
 // editing product - admin
 router.put('/:productId', (req, res, next) => {
-    Product.update({
-        title: req.body.title,
-        price: req.body.price,
-        description: req.body.description,
-        quantity: req.body.quantity,
-        imgUrl: req.body.imgUrl
-
-    }, {
+    Product.update(req.body, {
         where: {id: req.params.productId},
         returning: true,
         plain: true
     }
     )
     .then(([numOfAffected, updatedProduct]) => {
-        console.log('updated campus:', updatedProduct);
         res.json(updatedProduct);
     })
     .catch(next);

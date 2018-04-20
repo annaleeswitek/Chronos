@@ -1,5 +1,7 @@
+'use strict';
+
 import React, { Component } from 'react';
-import { Container, Grid, Row, Col } from 'react-bootstrap'; // What is Container used for? --GSS
+import { Grid, Row, Col } from 'react-bootstrap'; // What is Container used for? --GSS
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchProducts } from '../store';
@@ -17,7 +19,8 @@ export class AllProducts extends Component {
 
         return (
             <div className="container" id="allProductsView">
-                <Grid>
+                
+                <Grid id="products">
                     <Row className="show-grid">
                 {
                     products.map((product) => (
@@ -33,7 +36,6 @@ export class AllProducts extends Component {
                   }
                     </Row>
                 </Grid>
-
                 <section>
                 {
                   user.isAdmin && <AddProduct />

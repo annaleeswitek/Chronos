@@ -46,7 +46,7 @@ form div {
     flex-direction: column;
     position: fixed;
     width: 100%;
-    z-index: 1
+    z-index: 2
 }
 
 #navBar {
@@ -80,23 +80,53 @@ form div {
 
 #allProductsView {
     display: flex;
-    /* justify-content: flex-start; */
+    flex-direction: column;
+    justify-content: flex-start;
     padding-top: 10em;
-    position: relative
 }
 
 #singleProduct {
     margin: 2em 2em 2em 0.5em;
-    flex-shrink: 2
+    padding: 2em
 }
 
-#addProductFormPage {
-    position: fixed
+input {
+    min-width: 18em
+}
+
+textarea {
+    min-width: 18em
 }
 
 #addProductForm {
     display: flex;
-    flex-direction: column;
+}
+
+#allProducts {
+    align-self: center
+}
+
+.titlePrice {
+    display: flex;
+    flex-direction: column
+}
+
+.quantityImg {
+    display: flex;
+    flex-direction: column
+}
+
+.desc {
+    margin-bottom: 1em
+}
+
+.descSubmit {
+    display: flex;
+    flex-direction: column
+}
+
+#warningName {
+    min-width: 10em
 }
 
 #search-bar {
@@ -123,28 +153,28 @@ form div {
     background-image: url('./images/grey-google-signin.png')
 }
 
-#allProducts {
-    align-self: center
-}
-
 
 /* single product view */
 
-#singleProduct {
-    display: flex;
-    flex-direction: column;
-}
-
 #product {
     display: flex;
-    flex-direction: column;
     padding-top: 15em
 }
 
-#product h3 {
-    align-self: flex-start
+#allButDesc {
+    display: flex;
+    flex-direction: column;
+    padding-left: 5em
 }
 
-#product img {
-    flex-grow: 0
+#description {
+    padding: 15em 5em 0em 5em;
+}
+
+#editProduct {
+    padding-left: 5em
+}
+
+#editProductForm {
+    display: flex;
 }
