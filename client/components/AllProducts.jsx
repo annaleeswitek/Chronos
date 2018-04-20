@@ -23,9 +23,10 @@ class AllProducts extends Component {
                     products.map((product) => (
                         <Col sm={10} md={4}  key={product.id} id="singleProduct">
                           <Link to={`/products/${product.id}`}>
-                            <h3>{product.title}</h3>
+                            
                             <img src={product.imgUrl} />
-                            <div>$ {product.price}</div>
+                            <h5>{product.title}</h5>
+                            <h5>$ {product.price}</h5>
                           </Link>
                         </Col>
                     ))

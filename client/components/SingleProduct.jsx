@@ -14,11 +14,13 @@ class SingleProduct extends Component {
   const { user, product } = this.props;
 
     return (
-      <div id="singleProduct">
+      <div className="product">
         { product.id
-          ?  <section className="product">
+          ?  <section id="product">
               <h3>{ product.title }</h3>
               <img src={ product.imgUrl } />
+              <h4>{ product.price }</h4>
+              <h4>{ product.description }</h4>
             </section>
           : <h2>Product Not Found</h2>
         }
