@@ -28,6 +28,7 @@ export const addProduct = function(product){
         axios.post('/api/products', product)
         .then(res => res.data)
         .then(newProduct => {
+            console.log('new product', newProduct);
             const action = getOneProduct(newProduct);
             dispatch(action);
             history.push(`/products/${newProduct.id}`);

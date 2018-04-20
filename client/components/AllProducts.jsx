@@ -17,7 +17,8 @@ class AllProducts extends Component {
         let { products, user } = this.props;
         return (
             <div className="container" id="allProductsView">
-                <Grid>
+                
+                <Grid id="products">
                     <Row className="show-grid">
                 {
                     products.map((product) => (
@@ -33,12 +34,12 @@ class AllProducts extends Component {
                 }
                     </Row>
                 </Grid>
-
                 <section>
                 {
                     user.isAdmin && <AddProductContainer />
                 }
                 </section>
+                
 
             </div>
         );

@@ -57,7 +57,7 @@ async function seed () {
     {
       title: "Trump's Last Day In Office",
       price: 1500000.00,
-      description: 'Price only applies if you are a registered Republican',
+      description: 'Price only applies if you are a (regretful) registered Republican',
       quantity: 1,
       imgUrl: "https://dummyimage.com/400x400/ffecdb/000000.jpg&text=Trump's+Last+Day+In+Office"
     }
