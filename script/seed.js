@@ -20,37 +20,37 @@ async function seed () {
 
   const productsCatalog = [
     {
-      title: 'One Week',
+      title: 'One Week (Future)',
       price: 15.00,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vehicula, dui sed gravida maximus, diam dui ornare eros, eu euismod elit diam nec augue. Suspendisse rutrum nunc justo, id gravida turpis vehicula at. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque sed dui posuere, facilisis ex ut, semper tellus. Nunc sit amet bibendum lacus, ut cursus lorem. Aliquam sed porta elit. Cras aliquet sapien massa, quis faucibus tellus vestibulum et. Nulla quis ultricies urna.',
+      description: "Have plans you just don't want to wait for? Buy yourself a week!",
       quantity: 2,
       imgUrl: 'https://dummyimage.com/400x400/e2ffdb/000000.jpg&text=One+Week+(2018)'
     },
     {
       title: 'Tomorrow',
       price: 5.00,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vehicula, dui sed gravida maximus, diam dui ornare eros, eu euismod elit diam nec augue. Suspendisse rutrum nunc justo, id gravida turpis vehicula at. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque sed dui posuere, facilisis ex ut, semper tellus. Nunc sit amet bibendum lacus, ut cursus lorem. Aliquam sed porta elit. Cras aliquet sapien massa, quis faucibus tellus vestibulum et. Nulla quis ultricies urna.',
+      description: "You're always a day awaaaaay",
       quantity: 100,
       imgUrl: 'https://dummyimage.com/400x400/fdebff/000000.jpg&text=Tomorrow'
     },
     {
       title: 'Your 21st Birthday (Past)',
       price: 1000.00,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vehicula, dui sed gravida maximus, diam dui ornare eros, eu euismod elit diam nec augue. Suspendisse rutrum nunc justo, id gravida turpis vehicula at. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque sed dui posuere, facilisis ex ut, semper tellus. Nunc sit amet bibendum lacus, ut cursus lorem. Aliquam sed porta elit. Cras aliquet sapien massa, quis faucibus tellus vestibulum et. Nulla quis ultricies urna.',
+      description: 'Whether you remember or not, now you have the opportunity to go back to this (presumably) debaucherous night!',
       quantity: 16,
       imgUrl: 'https://dummyimage.com/400x400/ffecdb/000000.jpg&text=21st+Birthday'
     },
     {
       title: 'Your 21st Birthday (Future)',
       price: 15000.00,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vehicula, dui sed gravida maximus, diam dui ornare eros, eu euismod elit diam nec augue. Suspendisse rutrum nunc justo, id gravida turpis vehicula at. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque sed dui posuere, facilisis ex ut, semper tellus. Nunc sit amet bibendum lacus, ut cursus lorem. Aliquam sed porta elit. Cras aliquet sapien massa, quis faucibus tellus vestibulum et. Nulla quis ultricies urna.',
+      description: 'Enjoy a special day of pure, legal fun (We do not condone underage consumption of any alcoholic beverages)!',
       quantity: 9,
       imgUrl: 'https://dummyimage.com/400x400/ffecdb/000000.jpg&text=21st+Birthday'
     },
     {
       title: 'Any Week in the Year 2050',
       price: 750.00,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vehicula, dui sed gravida maximus, diam dui ornare eros, eu euismod elit diam nec augue. Suspendisse rutrum nunc justo, id gravida turpis vehicula at. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque sed dui posuere, facilisis ex ut, semper tellus. Nunc sit amet bibendum lacus, ut cursus lorem. Aliquam sed porta elit. Cras aliquet sapien massa, quis faucibus tellus vestibulum et. Nulla quis ultricies urna.',
+      description: 'If the Earth still exists ...',
       quantity: 11,
       imgUrl: 'https://dummyimage.com/400x400/dbf6ff/000000.jpg&text=2050+(One+Week)'
     },
@@ -60,6 +60,14 @@ async function seed () {
       description: 'Price only applies if you are a (regretful) registered Republican',
       quantity: 1,
       imgUrl: "https://dummyimage.com/400x400/ffecdb/000000.jpg&text=Trump's+Last+Day+In+Office"
+    },
+    {
+      title: 'Read a Story',
+      price: 20500.00,
+      description:
+        "A long, long time ago in a spiky, spiky galaxy ... After leaving the frantic planet Earth, a group of people fly toward a distant speck. The speck gradually resolves into a large, e-commerce web app. Civil war strikes the galaxy, which is ruled by Donald Trump, an evil gremlin capable of gluttony and terrifying violence. Terrified, a powerful woman known as Time Traveler flees the Empire, with her protector, Chronos. They head for New York on the planet Gracius Hopperus. When they finally arrive, a fight breaks out. Chronos uses his spicy arrow to defend Time. Chronos and Lady Time decide it's time to leave Gracius Hopperus and steal a tandem to shoot their way out. They encounter a tribe of men. Time Traveler is attacked and captured by the men and taken back to New York. Chronos must fight to save Lady Time but when he accidentally unearths a deprecated method, the entire future of the spiky, frantic galaxy is at stake.",
+      quantity: 2,
+      imgUrl: 'https://dummyimage.com/400x400/fdebff/000000.jpg&text=A+Beautiful+and+Heartbreaking+Story'
     }
   ];
 
