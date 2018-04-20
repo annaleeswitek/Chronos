@@ -1,5 +1,5 @@
 import axios from 'axios';
-import store from './index.js';
+import store from './index';
 import history from '../history';
 
 /* ---- Action Types ---- */

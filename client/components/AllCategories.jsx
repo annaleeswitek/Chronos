@@ -29,12 +29,11 @@ class AllCategories extends Component {
 
 
 /* ---- Container ---- */
-const mapStateToProps = state => ({categories: state.categories});
+const mapState = state => ({categories: state.categories});
 
-const mapDispatchToProps = dispatch => ({loadCategories() {
-  dispatch(loadCategories());
+const mapDispatch = dispatch => ({
+  loadCategories() {
+    dispatch(loadCategories());
 }});
 
-const Container = connect(mapStateToProps, mapDispatchToProps)(AllCategories);
-
-export default Container;
+export default connect(mapState, mapDispatch)(AllCategories);
