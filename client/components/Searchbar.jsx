@@ -9,9 +9,11 @@ class Searchbar extends Component {
   constructor() {
     super();
     this.state = {
-      inputValue: ''
+      inputValue: '',
+      showProducts: false
     };
     this.handleChange = this.handleChange.bind(this);
+    this.showProducts = this.showProducts.bind(this);
   }
 
   handleChange(event) {
@@ -19,12 +21,16 @@ class Searchbar extends Component {
     this.setState({ inputValue: value });
   }
 
+  showProducts() {
+    this.setState({ showProducts: !this.state.showProducts });
+  }
+
   render() {
-    const inputValue = this.state.inputValue;
-    const filteredProducts = this.props.products && this.props.products.filter(product => product.title.match(inputValue))
+    const inputValue = this.state.inputValue.toLowerCase();
+    const filteredProducts = this.props.products && this.props.products.filter(product => product.title.toLowerCase().match(inputValue));
 
     return (
-      <div id="search-bar">
+      <div id="search-bar" onChange={this.showProducts}>
         <span>Search Product</span>
         <Form >
           <FormControl
@@ -35,7 +41,7 @@ class Searchbar extends Component {
           />
         </Form>
         <div className="list-group">
-          {filteredProducts.map(product => {
+          {this.state.showProducts && filteredProducts.map(product => {
             return (
               <div className="list-group-item" key={product.id}>
                 <Link to={`/products/${product.id}`}>{product.title}</Link>
