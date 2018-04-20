@@ -13,7 +13,8 @@ class EditProduct extends Component {
       price: '', 
       quantity: '', 
       description: '', 
-      imgUrl: ''
+      imgUrl: '', 
+      categories: []
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,7 +28,9 @@ class EditProduct extends Component {
   }
   handleChange(event){
     this.setState({ [event.target.name]: event.target.value });
+    // for categories, this 
   }
+
 
   handleSubmit(event){
     event.preventDefault();
@@ -82,6 +85,13 @@ class EditProduct extends Component {
               <b>Description</b>
             </h5>
             <FormControl className="desc" componentClass="textarea" name="description" type="text" placeholder="update product description" onChange={this.handleChange} value={description}/>
+          </ControlLabel>
+
+          <ControlLabel className="col-xs-2 control-label">
+            <h5>
+              <b>Categories</b>
+            </h5>
+            <FormControl name="categories" type="text" placeholder="update product image" onChange={this.handleChange} value={imgUrl}/>
           </ControlLabel>
           
           <Button type="submit" >Add Changes</Button>
