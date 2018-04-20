@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { editProduct } from '../store/singleProduct';
 
-const EditProduct = () => ({
+class EditProduct extends Component {
+  constructor(){
+    super();
+    this.state = {
+      inputValue: ''
+    }
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(){
+
+  }
+
   render() {
     const { product } = this.props;
     return (
@@ -44,7 +57,8 @@ const EditProduct = () => ({
       </div>
     );
   }
-});
+}
+
 
 /* ---- Container ---- */
 const mapStateToProps = state => ({product: state.product});
