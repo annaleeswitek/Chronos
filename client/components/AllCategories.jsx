@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loadCategories } from '../store/categories';
+import { loadCategories } from '../store';
 
 /* ---- Component ---- */
 class AllCategories extends Component {
@@ -29,12 +29,11 @@ class AllCategories extends Component {
 
 
 /* ---- Container ---- */
-const mapStateToProps = state => ({categories: state.categories});
+const mapState = state => ({categories: state.categories});
 
-const mapDispatchToProps = dispatch => ({loadCategories() {
-  dispatch(loadCategories());
+const mapDispatch = dispatch => ({
+  loadCategories() {
+    dispatch(loadCategories());
 }});
 
-const Container = connect(mapStateToProps, mapDispatchToProps)(AllCategories);
-
-export default Container;
+export default connect(mapState, mapDispatch)(AllCategories);

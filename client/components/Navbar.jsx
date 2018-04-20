@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { logout } from "../store";
-import AllCategories from "./AllCategories.jsx";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { logout } from '../store';
+import { AllCategories } from './index';
 
 /* ---- Component ---- */
 
@@ -60,19 +60,18 @@ class Navbar extends Component {
 }
 
 /* ---- Container ---- */
-const mapStateToProps = state => ({
+const mapState = state => ({
   isLoggedIn: !!state.user.id,
   categories: state.categories
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatch = dispatch => ({
   handleClick() {
     dispatch(logout());
   }
 });
 
-const NavbarContainer = connect(mapStateToProps, mapDispatchToProps)(Navbar);
-export default NavbarContainer;
+export default connect(mapState, mapDispatch)(Navbar);
 
 /* ---- Prop Types ---- */
 Navbar.propTypes = {

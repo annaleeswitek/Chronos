@@ -1,9 +1,8 @@
-import React, { Component } from "react";
-import AllProductsContainer /* , { AllProducts } */ from "./AllProducts.jsx";
-import { fetchProducts } from "../store/products";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { Form, FormControl } from "react-bootstrap";
+import React, { Component } from 'react';
+import { Form, FormControl } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { fetchProducts } from '../store';
 
 class Searchbar extends Component {
   constructor() {
@@ -55,15 +54,15 @@ class Searchbar extends Component {
 }
 
 /* ---- Container ---- */
-const mapStateToProps = state => ({
+const mapState = state => ({
   products: state.products
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatch = dispatch => ({
   fetchProducts() {
     dispatch(fetchProducts());
   }
 });
 
-const SearchbarContainer = connect(mapStateToProps, mapDispatchToProps)(Searchbar);
-export default SearchbarContainer;
+export default connect(mapState, mapDispatch)(Searchbar);
+

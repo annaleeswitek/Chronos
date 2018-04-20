@@ -1,5 +1,5 @@
 import axios from 'axios';
-import store from './index.js';
+import store from './index'; // What is the store being used for here?  Can we delete this line?  --GSS
 import history from '../history';
 
 /* ---- Action Types ---- */
@@ -9,7 +9,7 @@ const GET_ONE_PRODUCT = 'GET_ONE_PRODUCT';
 export const getOneProduct = product => ({ type: GET_ONE_PRODUCT, product });
 
 /* ---- Thunks ---- */
-export const fetchOneProduct = function(productId){
+export const fetchOneProduct = function (productId){
     return function thunk(dispatch){
         axios.get(`/api/products/${productId}`)
             .then(res => res.data)
@@ -23,7 +23,7 @@ export const fetchOneProduct = function(productId){
     };
 };
 
-export const addProduct = function(product){
+export const addProduct = function (product){
     return function thunk(dispatch){
         axios.post('/api/products', product)
         .then(res => res.data)
@@ -38,7 +38,7 @@ export const addProduct = function(product){
     };
 };
 
-export const editProduct = function(product){
+export const editProduct = function (product) {
     return function thunk(dispatch){
         return axios.put(`/api/products/${product.id}`, product)
         .then(res => res.data)

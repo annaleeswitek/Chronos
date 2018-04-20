@@ -1,7 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { addProduct } from '../store/singleProduct';
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap'; // does not work if form is uncontrolled --> for now
+import { connect } from 'react-redux';
+import { addProduct } from '../store';
 
 /* ---- Component ---- */
 const AddProduct = () => ({
@@ -39,11 +39,11 @@ const AddProduct = () => ({
 });
 
 /* ---- Container ---- */
-const mapStateToProps = state => ({
+const mapState = state => ({
     products: state.products
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatch = (dispatch, ownProps) => ({
     addProduct: event => {
         event.preventDefault();
         const title = event.target.title.value || 'Product Name';
@@ -57,6 +57,5 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     }
 });
 
-const AddProductContainer = connect(mapStateToProps, mapDispatchToProps)(AddProduct);
-export default AddProductContainer;
+export default connect(mapState, mapDispatch)(AddProduct);
 

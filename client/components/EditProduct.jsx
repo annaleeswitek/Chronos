@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { editProduct } from '../store/singleProduct';
+import { editProduct } from '../store';
 
 const EditProduct = () => ({
   render() {
@@ -47,9 +47,9 @@ const EditProduct = () => ({
 });
 
 /* ---- Container ---- */
-const mapStateToProps = state => ({product: state.product});
+const mapState = state => ({product: state.product});
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatch = dispatch => ({
   editProduct: (product, event) => {
     event.preventDefault();
     product.title = event.target.title.value || product.title;
@@ -62,5 +62,4 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-const EditProductContainer = connect(mapStateToProps, mapDispatchToProps)(EditProduct);
-export default EditProductContainer;
+export default connect(mapState, mapDispatch)(EditProduct);

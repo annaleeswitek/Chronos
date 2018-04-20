@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadOneCategory } from '../store/singleCategory';
+import { loadOneCategory } from '../store';
 
 
 /* ---- Component ---- */
@@ -41,11 +41,11 @@ class SingleCategory extends Component {
 }
 
 /* ---- Container ---- */
-const mapStateToProps = state => ({
+const mapState = state => ({
   selectedCategory: state.selectedCategory
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatch = dispatch => ({
   loadOneCategory(categoryId) {
     const thunkAction = loadOneCategory(categoryId);
     dispatch(thunkAction);
@@ -53,5 +53,5 @@ const mapDispatchToProps = dispatch => ({
 });
 
 
-const SingleCategoryContainer = connect(mapStateToProps, mapDispatchToProps)(SingleCategory);
-export default SingleCategoryContainer;
+export default connect(mapState, mapDispatch)(SingleCategory);
+

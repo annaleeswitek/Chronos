@@ -1,30 +1,31 @@
 import axios from 'axios';
-import history from '../history';
+import history from '../history'; // Are we using history here?  Can we delete this line? --GSS
 
-/* ---- Action Tyoes ---- */
+/* ---- Action Types ---- */
 const GET_PRODUCTS = 'GET_PRODUCTS';
 
 /* ---- Action Creators ---- */
-const getProducts = products => ({ type: GET_PRODUCTS, products});
+const getProducts = products => ({ type: GET_PRODUCTS, products });
 
 /* ---- Thunks ---- */
 export const fetchProducts = () => {
-    return function thunk(dispatch) {
-        return axios.get('/api/products')
-        .then(res => res.data)
-        .then(products => {
-            const action = getProducts(products);
-            dispatch(action);
-        });
-    };
+  return function thunk (dispatch) {
+    return axios
+      .get(`/api/products`)
+      .then(res => res.data)
+      .then(products => {
+        const action = getProducts(products);
+        dispatch(action);
+      });
+  };
 };
 
 /* ---- Reducer ---- */
 export default function (state = [], action) {
-    switch (action.type) {
-        case GET_PRODUCTS:
-            return action.products;
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case GET_PRODUCTS:
+      return action.products;
+    default:
+      return state;
+  }
 }
