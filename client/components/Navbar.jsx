@@ -43,7 +43,7 @@ class Navbar extends Component {
                 }
                 <div id="alwaysShow">
                     <Link to="/products" onMouseOver={this.showCategories}>Catalog</Link>
-                    <div id="categoriesInNav">
+                    <div>
                         { this.state.showCategories && <AllCategories />}
                     </div>
                 </div>
@@ -61,9 +61,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   handleClick() {
     dispatch(logout());
-  },
-  loadCategories() {
-    dispatch(this.loadCategories());
   }
 });
 
