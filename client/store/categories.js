@@ -1,11 +1,9 @@
 import axios from 'axios';
 
-// Action Types
-
+/* ---- Action Types ---- */
 const SET_CATEGORIES = 'SET_CATEGORIES';
 
-// Action Creators
-
+/* ---- Action Creators ---- */
 const setCategories = (categories) => {
   return {
     type: SET_CATEGORIES,
@@ -13,8 +11,7 @@ const setCategories = (categories) => {
   };
 };
 
-// Thunk Middlewear
-
+/* ---- Thunks ---- */
 export const loadCategories = () => {
   return function thunk (dispatch) {
     return axios.get('/api/categories')
@@ -26,9 +23,9 @@ export const loadCategories = () => {
       .catch(err => console.error(err));
   };
 };
-// Reducers
 
-const categoriesReducer = function(state = [], action) {
+/* ---- Reducer ---- */
+export default function (state = [], action) {
   switch (action.type) {
     case SET_CATEGORIES:
     console.log('action', action);
@@ -38,4 +35,3 @@ const categoriesReducer = function(state = [], action) {
   }
 };
 
-export default categoriesReducer;

@@ -129,6 +129,10 @@ textarea {
     min-width: 10em
 }
 
+#search-bar {
+    position: fixed;
+    margin-left: 70%;
+}
 
 /* login / signup */
 

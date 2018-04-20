@@ -1,7 +1,9 @@
+'use strict';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { editProduct, fetchOneProduct } from '../store/singleProduct';
 import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap'; 
+
+import { editProduct, fetchOneProduct } from '../store';
 
 class EditProduct extends Component {
   constructor(props){
@@ -94,9 +96,9 @@ class EditProduct extends Component {
 
 
 /* ---- Container ---- */
-const mapStateToProps = state => ({product: state.product});
+const mapState = state => ({product: state.product});
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatch = dispatch => ({
   editProduct: (newProduct, oldProduct) => {
     newProduct.title = newProduct.title === '' ? oldProduct.title : newProduct.title;
     newProduct.price = newProduct.price === '' ? oldProduct.price : newProduct.price;
@@ -113,5 +115,4 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-const EditProductContainer = connect(mapStateToProps, mapDispatchToProps)(EditProduct);
-export default EditProductContainer;
+export default connect(mapState, mapDispatch)(EditProduct);

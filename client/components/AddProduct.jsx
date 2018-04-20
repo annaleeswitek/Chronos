@@ -1,6 +1,8 @@
+'use strict';
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addProduct } from '../store/singleProduct';
+import { addProduct } from '../store';
 import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap'; 
 
 /* ---- Component ---- */
@@ -80,13 +82,12 @@ class AddProduct extends Component {
 
 
 /* ---- Container ---- */
-const mapStateToProps = state => ({
+const mapState = state => ({
     products: state.products
 });
 
-const mapDispatchToProps = dispatch => ({
-    addProduct: product => {
-      console.log('product in addProduct: ', product)
+const mapDispatch = dispatch => ({
+    addProduct(product) {
         const title = product.title;
         const price = product.price === '' ? 0.00 : product.price;
         const description = product.description === '' ? null : product.description;
@@ -97,6 +98,5 @@ const mapDispatchToProps = dispatch => ({
     }
 });
 
-const AddProductContainer = connect(mapStateToProps, mapDispatchToProps)(AddProduct);
-export default AddProductContainer;
+export default connect(mapState, mapDispatch)(AddProduct);
 

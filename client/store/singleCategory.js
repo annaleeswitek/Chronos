@@ -1,11 +1,9 @@
 import axios from 'axios';
 
-// Action Types
-
+/* ---- Action Types ---- */
 const SELECT_CATEGORY = 'SELECT_CATEGORY';
 
-// Action Creators
-
+/* ---- Action Creators ---- */
 const selectCategory = (categoryToSelect) => {
   return {
     type: SELECT_CATEGORY,
@@ -13,8 +11,7 @@ const selectCategory = (categoryToSelect) => {
   };
 };
 
-// Thunk Middlewear
-
+/* ---- Thunks ---- */
 export const loadOneCategory = (categoryId) => {
   return function thunk (dispatch) {
     return axios.get(`/api/categories/${categoryId}`)
@@ -27,15 +24,11 @@ export const loadOneCategory = (categoryId) => {
   };
 };
 
-
-// Reducers
-
-export const selectedCategoryReducer = function(state = {}, action) {
+/* ---- Reducer ---- */
+export default function (state = {}, action) {
   switch (action.type) {
     case SELECT_CATEGORY:
       return action.selectedCategory;
     default: return state;
   }
-};
-
-export default selectedCategoryReducer;
+}
