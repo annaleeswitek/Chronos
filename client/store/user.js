@@ -1,26 +1,18 @@
 import axios from 'axios';
 import history from '../history';
 
-/**
- * ACTION TYPES
- */
+/* ---- Action Types ---- */
 const GET_USER = 'GET_USER';
 const REMOVE_USER = 'REMOVE_USER';
 
-/**
- * INITIAL STATE
- */
+/* ---- Initial State ---- */
 const defaultUser = {};
 
-/**
- * ACTION CREATORS
- */
+/* ---- Action Creators ---- */
 const getUser = user => ({type: GET_USER, user});
 const removeUser = () => ({type: REMOVE_USER});
 
-/**
- * THUNK CREATORS
- */
+/* ---- Thunks ---- */
 export const me = () =>
   dispatch =>
     axios.get('/auth/me')
@@ -41,16 +33,14 @@ export const auth = (email, password, method) =>
 
 export const logout = () =>
   dispatch =>
-    axios.post('/auth/logout')
+    axios.post(`/auth/logout`)
       .then(_ => {
         dispatch(removeUser());
         history.push('/login');
       })
       .catch(err => console.log(err));
 
-/**
- * REDUCER
- */
+/* ---- Reducer ---- */
 export default function (state = defaultUser, action) {
   switch (action.type) {
     case GET_USER:

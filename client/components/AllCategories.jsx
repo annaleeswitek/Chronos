@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loadCategories } from '../store/categories';
+import { loadCategories } from '../store';
 
 /* ---- Component ---- */
 class AllCategories extends Component {

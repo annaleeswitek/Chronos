@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap'; // does not work if form is uncontrolled --> for now
 import { connect } from 'react-redux';
-import { addProduct } from '../store/singleProduct';
+import { addProduct } from '../store';
 
 /* ---- Component ---- */
 const AddProduct = () => ({

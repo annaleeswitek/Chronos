@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Container, Grid, Row, Col } from 'react-bootstrap'; // What is Container used for? --GSS
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchProducts } from '../store/products';
+import { fetchProducts } from '../store';
 import { AddProduct, Searchbar } from './index';
 
 /* ---- Component ---- */

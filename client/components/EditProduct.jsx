@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { editProduct } from '../store/singleProduct';
+import { editProduct } from '../store';
 
 const EditProduct = () => ({
   render() {

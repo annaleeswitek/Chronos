@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, FormControl } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchProducts } from '../store/products';
+import { fetchProducts } from '../store';
 
 class Searchbar extends Component {
   constructor() {
