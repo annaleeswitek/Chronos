@@ -14,7 +14,7 @@ class EditProduct extends Component {
       quantity: '', 
       description: '', 
       imgUrl: '', 
-      categories: []
+      categories: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,10 +26,11 @@ class EditProduct extends Component {
    
     if(!this.props.product) this.props.fetchOneProduct(productId)
   }
+
   handleChange(event){
     this.setState({ [event.target.name]: event.target.value });
-    // for categories, this 
   }
+
 
 
   handleSubmit(event){
@@ -80,22 +81,21 @@ class EditProduct extends Component {
           </div>
           
           <div className="descSubmit">
-          <ControlLabel className="col-xs-2 control-label">
-            <h5>
-              <b>Description</b>
-            </h5>
-            <FormControl className="desc" componentClass="textarea" name="description" type="text" placeholder="update product description" onChange={this.handleChange} value={description}/>
-          </ControlLabel>
-
-          <ControlLabel className="col-xs-2 control-label">
-            <h5>
-              <b>Categories</b>
-            </h5>
-            <FormControl name="categories" type="text" placeholder="update product image" onChange={this.handleChange} value={imgUrl}/>
-          </ControlLabel>
+            <ControlLabel className="col-xs-2 control-label">
+              <h5>
+                <b>Categories</b>
+              </h5>
+              <FormControl name="categories" type="text" placeholder="update product image" onChange={this.handleChange} value={imgUrl}/>
+            </ControlLabel>
+            <ControlLabel className="col-xs-2 control-label">
+              <h5>
+                <b>Description</b>
+              </h5>
+              <FormControl className="desc" componentClass="textarea" name="description" type="text" placeholder="update product description" onChange={this.handleChange} value={description}/>
+            </ControlLabel>
           
-          <Button type="submit" >Add Changes</Button>
           </div>
+          <Button type="submit" >Add Changes</Button>
         </FormGroup>
       </div>
     );
