@@ -10,10 +10,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
-  Category.findOne({
-    where: {
-      id: req.params.id
-    },
+  Category.findById(req.params.id, {
     include: [{model: Product}]
   })
   .then(theCategory => res.json(theCategory))

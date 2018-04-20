@@ -68,9 +68,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   handleClick() {
     dispatch(logout());
-  },
-  loadCategories() {
-    dispatch(this.loadCategories());
   }
 });
 

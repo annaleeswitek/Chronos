@@ -28,8 +28,9 @@ nav a:hover {
     background-color: #909090;
     color: #fff;
     border-radius: 15%;
+    padding: 1em;
     text-decoration: none;
-    transition: 1s all ease-in-out;
+    transition: 0.5s all ease-in-out;
 }
 
 form div {
@@ -66,6 +67,12 @@ form div {
 
 #allCategories {
     display: flex;
+    align-content: center;
+}
+
+#categoriesInNav {
+    display: flex;
+    color: green
 }
 
 
@@ -97,30 +104,47 @@ form div {
     margin-left: 70%;
 }
 
-/* #allProducts {
+/* login / signup */
+
+#allLoginSignupOptions {
     display: flex;
-    flex-direction: column
+    flex-direction: column;
+    padding-top: 15em
 }
 
-#addProduct {
+#loginSignup {
     display: flex;
-    flex-direction: column
+    align-self: center
 }
 
-#addButton {
-    width: 10%
-} */
+#OAuth {
+    align-self: center;
+    padding-right: 3em;
+    background-image: url('./images/grey-google-signin.png')
+}
+
+#allProducts {
+    align-self: center
+}
 
 
 /* single product view */
 
-
-/* #singleProduct {
+#singleProduct {
     display: flex;
-    flex-direction: column
+    flex-direction: column;
 }
 
-#editProductForm {
+#product {
     display: flex;
-    flex-direction: column
-} */
+    flex-direction: column;
+    padding-top: 15em
+}
+
+#product h3 {
+    align-self: flex-start
+}
+
+#product img {
+    flex-grow: 0
+}
