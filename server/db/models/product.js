@@ -25,9 +25,12 @@ const Product = db.define('product', {
         }
     },
     imgUrl: {
-        type: Sequelize.STRING,
-        defaultValue: 'https://dummyimage.com/400x400/e3ffec/000000&text=This+Is+a+Default+Image'
+        type: Sequelize.STRING
     }
+});
+
+Product.hook('beforeCreate', product => {
+    if (product.imgUrl === '') product.imgUrl = 'https://dummyimage.com/400x400/e3ffec/000000&text=This+Is+a+Default+Image';
 });
 
 module.exports = Product;

@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import {fetchProducts} from '../store/products';
+import { fetchProducts } from '../store/products';
 import { connect } from 'react-redux';
 import AddProductContainer from './AddProduct.jsx';
 import { Container, Grid, Row, Col } from 'react-bootstrap';
+import SearchbarContainer from './Searchbar.jsx';
 
 /* ---- Component ---- */
+export class AllProducts extends Component {
 
-class AllProducts extends Component {
-
-    componentDidMount(){
-        this.props.fetchProducts();
-    }
+  componentDidMount(){
+    this.props.fetchProducts();
+  }
 
     render() {
-        let { products, user } = this.props;
+      let { products, user } = this.props;
+    
         return (
             <div className="container" id="allProductsView">
                 <Grid>
@@ -30,16 +31,16 @@ class AllProducts extends Component {
                           </Link>
                         </Col>
                     ))
-                }
+                  }
                     </Row>
                 </Grid>
 
                 <section>
                 {
-                    user.isAdmin && <AddProductContainer />
+                  user.isAdmin && <AddProductContainer />
                 }
                 </section>
-
+                <SearchbarContainer />
             </div>
         );
     }
