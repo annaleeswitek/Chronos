@@ -3,8 +3,7 @@ import { Container, Grid, Row, Col } from 'react-bootstrap'; // What is Containe
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchProducts } from '../store/products';
-import AddProduct from './AddProduct.jsx';
-import Searchbar from './Searchbar.jsx';
+import { AddProduct, Searchbar } from './index';
 
 /* ---- Component ---- */
 export class AllProducts extends Component {
