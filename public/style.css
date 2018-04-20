@@ -73,7 +73,7 @@ form div {
 
 #allProductsView {
     display: flex;
-    justify-content: flex-start;
+    /* justify-content: flex-start; */
     padding-top: 10em;
     position: relative
 }
@@ -92,6 +92,10 @@ form div {
     flex-direction: column;
 }
 
+#search-bar {
+    position: fixed;
+    margin-left: 70%;
+}
 
 /* #allProducts {
     display: flex;

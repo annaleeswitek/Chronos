@@ -30,16 +30,16 @@ export class AllProducts extends Component {
                           </Link>
                         </Col>
                     ))
-                }
+                  }
                     </Row>
                 </Grid>
 
                 <section>
                 {
-                    user.isAdmin && <AddProductContainer />
+                  user.isAdmin && <AddProductContainer />
                 }
                 </section>
-              <SearchbarContainer />
+                <SearchbarContainer />
             </div>
         );
     }
