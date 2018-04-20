@@ -31,7 +31,7 @@ router.post('/', (req, res, next) => {
         res.json(newProduct);
     })
     .catch(next);
-})
+});
 
 // editing product - admin
 router.put('/:productId', (req, res, next) => {
