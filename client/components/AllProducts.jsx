@@ -5,7 +5,7 @@ import { Grid, Row, Col } from 'react-bootstrap'; // What is Container used for?
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchProducts } from '../store';
-import { AddProduct, Searchbar } from './index';
+import { AddProduct } from './index';
 
 /* ---- Component ---- */
 export class AllProducts extends Component {
@@ -41,7 +41,6 @@ export class AllProducts extends Component {
                   user.isAdmin && <AddProduct />
                 }
                 </section>
-                <Searchbar />
             </div>
         );
     }
