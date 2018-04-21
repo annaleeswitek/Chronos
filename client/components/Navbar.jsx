@@ -21,7 +21,7 @@ class Navbar extends Component {
   }
 
   render() {
-    const { handleClick, isLoggedIn } = this.props;
+    const { handleClick, isLoggedIn, user } = this.props;
     console.log('this.props in Navbar:', this.props);
 
     return (
@@ -31,12 +31,10 @@ class Navbar extends Component {
         </Link>
         <nav id="navBar" onMouseLeave={this.showCategories}>
           {isLoggedIn ? (
-            <div>
+            <div id='loggedIn'>
               {/* The navbar will show these links after you log in */}
               <Link to="/home">Home</Link>
-              <a href="#" onClick={handleClick}>
-                Logout
-              </a>
+              <Link to="/login" onClick={handleClick}>Logout</Link>
             </div>
           ) : (
             <div>
@@ -53,6 +51,8 @@ class Navbar extends Component {
               {this.state.showCategories && <AllCategories />}
             </div>
           </div>
+           {/* maybe make this a link to user's order history/cart? */}
+           { isLoggedIn && <Link to="/home">Hello {user.email}</Link>}
         </nav>
       </div>
     );
@@ -62,7 +62,8 @@ class Navbar extends Component {
 /* ---- Container ---- */
 const mapState = state => ({
   isLoggedIn: !!state.user.id,
-  categories: state.categories
+  categories: state.categories, 
+  user: state.user
 });
 
 const mapDispatch = dispatch => ({

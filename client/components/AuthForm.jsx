@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { auth } from '../store';
 
 /* ---- Component ---- */
@@ -25,7 +26,7 @@ const AuthForm = (props) => {
           {error && error.response && <div> {error.response.data} </div>}
         </form>
       </div>
-      <a href="/auth/google" id="OAuth">{displayName} with Google</a>
+      <Link to="/auth/google" id="OAuth">{displayName} with Google</Link>
     </div>
   );
 };

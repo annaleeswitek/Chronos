@@ -7,8 +7,9 @@ export const UserHome = (props) => {
   const {email} = props;
 
   return (
-    <div>
-      <h3>Welcome, {email}</h3>
+    <div id="homePage">
+      <h3><b>Welcome, {email}</b></h3>
+      <img src={require('../../public/images/tree-one.png')}/>
     </div>
   );
 };

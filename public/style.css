@@ -30,7 +30,7 @@ nav a:hover {
     border-radius: 15%;
     padding: 1em;
     text-decoration: none;
-    transition: 0.5s all ease-in-out;
+    transition: 0.75s all ease-in-out;
 }
 
 form div {
@@ -46,12 +46,18 @@ form div {
     flex-direction: column;
     position: fixed;
     width: 100%;
-    z-index: 2
+    z-index: 2;
+    background-image: url('./images/concrete_seamless.png');
 }
 
 #navBar {
     display: flex;
-    align-self: center
+    padding-left: 2em
+    /* align-self: center */
+}
+
+#welcomeMessage {
+    align-self: flex-end
 }
 
 #navBarName {
@@ -73,6 +79,17 @@ form div {
 #categoriesInNav {
     display: flex;
     color: green
+}
+
+#loggedIn {
+    display: flex
+}
+
+
+/* home page */
+
+#homePage {
+    background-image: url('./images/tree-one.png')
 }
 
 
@@ -134,6 +151,7 @@ textarea {
     margin-left: 70%;
 }
 
+
 /* login / signup */
 
 #allLoginSignupOptions {
@@ -150,7 +168,7 @@ textarea {
 #OAuth {
     align-self: center;
     padding-right: 3em;
-    background-image: url('./images/grey-google-signin.png')
+    /* background-image: url('./images/grey-google-signin.png') */
 }
 
 
