@@ -16,7 +16,7 @@ router.use( async (req, res, next) => {
       req.cart.userId = req.session.passport.user;
       console.log('req.cart in cart id', req.cart)
     }
-    
+
     return next();
   }
 
@@ -28,6 +28,14 @@ router.use( async (req, res, next) => {
 
 router.get('/', (req, res, next) => {
   res.send(req.cart);
+});
+
+router.get('/products', (req, res, next) => {
+  req.cart.products = [{id: 7, price: 20.00}];
+  console.log('req.cart.products:', req.cart.products);
+  req.cart.getProducts()
+    .then(theProducts => res.json(theProducts))
+    .catch(next);
 });
 
 // TODO:
