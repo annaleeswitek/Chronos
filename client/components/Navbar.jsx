@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../store';
-import { AllCategories } from './index';
+import { AllCategories, Searchbar } from './index';
 
 /* ---- Component ---- */
 
@@ -29,6 +29,9 @@ class Navbar extends Component {
         <Link to="/" id="navBarName">
           <h1>Chronos</h1>
         </Link>
+        <div>
+          <Searchbar />
+        </div>
         <nav id="navBar" onMouseLeave={this.showCategories}>
           {isLoggedIn ? (
             <div>

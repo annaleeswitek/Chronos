@@ -1,7 +1,12 @@
 body {
-    font-family: sans-serif;
     background-image: url('./images/concrete_seamless.png');
     font-family: 'Karla', sans-serif;
+}
+
+h1{
+    font-family: 'Karla', sans-serif;
+    font-size: 7vh;
+    text-decoration: none
 }
 
 a {
@@ -26,18 +31,17 @@ nav a {
 
 nav a:hover {
     background-color: #909090;
-    color: #fff;
-    border-radius: 15%;
+    color: white;
+    border-radius: 10%;
     padding: 1em;
     text-decoration: none;
-    transition: 0.5s all ease-in-out;
+    transition: 0.75s all ease-in-out;
 }
 
 form div {
     margin: 1em;
     display: inline-block;
 }
-
 
 /* navbar */
 
@@ -75,7 +79,6 @@ form div {
     color: green
 }
 
-
 /* all products view */
 
 #allProductsView {
@@ -87,7 +90,13 @@ form div {
 
 #singleProduct {
     margin: 2em 2em 2em 0.5em;
-    padding: 2em
+    padding: 2em;
+}
+
+#productImg {
+    border-style: solid;
+    border-width: .15em;
+    border-color: black;
 }
 
 input {

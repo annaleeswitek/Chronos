@@ -30,7 +30,7 @@ const Product = db.define('product', {
 });
 
 Product.hook('beforeCreate', product => {
-    if (product.imgUrl === '') product.imgUrl = 'https://dummyimage.com/400x400/e3ffec/000000&text=This+Is+a+Default+Image';
+    if (product.imgUrl === null) product.imgUrl = 'https://dummyimage.com/400x400/e3ffec/000000&text=This+Is+a+Default+Image';
 });
 
 module.exports = Product;

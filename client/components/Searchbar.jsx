@@ -1,3 +1,5 @@
+'use strict';
+
 import React, { Component } from 'react';
 import { Form, FormControl } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -13,6 +15,10 @@ class Searchbar extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.showProducts = this.showProducts.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.fetchProducts();
   }
 
   handleChange(event) {
