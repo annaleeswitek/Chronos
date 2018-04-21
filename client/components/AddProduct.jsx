@@ -3,28 +3,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addProduct } from '../store';
-import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap'; 
+import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 
 /* ---- Component ---- */
 class AddProduct extends Component {
   constructor(){
     super();
     this.state = {
-      title: '', 
-      price: '', 
-      quantity: '', 
-      imgUrl: '', 
+      title: '',
+      price: '',
+      quantity: '',
+      imgUrl: '',
       description: '',
       disabled: true
-    }; 
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  };
+  }
 
  
   handleChange(event){
-    if(event.target.name === 'title' && event.target.value !== '') this.setState({ [event.target.name] : event.target.value, disabled: false })
-    else this.setState({ [event.target.name] : event.target.value})
+    if (event.target.name === 'title' && event.target.value !== '') this.setState({ [event.target.name]: event.target.value, disabled: false });
+    else this.setState({ [event.target.name]: event.target.value});
   }
 
   getValidationState() {
@@ -37,7 +37,7 @@ class AddProduct extends Component {
     event.preventDefault();
     let { title, price, quantity, imgUrl, description } = this.state;
     this.props.addProduct({ title, price, quantity, imgUrl, description});
-    this.setState({ title: '', price: '', quantity: '', imgUrl: '', description: ''})
+    this.setState({ title: '', price: '', quantity: '', imgUrl: '', description: ''});
   }
 
 
@@ -52,26 +52,26 @@ class AddProduct extends Component {
               <FormControl value={title} name="title" type="text" placeholder="product name (required)" onChange={this.handleChange} value={title} />
               { this.state.disabled && <h5 id="warningName">Please enter a name</h5>}
             </ControlLabel>
-            
+
             <ControlLabel className="col-xs-2 control-label"><h5><b>Price</b></h5>
-              <FormControl value={price} name="price" type="text"  placeholder="product price (required)" value={this.state.price} onChange={this.handleChange}/>
+              <FormControl value={price} name="price" type="text"  placeholder="product price (required)" value={this.state.price} onChange={this.handleChange} />
             </ControlLabel>
             </div>
             <div className="quantityImg">
             <ControlLabel className="col-xs-2 control-label"><h5><b>Quantity</b></h5>
-              <FormControl value={quantity} name="quantity" type="text"  placeholder="product quantity" value={this.state.quantity} onChange={this.handleChange}/>
+              <FormControl value={quantity} name="quantity" type="text"  placeholder="product quantity" value={this.state.quantity} onChange={this.handleChange} />
             </ControlLabel>
-            
-            
+
+
             <ControlLabel className="col-xs-2 control-label"><h5><b>Image</b></h5>
-              <FormControl value={imgUrl} name="imgUrl" type="text"  placeholder="product image" value={this.state.imgUrl} onChange={this.handleChange}/>
+              <FormControl value={imgUrl} name="imgUrl" type="text"  placeholder="product image" value={this.state.imgUrl} onChange={this.handleChange} />
             </ControlLabel>
             </div>
             <div className="descSubmit">
             <ControlLabel className="col-xs-2 control-label"><h5><b>Description</b></h5>
-              <FormControl value={description} className="desc" name="description" type="text"  componentClass="textarea" placeholder="product description" onChange={this.handleChange}/>
+              <FormControl value={description} className="desc" name="description" type="text"  componentClass="textarea" placeholder="product description" onChange={this.handleChange} />
             </ControlLabel>
-            
+
             <Button type="submit" id="addButton" disabled={disabled} onClick={this.handleSubmit}>Add Product to Catalog</Button>
             </div>
           </FormGroup>
