@@ -27,11 +27,11 @@ class Searchbar extends Component {
   render() {
     const inputValue = this.state.inputValue.toLowerCase();
     const filteredProducts = this.props.products && this.props.products.filter(product => product.title.toLowerCase().match(inputValue));
-
+    console.log('products', filteredProducts);
     return (
-      <div id="search-bar" onChange={this.showProducts}>
+      <div id="search-bar">
         <span>Search Product</span>
-        <Form >
+        <Form>
           <FormControl
             onChange={this.handleChange}
             value={inputValue}
@@ -40,13 +40,13 @@ class Searchbar extends Component {
           />
         </Form>
         <div className="list-group">
-          {this.state.showProducts && filteredProducts.map(product => {
+          {this.state.inputValue ? filteredProducts.map(product => {
             return (
               <div className="list-group-item" key={product.id}>
                 <Link to={`/products/${product.id}`}>{product.title}</Link>
               </div>
             );
-          })}
+          }) : null }
         </div>
       </div>
     );
