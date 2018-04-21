@@ -26,40 +26,41 @@ router.get('/:productId', (req, res, next) => {
 1. find or create entered categories
 2. set categories on product
 */
-router.post('/', (req, res, next) => {
-    const categories = req.body.categories.split(', '); //this returns an array of strings
+router.post('/', async (req, res, next) => {
+    let newProduct = await Product.create({
+        title: 'new', 
+        price: 0.00, 
+        description: '',
+        quantity: 0, 
+        imgUrl: ''
+
+    })
+    .catch(err => console.error(err));
+    // console.log('newProduct: ', newProduct)
+    const categoriesFromForm = 'nostalgia, money'
+    const categories = categoriesFromForm.split(', '); //this returns an array of strings
     const createdOrFoundCategoryPromises = categories.map(categoryName => {
         return Category.findOrCreate({ where: { name: categoryName }} )
             .then(([category, wasCreatedBool]) => category )
             .catch(err => console.error(err))
     })
-    // //at this point, I have an array of category instances...right? --> nope it's an array of promises, need to pull off categories
-    console.log('categoryPromises: ', createdOrFoundCategoryPromises);
+    console.log('category promises: ', createdOrFoundCategoryPromises)
     let createdOrFoundCategories = [];
-    let tempCategories;
+    let tempCategories = [];
     return Promise.all(createdOrFoundCategoryPromises)
-        .then(categoryArray => {
+            .then(categoryArray => {
             categoryArray.forEach(category => createdOrFoundCategories.push(category.dataValues)) //these are the category instances!
             return createdOrFoundCategories; //this returns an array of category instances
         })
         .then(createdOrFoundCategories => {
-            tempCategories = createdOrFoundCategories;
-            return Product.create(req.body)
-        }) 
-        .then(newProduct => {
-            console.log('new product: ', newProduct)
-            // res.json(newProduct)
-            // return newProduct.setCategories(tempCategories);
-         })
-        .catch(err => console.error(err))
 
-    // console.log('categories outside promise chain: ', createdOrFoundCategories)
-    // Product.create(req.body)
-    // .then( newProduct => {
-    //    return newProduct.setCategories(createdOrFoundCategories);
-    // })
-    // .then(newProduct => res.json(newProduct))
-    // .catch(next);
+           newProduct.setCategories(createdOrFoundCategories)
+        })
+        then(() => res.json(newProduct))
+        .catch(err => console.error(err));
+    
+
+   
 })
 
 // editing product - admin
