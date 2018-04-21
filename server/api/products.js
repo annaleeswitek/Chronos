@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {Product} = require('../db/models');
+const {Product, Category} = require('../db/models');
 
 module.exports = router;
 
@@ -19,18 +19,17 @@ router.get('/:productId', (req, res, next) => {
 
 //adding new product - admin
 router.post('/', (req, res, next) => {
-    Product.findOrCreate({
-        where: {
-            title: req.body.title,
-            price: req.body.price,
-            imgUrl: req.body.imgUrl,
-            description: req.body.description
-        }
-    })
-    .then(([newProduct, wasCreatedBool]) => {
-        res.json(newProduct);
-    })
-    .catch(next);
+    const categoryNames = ['nostalgia', 'future'];
+    const categoryPromises = categoryNames.map(name => Category.findOrCreate({ where: { name: name }}));
+    // console.log('categoryPromises: ', categoryPromises);
+    return Promise.all(categoryPromises)
+            .then(categories => console.log('categories: ', categories))
+            // .then(categories => categories.forEach(category => console.log('category: ', category.dataValues)))
+            .catch(err => console.error(err));
+    
+    // Product.create(req.body)
+    // .then(newProduct => res.json(newProduct))
+    // .catch(next);
 });
 
 // editing product - admin
