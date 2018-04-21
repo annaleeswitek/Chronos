@@ -1,9 +1,10 @@
 'use strict';
 
 import React, { Component } from 'react';
-import { Grid, Row, Col } from 'react-bootstrap'; // What is Container used for? --GSS
+import { Grid, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+
 import { fetchProducts } from '../store';
 import { AddProduct} from './index';
 

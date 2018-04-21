@@ -1,7 +1,9 @@
+'use strict';
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadOneCategory } from '../store';
 
+import { loadOneCategory } from '../store';
 
 /* ---- Component ---- */
 class SingleCategory extends Component {

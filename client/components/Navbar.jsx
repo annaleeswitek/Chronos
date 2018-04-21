@@ -1,12 +1,14 @@
+'use strict';
+
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+
 import { logout } from '../store';
 import { AllCategories, Searchbar } from './index';
 
 /* ---- Component ---- */
-
 class Navbar extends Component {
   constructor() {
     super();

@@ -4,8 +4,10 @@ import React, { Component } from 'react';
 import { Form, FormControl } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+
 import { fetchProducts } from '../store';
 
+/* ---- Container ---- */
 class Searchbar extends Component {
   constructor() {
     super();

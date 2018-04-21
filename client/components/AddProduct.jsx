@@ -2,8 +2,9 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addProduct } from '../store';
 import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
+
+import { addProduct } from '../store';
 
 /* ---- Component ---- */
 class AddProduct extends Component {
@@ -20,7 +21,6 @@ class AddProduct extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
 
   handleChange(event){
     if (event.target.name === 'title' && event.target.value !== '') this.setState({ [event.target.name]: event.target.value, disabled: false });
@@ -39,7 +39,6 @@ class AddProduct extends Component {
     this.props.addProduct({ title, price, quantity, imgUrl, description});
     this.setState({ title: '', price: '', quantity: '', imgUrl: '', description: ''});
   }
-
 
   render() {
     let { title, price, quantity, imgUrl, description, disabled } = this.state;

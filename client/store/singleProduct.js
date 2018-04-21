@@ -1,5 +1,6 @@
+'use strict';
+
 import axios from 'axios';
-import store from './index'; // What is the store being used for here?  Can we delete this line?  --GSS
 import history from '../history';
 
 /* ---- Action Types ---- */

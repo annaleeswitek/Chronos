@@ -1,10 +1,12 @@
+'use strict';
+
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 /* ---- Component ---- */
-export const UserHome = (props) => {
-  const {email} = props;
+export const UserHome = props => {
+  const { email } = props;
 
   return (
     <div>
