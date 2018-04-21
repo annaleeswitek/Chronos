@@ -12,10 +12,12 @@ const Product = db.define('product', {
         allowNull: false,
         validate: {
             isDecimal: true
-        }
+        }, 
+        
     },
     description: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT, 
+        defaultValue: ''
     },
     quantity: {
         type: Sequelize.INTEGER,
@@ -25,12 +27,14 @@ const Product = db.define('product', {
         }
     },
     imgUrl: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING, 
+        allowNull: false
     }
 });
 
 Product.hook('beforeCreate', product => {
     if (product.imgUrl === '') product.imgUrl = 'https://dummyimage.com/400x400/e3ffec/000000&text=This+Is+a+Default+Image';
+    if (product.price === '') product.price = 0.00
 });
 
 module.exports = Product;

@@ -22,14 +22,14 @@ class Navbar extends Component {
 
   render() {
     const { handleClick, isLoggedIn } = this.props;
-    console.log('this.props in Navbar:', this.props);
 
     return (
       <div id="navBarAll">
         <Link to="/" id="navBarName">
           <h1>Chronos</h1>
         </Link>
-        <nav id="navBar" onMouseLeave={this.showCategories}>
+        <nav  onMouseLeave={this.showCategories}>
+        <div id="navBar">
           {isLoggedIn ? (
             <div>
               {/* The navbar will show these links after you log in */}
@@ -49,9 +49,10 @@ class Navbar extends Component {
             <Link to="/products" onMouseOver={this.showCategories}>
               Catalog
             </Link>
-            <div id="categoriesInNav">
+          </div>
+          </div>
+          <div id="categoriesInNav">
               {this.state.showCategories && <AllCategories />}
-            </div>
           </div>
         </nav>
       </div>

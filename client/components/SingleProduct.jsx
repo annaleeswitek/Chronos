@@ -35,7 +35,7 @@ class SingleProduct extends Component {
         <div id="editProduct">
         {
           //passing location as a prop here because i need to make sure that edit product has access to product
-          user.isAdmin && <EditProductContainer location={location}/>
+          user.isAdmin && <EditProduct location={location}/>
         }
         </div>
       </div>

@@ -23,12 +23,17 @@ export const fetchOneProduct = function (productId){
     };
 };
 
-export const addProduct = function (product){
+export const addProduct = function (product, categories){
     return function thunk(dispatch){
+        console.log('product in thunk: ', product);
+        console.log('categories in thunk: ', categories) //returns expected value from form
         axios.post('/api/products', product)
-        .then(res => res.data)
+        .then(res => {
+            
+            return res.data
+        })
         .then(newProduct => {
-            console.log('new product', newProduct);
+            // console.log('new product', newProduct);
             const action = getOneProduct(newProduct);
             dispatch(action);
             history.push(`/products/${newProduct.id}`);

@@ -52,7 +52,8 @@ form div {
 
 #navBar {
     display: flex;
-    align-self: center
+    align-self: center;
+    padding-left: 2em
 }
 
 #navBarName {
@@ -73,7 +74,8 @@ form div {
 
 #categoriesInNav {
     display: flex;
-    color: green
+    color: green;
+    padding-left: 2em
 }
 
 
@@ -117,13 +119,14 @@ textarea {
     flex-direction: column
 }
 
-.desc {
-    margin-bottom: 1em
-}
-
-.descSubmit {
+.categoriesDesc {
     display: flex;
     flex-direction: column
+}
+
+.addEditButton {
+    max-height: 34px;
+    margin-top: 6em
 }
 
 #warningName {

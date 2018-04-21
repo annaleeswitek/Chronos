@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap'; 
 
-import { editProduct, fetchOneProduct } from '../store';
+import { editProduct, fetchOneProduct, loadCategories } from '../store';
 
 class EditProduct extends Component {
   constructor(props){
@@ -25,10 +25,13 @@ class EditProduct extends Component {
     const productId = pathname.slice(pathname.length - 1); 
    
     if(!this.props.product) this.props.fetchOneProduct(productId)
+    this.props.loadCategories();
   }
 
   handleChange(event){
+    console.log('event target value: ', event.target.value)
     this.setState({ [event.target.name]: event.target.value });
+    console.log('this.state.categories: ', this.state.categories);
   }
 
 
@@ -36,67 +39,51 @@ class EditProduct extends Component {
   handleSubmit(event){
     event.preventDefault();
     const oldProduct = this.props.product;
-    const { title, price, quantity, description, imgUrl } = this.state;
+    console.log('oldProduct categories? ', oldProduct);
+    // const { title, price, quantity, description, imgUrl } = this.state;
     
-    this.props.editProduct({ title, price, quantity, description, imgUrl }, oldProduct); 
+    // this.props.editProduct({ title, price, quantity, description, imgUrl }, oldProduct); 
 
   }
   
   render() {
-    const { product } = this.props;
-    const { title, price, quantity, description, imgUrl } = this.state;
+    const { product, allCategories } = this.props;
+    const { title, price, quantity, description, imgUrl, categories } = this.state;
+   
     return (
       <div>
         <h3>Edit Product Information</h3>
-        <FormGroup id="editProductForm" onSubmit={this.handleSubmit}>
+        <FormGroup id="editProductForm">
         
         <div className="titlePrice">
-          <ControlLabel className="col-xs-2 control-label">
-            <h5>
-              <b>Name</b>
-            </h5>
+          <ControlLabel className="col-xs-2 control-label"><h5><b>Name</b></h5>
             <FormControl name="title" type="text" placeholder="update product name" onChange={this.handleChange} value={title}/>
           </ControlLabel>
-          <ControlLabel className="col-xs-2 control-label">
-            <h5>
-              <b>Price</b>
-            </h5>
+          <ControlLabel className="col-xs-2 control-label"><h5><b>Price</b></h5>
             <FormControl name="price" type="text" placeholder="update product price" onChange={this.handleChange} value={price}/>
           </ControlLabel>
           </div>
           
           <div className="quantityImg">
-          <ControlLabel className="col-xs-2 control-label">
-            <h5>
-              <b>Quantity</b>
-            </h5>
+          <ControlLabel className="col-xs-2 control-label"><h5><b>Quantity</b></h5>
             <FormControl name="quantity" type="text" placeholder="update product quantity" onChange={this.handleChange} value={quantity}/>
           </ControlLabel>
-          <ControlLabel className="col-xs-2 control-label">
-            <h5>
-              <b>Image</b>
-            </h5>
+          <ControlLabel className="col-xs-2 control-label"><h5><b>Image</b></h5>
             <FormControl name="imgUrl" type="text" placeholder="update product image" onChange={this.handleChange} value={imgUrl}/>
           </ControlLabel>
           </div>
           
-          <div className="descSubmit">
-            <ControlLabel className="col-xs-2 control-label">
-              <h5>
-                <b>Categories</b>
-              </h5>
-              <FormControl name="categories" type="text" placeholder="update product image" onChange={this.handleChange} value={imgUrl}/>
+          <div className="categoriesDesc">
+            <ControlLabel className="col-xs-2 control-label"><h5><b>Categories</b></h5>
+              <FormControl name="categories" type="text" placeholder="update product image" onChange={this.handleChange} value={categories}/>
             </ControlLabel>
-            <ControlLabel className="col-xs-2 control-label">
-              <h5>
-                <b>Description</b>
-              </h5>
+            <ControlLabel className="col-xs-2 control-label"><h5><b>Description</b></h5>
               <FormControl className="desc" componentClass="textarea" name="description" type="text" placeholder="update product description" onChange={this.handleChange} value={description}/>
             </ControlLabel>
-          
           </div>
-          <Button type="submit" >Add Changes</Button>
-        </FormGroup>
+
+          <Button type="submit" className="addEditButton" onClick={this.handleSubmit}>Add Changes</Button>
+          </FormGroup>
       </div>
     );
   }
@@ -106,7 +93,7 @@ class EditProduct extends Component {
 
 
 /* ---- Container ---- */
-const mapState = state => ({product: state.product});
+const mapState = state => ({product: state.product, allCategories: state.categories });
 
 const mapDispatch = dispatch => ({
   editProduct: (newProduct, oldProduct) => {
@@ -115,14 +102,18 @@ const mapDispatch = dispatch => ({
     newProduct.imgUrl = newProduct.imgUrl === '' ? oldProduct.imgUrl : newProduct.imgUrl;
     newProduct.quantity = newProduct.quantity === '' ? oldProduct.quantity : oldProduct.quantity;
     newProduct.description = newProduct.description === '' ? oldProduct.description : newProduct.description;
-    newProduct.id = oldProduct.id;
-    const action = editProduct(newProduct);
-    dispatch(action);
+    console.log('product categories: ', newProduct.categories);
+    // newProduct.id = oldProduct.id;
+    // const action = editProduct(newProduct);
+    // dispatch(action);
   }, 
   fetchOneProduct: productId => {
     const thunkAction = fetchOneProduct(productId);
     dispatch(thunkAction);
-  }
+  }, 
+  loadCategories() {
+    dispatch(loadCategories());
+}
 });
 
 export default connect(mapState, mapDispatch)(EditProduct);
