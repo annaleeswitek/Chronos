@@ -13,7 +13,8 @@ class EditProduct extends Component {
       price: '', 
       quantity: '', 
       description: '', 
-      imgUrl: ''
+      imgUrl: '', 
+      categories: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,15 +33,15 @@ class EditProduct extends Component {
   handleSubmit(event){
     event.preventDefault();
     const oldProduct = this.props.product;
-    const { title, price, quantity, description, imgUrl } = this.state;
+    const { title, price, quantity, description, imgUrl, categories } = this.state;
     
-    this.props.editProduct({ title, price, quantity, description, imgUrl }, oldProduct); 
+    this.props.editProduct({ title, price, quantity, description, imgUrl, categories }, oldProduct); 
 
   }
   
   render() {
     const { product } = this.props;
-    const { title, price, quantity, description, imgUrl } = this.state;
+    const { title, price, quantity, description, imgUrl, categories } = this.state;
     return (
       <div>
         <h3>Edit Product Information</h3>
@@ -76,16 +77,18 @@ class EditProduct extends Component {
           </ControlLabel>
           </div>
           
-          <div className="descSubmit">
-          <ControlLabel className="col-xs-2 control-label">
-            <h5>
-              <b>Description</b>
-            </h5>
-            <FormControl className="desc" componentClass="textarea" name="description" type="text" placeholder="update product description" onChange={this.handleChange} value={description}/>
-          </ControlLabel>
-          
-          <Button type="submit" >Add Changes</Button>
-          </div>
+          <div className="categoriesDesc">
+            <ControlLabel className="col-xs-2 control-label"><h5><b>Categories</b></h5>
+              <FormControl value={categories} name="categories" type="text" placeholder="product categories" onChange={this.handleChange}/>
+            </ControlLabel>
+
+            <ControlLabel className="col-xs-2 control-label"><h5><b>Description</b></h5>
+              <FormControl value={description} className="desc" name="description" type="text"  componentClass="textarea" placeholder="product description" onChange={this.handleChange}/>
+            </ControlLabel>
+            
+           
+            </div>
+            <Button type="submit" className="addAndEditButton" onClick={this.handleSubmit}>Add Product to Catalog</Button>
         </FormGroup>
       </div>
     );
