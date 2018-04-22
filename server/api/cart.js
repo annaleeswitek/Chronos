@@ -31,8 +31,8 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/products', (req, res, next) => {
-  req.cart.products = [{id: 7, price: 20.00}];
-  console.log('req.cart.products:', req.cart.products);
+  // req.cart.products = [{id: 7, price: 20.00}];
+  // console.log('req.cart.products:', req.cart.products);
   req.cart.getProducts()
     .then(theProducts => res.json(theProducts))
     .catch(next);
@@ -44,14 +44,18 @@ router.post('/add-to-cart/products/:productId', async (req, res, next) => {
   const newProduct = await Product.findById(req.params.productId).catch(next);
   //steps - recreate cart
   let updatedOrder = await Order.create().catch(next);
-  updatedOrder.userId = req.cart.userId;
+  //do this only if there is a logged in user
+  if (req.cart.userId) updatedOrder.userId = req.cart.userId;
+ 
   //get products already on cart
   const oldProducts = await req.cart.getProducts().catch(next);
-  //if new product is already on cart, increase its quantity
+  console.log('old products before adding: ', oldProducts);
   let allProducts;
+   //if new product is already on cart, increase its quantity
   if (oldProducts.includes(newProduct)) {
     let index = oldProducts.indexOf(newProduct);
     oldProducts[index].quantity += req.body.quantity; //instead of incrementing by one, increment by the quantity sent back
+    allProducts = oldProducts;
   }
   //if not, add new product to the existing products
   else {
@@ -60,11 +64,18 @@ router.post('/add-to-cart/products/:productId', async (req, res, next) => {
     
   }
   console.log('new product on cart: ', allProducts);
+  updatedOrder.setProducts(allProducts);
   console.log('order is here', updatedOrder); 
-  //req.cart = await order.addProducts(newProducts); //this line sends back an aggregate order?? everything's fine up until now
+  req.cart = updatedOrder;
+  console.log('updated req.cart: ', req.cart);
+  const updatedProducts = await req.cart.getProducts().catch(next);
+  console.log('updated products are here: ', updatedProducts);
+  //req.cart = await order.addProducts(newProducts); //this line sends back an aggregate error?? everything's fine up until now
   console.log('req.cart', req.cart)
-  //send back the new cart
-  res.redirect('/api/cart');
+  //option 1: send back the new cart?
+  // res.redirect('/api/cart');
+  //option 2: send back the cart products -- do this but first find a way to associate updatedProducts
+  res.json(allProducts);
 })
 
 // TODO:

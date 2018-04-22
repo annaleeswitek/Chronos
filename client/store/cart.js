@@ -2,7 +2,6 @@ import axios from 'axios';
 
 /* ---- Action Types ---- */
 const SET_PRODUCTS_IN_CART = 'SET_PRODUCTS_IN_CART';
-const GET_CART = 'GET_CART';
 
 /* ---- Action Creators --- */
 const setProductsInCart = productsInCart => {
@@ -12,12 +11,6 @@ const setProductsInCart = productsInCart => {
   };
 };
 
-const getCart = cart => {
-  return {
-    type: GET_CART,
-    cart
-  }
-};
 
 /* --- Thunks --- */
 export const loadProductsForCart = () => {
@@ -40,10 +33,10 @@ export const addToCart = (product) => {
   return function thunk (dispatch) {
     return axios.post(`/api/cart/add-to-cart/products/${product.id}`, product)
       .then(res => {
-        console.log('this is the cart right heck yeah it is', res.data);
+        console.log('this are all the products right heck yeah they are', res.data);
         return res.data;
       })
-      .then(cart => dispatch(getCart(cart)))
+      .then(products => dispatch(setProductsInCart(products)))
       .catch(err => console.error(err))
   }
 }
@@ -51,9 +44,8 @@ export const addToCart = (product) => {
 /* --- Reducer --- */
 export default function (state = [], action) {
   switch (action.type) {
-    case GET_CART:
-      return action.cart;
     case SET_PRODUCTS_IN_CART:
+      console.log('these are the cart products in reducer: ', action.productsInCart)
       return action.productsInCart;
     default:
     return state;
