@@ -11,14 +11,16 @@ const LineItems = require('./lineItems');
  *    BlogPost.belongsTo(User)
  */
 
- Product.belongsToMany(Category, {through: 'product_category'});
- Category.belongsToMany(Product, {through: 'product_category'});
+Product.belongsToMany(Category, {through: 'product_category'});
+Category.belongsToMany(Product, {through: 'product_category'});
 
- User.hasMany(Order);
- Order.belongsTo(User);
+User.hasMany(Order);
+Order.belongsTo(User);
 
- Product.belongsToMany(Order, { through: LineItems });
- Order.belongsToMany(Product, { through: LineItems });
+
+
+Product.belongsToMany(Order, { through: LineItems });
+Order.belongsToMany(Product, { through: LineItems });
 
 /**
  * We'll export all of our models here, so that any time a module needs a model,
