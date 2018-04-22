@@ -63,21 +63,16 @@ router.post('/add-to-cart/products/:productId', async (req, res, next) => {
     allProducts = oldProducts.concat([newProduct])
     
   }
-  console.log('new product on cart: ', allProducts);
-  //set products on the newly created order
-  await updatedOrder.setProducts(allProducts, { through: { status: LineItems }}).catch(next); //this line also sends back an aggregate error
-  console.log('order is here', updatedOrder); 
-  //now that newly created order is associated with all products, reassign req.cart to this order
-  req.cart = updatedOrder;
-  console.log('updated req.cart: ', req.cart);
-  const updatedProducts = await req.cart.getProducts().catch(next);
-  console.log('updated products are here: ', updatedProducts);
-  //req.cart = await order.addProducts(newProducts); //this line sends back an aggregate error?? everything's fine up until now
+
+  console.log('new product on cart: ', newProducts);
+  console.log('order is here', order);
+  //associate newProducts with req.cart
+  // req.cart = await order.addProducts(newProducts);
   console.log('req.cart', req.cart)
-  //option 1: send back the new cart?
+  res.json(newProducts);
+  //send back the new cart -- with the associated products. this is the end goal, (i think?) but right now can't find a way to associate products with cart
   // res.redirect('/api/cart');
-  //option 2: send back the cart products -- do this but first find a way to associate updatedProducts
-  res.json(allProducts);
+
 })
 
 // TODO:

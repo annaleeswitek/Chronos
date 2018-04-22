@@ -11,6 +11,13 @@ const setProductsInCart = productsInCart => {
   };
 };
 
+// const getCart = cart => {
+//   return {
+//     type: GET_CART,
+//     cart
+//   }
+// };
+
 
 /* --- Thunks --- */
 export const loadProductsForCart = () => {
@@ -33,9 +40,12 @@ export const addToCart = (product) => {
   return function thunk (dispatch) {
     return axios.post(`/api/cart/add-to-cart/products/${product.id}`, product)
       .then(res => {
-        console.log('this are all the products right heck yeah they are', res.data);
+        //whoops res.data is actually the products but we want to be sending back the cart
+        console.log('this is the cart right heck yeah it is', res.data);
         return res.data;
       })
+      //think this should be cart => dispatch(getCart(cart))??
+
       .then(products => dispatch(setProductsInCart(products)))
       .catch(err => console.error(err))
   }
