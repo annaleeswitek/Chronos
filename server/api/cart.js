@@ -40,24 +40,28 @@ router.get('/products', (req, res, next) => {
 
 router.post('/add-to-cart/products/:productId', async (req, res, next) => {
   console.log('got to back end and heres the cart', req.cart);
-  console.log('in the back: ', req.params.productId);
-  const product = await Product.findById(req.params.productId);
-  //steps - recreate cart with new product
-  let order = await Order.create().catch(next);
-  const products = await req.cart.getProducts();
-  let newProducts;
-  if (products.includes(product)) {
-    let index = products.indexOf(product);
-    products[index].quantity++;
+  console.log('product quantity in the back end: ', req.body.quantity);
+  const newProduct = await Product.findById(req.params.productId).catch(next);
+  //steps - recreate cart
+  let updatedOrder = await Order.create().catch(next);
+  updatedOrder.userId = req.cart.userId;
+  //get products already on cart
+  const oldProducts = await req.cart.getProducts().catch(next);
+  //if new product is already on cart, increase its quantity
+  let allProducts;
+  if (oldProducts.includes(newProduct)) {
+    let index = oldProducts.indexOf(newProduct);
+    oldProducts[index].quantity += req.body.quantity; //instead of incrementing by one, increment by the quantity sent back
   }
+  //if not, add new product to the existing products
   else {
     console.log('ran!@')
-    newProducts = products.concat([product])
+    allProducts = oldProducts.concat([newProduct])
     
   }
-  console.log('new product on cart: ', newProducts);
-  console.log('order is here', order);
-  req.cart = await order.addProducts(newProducts);
+  console.log('new product on cart: ', allProducts);
+  console.log('order is here', updatedOrder); 
+  //req.cart = await order.addProducts(newProducts); //this line sends back an aggregate order?? everything's fine up until now
   console.log('req.cart', req.cart)
   //send back the new cart
   res.redirect('/api/cart');

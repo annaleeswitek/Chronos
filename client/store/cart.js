@@ -36,14 +36,14 @@ export const loadProductsForCart = () => {
   };
 };
 
-export const addToCart = product => {
+export const addToCart = (product) => {
   return function thunk (dispatch) {
     return axios.post(`/api/cart/add-to-cart/products/${product.id}`, product)
       .then(res => {
         console.log('this is the cart right heck yeah it is', res.data);
-        // return res.data;
+        return res.data;
       })
-      // .then(cart => dispatch(getCart(cart)))
+      .then(cart => dispatch(getCart(cart)))
       .catch(err => console.error(err))
   }
 }
@@ -51,6 +51,8 @@ export const addToCart = product => {
 /* --- Reducer --- */
 export default function (state = [], action) {
   switch (action.type) {
+    case GET_CART:
+      return action.cart;
     case SET_PRODUCTS_IN_CART:
       return action.productsInCart;
     default:
