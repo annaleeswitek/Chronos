@@ -29,13 +29,14 @@ class Navbar extends Component {
     return (
       <div id="navBarAll">
         <Link to="/" id="navBarName">
-        <div>
+        <div id="chronosName">
           <h1>Chronos</h1>
           </div>
         </Link>
-        <div>
+          <span id="navBarCart">
+          <Link to="/cart">🛒</Link>
+        </span>
           <Searchbar />
-        </div>
         <nav id="navBar" onMouseLeave={this.showCategories}>
           {isLoggedIn ? (
             <div>

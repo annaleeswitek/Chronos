@@ -5,8 +5,11 @@ body {
 
 h1 {
     font-family: 'Karla', sans-serif;
-    font-size: 8vh;
-    text-decoration: none
+    font-size: 7vh;
+    text-decoration: none;
+    border: dotted;
+    border-width: .01em;
+    padding: 0.1em 0.5em;
 }
 
 a {
@@ -57,8 +60,10 @@ form div {
     display: flex;
     align-self: center;
     font-size: 2vh;
-    background-image: url('./images/concrete_seamless.png');
+    background-color: rgba(255, 192, 203, 0.452);
     opacity: .9;
+    border: dotted;
+    border-width: .01em;
 }
 
 #navBarName {
@@ -97,7 +102,7 @@ form div {
 }
 
 #productImg {
-    border-style: solid;
+    border-style: dotted;
     border-width: .15em;
     border-color: black;
     opacity: .85;
@@ -158,12 +163,24 @@ textarea {
 #search-bar {
     position: fixed;
     margin-left: 75%;
-    margin-top: 5%;
-    background-image: url('./images/concrete_seamless.png');
+    margin-top: 8%;
+    background-color: rgba(255, 192, 203, 0.452);
     padding: 1vh;
     opacity: .9;
+    border: dotted;
+    border-width: .01em;
 }
 
+#navBarCart {
+    font-size: 6vh;
+    position: fixed;
+    padding: 0em .2em;
+    background-color: rgba(245, 245, 245, 0.527);
+    border: dotted;
+    border-width: .01em;
+    margin-left: 75%;
+    margin-top: 2%
+}
 /* login / signup */
 
 #allLoginSignupOptions {
@@ -176,12 +193,15 @@ textarea {
     display: flex;
     align-self: center;
     background-image: url('./images/concrete_seamless.png');
+    border: solid;
+    border-width: 0.1em;
+    border-color: pink;
 }
 
 #OAuth {
     align-self: center;
     padding: 1em;
-    background-image: url('./images/concrete_seamless.png');
+    background-color: rgba(255, 192, 203, 0.432);
 }
 
 
