@@ -1,9 +1,10 @@
 'use strict';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Button } from 'react-bootstrap';
 
 import { EditProduct } from './index';
-import { fetchOneProduct } from '../store';
+import { fetchOneProduct, addToCart } from '../store';
 
 /* ---- Component ---- */
 class SingleProduct extends Component {
@@ -13,7 +14,7 @@ class SingleProduct extends Component {
   }
 
   render(){
-  const { user, product } = this.props;
+  const { user, product, addToCart } = this.props;
 
     return (
       <div className="product">
@@ -23,7 +24,7 @@ class SingleProduct extends Component {
                 <h3>{ product.title }</h3>
                 <img src={ product.imgUrl } />
                 <h4>${ product.price }</h4>
-                <a href="#">Add To Cart</a>
+                <Button onClick={addToCart.bind(this, product)}>Add To Cart</Button>
               </div>
               <div id="description">
                 <h4>{ product.description }</h4>
@@ -51,8 +52,11 @@ const mapState = state => ({
 
 const mapDispatch = dispatch => ({
   fetchOneProduct(productId) {
-    const thunkAction = fetchOneProduct(productId);
-    dispatch(thunkAction);
+    dispatch(fetchOneProduct(productId));
+  }, 
+  addToCart(product, event){
+    // console.log('product ', product);
+    dispatch(addToCart(product));
   }
 });
 
