@@ -57,10 +57,12 @@ router.post('/add-to-cart/products/:productId', async (req, res, next) => {
   }
   console.log('new product on cart: ', newProducts);
   console.log('order is here', order);
-  req.cart = await order.addProducts(newProducts);
+  //associate newProducts with req.cart
+  // req.cart = await order.addProducts(newProducts);
   console.log('req.cart', req.cart)
-  //send back the new cart
-  res.redirect('/api/cart');
+  res.json(newProducts);
+  //send back the new cart -- with the associated products. this is the end goal, (i think?) but right now can't find a way to associate products with cart
+  // res.redirect('/api/cart');
 })
 
 // TODO:

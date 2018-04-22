@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, FormGroup, FormControl } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import { EditProduct } from './index';
 import { fetchOneProduct, addToCart } from '../store';
@@ -51,6 +52,7 @@ class SingleProduct extends Component {
                    { options.map(option => <option key={option} value={option}>{option}</option>)}
                   </FormControl>
                   <Button onClick={addToCart.bind(this, product, quantity)} disabled={disabled}>Add To Cart</Button>
+                  <Link to='/cart'>Go To Checkout</Link>
                 </FormGroup>
                 
               </div>
