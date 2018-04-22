@@ -1,14 +1,17 @@
-// 'use strict';
+'use strict';
 
-// import React from 'react';
-// import { connect } from 'react-redux';
-// import birch from 'public/images/birch.png';
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-// /* ---- Component ---- */
+/* ---- Component ---- */
 // export const Homepage = () => {
 //   return (
-//     <div>
-//       <img src={birch} />
+//     <div id="home">
+//     <title id="homeTitle">
+//       run on your own time
+//     </title>
+//       <Link to="/products"><h2>explore</h2></Link>
 //     </div>
 //   )
 // }

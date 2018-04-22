@@ -38,7 +38,7 @@ class Navbar extends Component {
           {isLoggedIn ? (
             <div>
               {/* The navbar will show these links after you log in */}
-              <Link to="/home">Home</Link>
+              <Link to="/home">home</Link>
               <a href="#" onClick={handleClick}>
                 Logout
               </a>
@@ -46,13 +46,13 @@ class Navbar extends Component {
           ) : (
             <div>
               {/* The navbar will show these links before you log in */}
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Sign Up</Link>
+              <Link to="/login">login</Link>
+              <Link to="/signup">sign up</Link>
             </div>
           )}
           <div id="alwaysShow">
             <Link to="/products" onMouseOver={this.showCategories}>
-              Catalog
+              catalog
             </Link>
             <div id="categoriesInNav">
               {this.state.showCategories && <AllCategories />}

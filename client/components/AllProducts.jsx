@@ -26,7 +26,7 @@ export class AllProducts extends Component {
                     <Col sm={10} md={4}  key={product.id} id="singleProduct">
                       <Link to={`/products/${product.id}`}>
                       <img id="productImg" src={product.imgUrl} />
-                      <h3><b>{product.title}</b></h3>
+                      <h3>{product.title}</h3>
                       <h4>$ {product.price}</h4>
                       <span><Button id="addToCartBtn">Add</Button></span>
                       <span><Button id="removeFromCartBtn">Remove</Button></span>
