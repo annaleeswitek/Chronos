@@ -10,4 +10,6 @@ const Order = db.define('order', {
 });
 
 //pending means that the user has checked out but order has not been shipped
+
+Order.beforeCreate()
 module.exports = Order;
