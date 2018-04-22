@@ -178,3 +178,13 @@ textarea {
 #editProductForm {
     display: flex;
 }
+
+#cart {
+  display: flex;
+  padding-top: 10em
+}
+
+#shrink {
+    max-width: 250px;
+    max-height: 250px;
+}

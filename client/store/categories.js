@@ -28,10 +28,9 @@ export const loadCategories = () => {
 export default function (state = [], action) {
   switch (action.type) {
     case SET_CATEGORIES:
-    console.log('action', action);
       return action.categories;
     default:
     return state;
   }
-};
+}
 
