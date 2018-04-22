@@ -34,3 +34,6 @@ Product.hook('beforeCreate', product => {
 });
 
 module.exports = Product;
+
+
+

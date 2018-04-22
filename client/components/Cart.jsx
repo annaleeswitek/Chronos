@@ -16,7 +16,10 @@ class Cart extends Component {
   }
 
   componentDidMount(){
-    this.props.loadProductsForCart();
+    //check if there are already products on the cart
+    //if so, don't reload -- this if is a temporary fix -- 
+    // products are not permanently associated with cart
+    if (!this.props.productsInCart.length) this.props.loadProductsForCart();
 
   }
 

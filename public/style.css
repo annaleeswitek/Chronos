@@ -120,7 +120,7 @@ textarea {
     margin-bottom: 1em
 }
 
-.descSubmit {
+.categoriesDesc {
     display: flex;
     flex-direction: column
 }
@@ -133,6 +133,7 @@ textarea {
     position: fixed;
     margin-left: 70%;
 }
+
 
 /* login / signup */
 
@@ -180,8 +181,8 @@ textarea {
 }
 
 #cart {
-  display: flex;
-  padding-top: 10em
+    display: flex;
+    padding-top: 10em
 }
 
 #shrink {
