@@ -29,20 +29,17 @@ router.post('/', (req, res, next) => {
             description: req.body.description
         }
     })
-    .then(([newProduct, wasCreatedBool]) => {
-        res.json(newProduct);
-    })
+    .then(newProduct => res.json(newProduct))
     .catch(next);
 });
 
 // editing product - admin
 router.put('/:productId', (req, res, next) => {
+    const productId = +req.params.id;
     Product.update(req.body, {
-        where: {id: req.params.productId},
-        returning: true,
-        plain: true
-    }
-    )
+        where: {id: productId,
+        returning: true
+    }})
     .then(updatedProduct => res.json(updatedProduct))
     .catch(next);
 });

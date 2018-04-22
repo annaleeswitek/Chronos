@@ -1,22 +1,11 @@
-/**
- * Welcome to the seed file! This seed file uses a newer language feature called...
- *
- *                  -=-= ASYNC...AWAIT -=-=
- *
- * Async-await is a joy to use! Read more about it in the MDN docs:
- *
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
- *
- * Now that you've got the main idea, check it out in practice below!
- */
+'use strict';
+
 const db = require('../server/db');
 const { User, Product, Category } = require('../server/db/models');
 
 async function seed () {
-  await db.sync({force: true});
+  await db.sync({ force: true });
   console.log('db synced!');
-  // Whoa! Because we `await` the promise that db.sync returns, the next line will not be
-  // executed until that promise resolves!
 
   const productsCatalog = [
     {
@@ -108,13 +97,16 @@ async function seed () {
 
   const categoriesCatalog = [
     {
-      name: 'nostalgia'
+      name: 'nostalgia',
+      productId: 1
     },
     {
-      name: 'future'
+      name: 'future',
+      productId: 2
     },
     {
-      name: 'renaissance'
+      name: 'renaissance',
+      productId: 2
     }
   ];
 
@@ -164,10 +156,6 @@ async function seed () {
   console.log(`seeded successfully`);
 }
 
-
-// Execute the `seed` function
-// `Async` functions always return a promise, so we can use `catch` to handle any errors
-// that might occur inside of `seed`
 seed()
   .catch(err => {
     console.error(err.message);
@@ -180,9 +168,4 @@ seed()
     console.log('db connection closed');
   });
 
-/*
- * note: everything outside of the async function is totally synchronous
- * The console.log below will occur before any of the logs that occur inside
- * of the async function
- */
 console.log('seeding...');

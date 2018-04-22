@@ -22,6 +22,9 @@ class SingleCategory extends Component {
   render () {
     const { selectedCategory } = this.props;
     const products = selectedCategory.products;
+    const productArr = this.props.selectedCategory.product;
+    console.log('categories', selectedCategory.products)
+    console.log('props 2', this.props.selectedCategory.product)
 
     return (
       <div>
@@ -30,9 +33,11 @@ class SingleCategory extends Component {
           : null
         }
         {
-          products && products.map(product => (<div key={product.id}>
+          productArr && productArr.map(product => (
+          <div key={product.id}>
             <section className="product">
-              <img src={ product.imgUrl } />
+              <div>Product</div>
+              <img src={product.imgUrl} />
             </section>
           </div>))
         }

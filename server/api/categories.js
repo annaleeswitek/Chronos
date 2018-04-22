@@ -10,7 +10,8 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
-  Category.findById(req.params.id, {
+  const id = +req.params.id;
+  Category.findById(id, {
     include: [{model: Product}]
   })
   .then(theCategory => res.json(theCategory))

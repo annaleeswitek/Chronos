@@ -29,7 +29,9 @@ class Navbar extends Component {
     return (
       <div id="navBarAll">
         <Link to="/" id="navBarName">
+        <div>
           <h1>Chronos</h1>
+          </div>
         </Link>
         <div>
           <Searchbar />
