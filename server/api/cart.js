@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Order, Product } = require('../db/models');
+const { Order, Product, LineItems } = require('../db/models');
 
 module.exports = router;
 
@@ -64,8 +64,10 @@ router.post('/add-to-cart/products/:productId', async (req, res, next) => {
     
   }
   console.log('new product on cart: ', allProducts);
-  updatedOrder.setProducts(allProducts);
+  //set products on the newly created order
+  await updatedOrder.setProducts(allProducts, { through: { status: LineItems }}).catch(next); //this line also sends back an aggregate error
   console.log('order is here', updatedOrder); 
+  //now that newly created order is associated with all products, reassign req.cart to this order
   req.cart = updatedOrder;
   console.log('updated req.cart: ', req.cart);
   const updatedProducts = await req.cart.getProducts().catch(next);
