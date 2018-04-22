@@ -1,9 +1,9 @@
 body {
-    background-image: url('./images/concrete_seamless.png');
+    background-image: url('./images/birch.png');
     font-family: 'Karla', sans-serif;
 }
 
-h1{
+h1 {
     font-family: 'Karla', sans-serif;
     font-size: 7vh;
     text-decoration: none
@@ -50,7 +50,8 @@ form div {
     flex-direction: column;
     position: fixed;
     width: 100%;
-    z-index: 2
+    z-index: 3;
+    background-image: url('./images/concrete_seamless.png');
 }
 
 #navBar {
@@ -111,8 +112,21 @@ textarea {
     display: flex;
 }
 
+
 #allProducts {
     align-self: center
+}
+
+#addToCartBtn {
+    color: black;
+    background-color: rgb(206, 255, 208);
+    margin: .5em;
+}
+
+#removeFromCartBtn {
+    color: black;
+    background-color: rgb(248, 168, 168);
+    margin: .5em;
 }
 
 .titlePrice {
@@ -140,7 +154,8 @@ textarea {
 
 #search-bar {
     position: fixed;
-    margin-left: 70%;
+    margin-left: 75%;
+    margin-top: 5%;
 }
 
 /* login / signup */

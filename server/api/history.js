@@ -28,7 +28,7 @@ module.exports = router;
 //   .catch(next);
 // });
 
-router.get('/users/:userId/history', (req, res, next) => {
+router.get('/users/:userId', (req, res, next) => {
   User.getOrders()
   .then(orders => res.json(orders))
   .catch(next);
