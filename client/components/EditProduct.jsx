@@ -27,6 +27,7 @@ class EditProduct extends Component {
     if(!this.props.product) this.props.fetchOneProduct(productId)
   }
   handleChange(event){
+    console.log('im hereeee')
     this.setState({ [event.target.name]: event.target.value });
   }
 
@@ -45,7 +46,7 @@ class EditProduct extends Component {
     return (
       <div>
         <h3>Edit Product Information</h3>
-        <FormGroup id="editProductForm" onSubmit={this.handleSubmit}>
+        <FormGroup id="editProductForm">
         
         <div className="titlePrice">
           <ControlLabel className="col-xs-2 control-label">
@@ -103,6 +104,8 @@ const mapState = state => ({product: state.product});
 
 const mapDispatch = dispatch => ({
   editProduct: (newProduct, oldProduct) => {
+    console.log('old product: ', oldProduct);
+    console.log('new product: ', newProduct)
     newProduct.title = newProduct.title === '' ? oldProduct.title : newProduct.title;
     newProduct.price = newProduct.price === '' ? oldProduct.price : newProduct.price;
     newProduct.imgUrl = newProduct.imgUrl === '' ? oldProduct.imgUrl : newProduct.imgUrl;
