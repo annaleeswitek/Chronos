@@ -53,6 +53,7 @@ class SingleProduct extends Component {
                   </FormControl>
                   <Button onClick={addToCart.bind(this, product, quantity)} disabled={disabled}>Add To Cart</Button>
                   <Link to='/cart'>Go To Checkout</Link>
+
                 </FormGroup>
                 
               </div>
