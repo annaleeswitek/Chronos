@@ -31,11 +31,18 @@ router.get('/', (req, res, next) => {
 
 //add to cart 
 router.post('/add-to-cart/products/:productId', async (req, res, next) => {
+  console.log('req.body in add: ', req.body);
+  console.log('current quant: ', req.body.currentQuantity);
+  let newQuantity = +req.body.quantityToAdd;
+  console.log('quantity to add: ', newQuantity);
+  if (req.body.currentQuantity) newQuantity += req.body.currentQuantity;
   const newProduct = await Product.findById(req.params.productId).catch(next);
   const [lineItem]= await LineItem.findOrCreate({ 
     where: { productId: req.params.productId, orderId: req.cart.id },  
-    defaults: { quantity: req.body.quantity, price: newProduct.price }
+    defaults: { quantity: req.body.quantityToAdd, price: newProduct.price }
   });
+  console.log('new or found line item: ', lineItem);
+  console.log('updated quant in add: ', lineItem.quantity)
   await lineItem.save();
   await req.cart.reload();
   

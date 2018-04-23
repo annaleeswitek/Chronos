@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { logout } from '../store';
+import { logout, loadCart } from '../store';
 import { AllCategories, UserDropdown, Searchbar } from './index';
 
 /* ---- Component ---- */
@@ -18,13 +18,22 @@ class Navbar extends Component {
     this.showCategories = this.showCategories.bind(this);
   }
 
+  componentDidMount(){
+    console.log('loading cart');
+    this.props.loadCart();
+  }
   showCategories() {
     this.setState({ showCategories: !this.state.showCategories });
   }
 
   render() {
-    const { handleClick, isLoggedIn } = this.props;
+    const { handleClick, isLoggedIn, productsInCart } = this.props;
     console.log('this.props in Navbar:', this.props);
+    const productQuantity = 
+    productsInCart && productsInCart.map(product => product.lineItem.quantity)
+                                    .reduce((acc, val) => (acc + val), 0)
+    console.log('product quant: ', productQuantity);
+    
 
     return (
       <div id="navBarAll">
@@ -34,7 +43,7 @@ class Navbar extends Component {
           </div>
         </Link>
           <span id="navBarCart">
-          <Link to="/cart">🛒</Link>
+          <Link to="/cart">🛒 {productQuantity}</Link>
         </span>
           <Searchbar />
         <nav id="navBar" onMouseLeave={this.showCategories}>
@@ -72,12 +81,16 @@ class Navbar extends Component {
 /* ---- Container ---- */
 const mapState = state => ({
   isLoggedIn: !!state.user.id,
-  categories: state.categories
+  categories: state.categories, 
+  productsInCart: state.cart
 });
 
 const mapDispatch = dispatch => ({
   handleClick() {
     dispatch(logout());
+  }, 
+  loadCart(){
+    dispatch(loadCart());
   }
 });
 

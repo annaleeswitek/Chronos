@@ -86,7 +86,12 @@ const mapDispatch = dispatch => ({
   }, 
   addToCart(product, quantity, event){
     event.preventDefault();
-    product.quantity = quantity;
+    product.quantityToAdd = quantity;
+    //if same product is already in cart, set currentQuantity on product that we're sending back
+    if (product.lineItem) {
+      product.currentQuantity = product.lineItem.quantity;
+      console.log('product current quantity: ', product.currentQuantity);
+    }
     dispatch(addToCart(product));
   }, 
   removeFromCart(product, quantity, event){

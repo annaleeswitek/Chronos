@@ -46,6 +46,7 @@ form div {
     display: inline-block;
 }
 
+
 /* navbar */
 
 #navBarAll {
@@ -87,6 +88,7 @@ form div {
     color: green
 }
 
+
 /* all products view */
 
 #allProductsView {
@@ -119,7 +121,6 @@ textarea {
 #addProductForm {
     display: flex;
 }
-
 
 #allProducts {
     align-self: center
@@ -179,8 +180,12 @@ textarea {
     border: dotted;
     border-width: .01em;
     margin-left: 75%;
-    margin-top: 2%
+    margin-top: 2%;
+    margin-bottom: 2em;
+    text-decoration: none
 }
+
+
 /* login / signup */
 
 #allLoginSignupOptions {
