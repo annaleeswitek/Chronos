@@ -28,6 +28,7 @@ Order.belongsTo(User);
 
 Product.belongsToMany(Order, { through: LineItems });
 Order.belongsToMany(Product, { through: LineItems });
+Order.hasMany(LineItems)
 
 /**
  * We'll export all of our models here, so that any time a module needs a model,

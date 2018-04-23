@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loadProductsForCart } from '../store';
+import { loadCart } from '../store';
 
 
 /* --- Component --- */
@@ -19,7 +19,7 @@ class Cart extends Component {
     //check if there are already products on the cart
     //if so, don't reload -- this if is a temporary fix -- 
     // products are not permanently associated with cart
-    if (!this.props.productsInCart.length) this.props.loadProductsForCart();
+    if (!this.props.productsInCart.length) this.props.loadCart();
 
   }
 
@@ -52,8 +52,8 @@ class Cart extends Component {
 const mapState = state => ({productsInCart: state.cart});
 
 const mapDispatch = dispatch => ({
-  loadProductsForCart() {
-    dispatch(loadProductsForCart());
+  loadCart() {
+    dispatch(loadCart());
   }
 });
 
