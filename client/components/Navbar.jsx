@@ -24,7 +24,6 @@ class Navbar extends Component {
 
   render() {
     const { handleClick, isLoggedIn } = this.props;
-    console.log('this.props in Navbar:', this.props);
 
     return (
       <div id="navBarAll">

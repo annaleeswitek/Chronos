@@ -241,3 +241,16 @@ textarea {
     align-content: center;
     margin: 2em 4.5em;
 }
+
+#cartContainer {
+    margin-right: 30em;
+    /* background-color: rgba(255, 192, 203, 0.459) */
+}
+
+#checkoutBtn {
+    font-size: 1em;
+}
+
+#singleProductInCart {
+    background-color: rgba(255, 255, 255, 0.808);
+}

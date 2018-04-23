@@ -1,23 +1,23 @@
 'use strict';
 
 const router = require('express').Router();
-const { User } = require('../db/models');
+const { User, Order } = require('../db/models');
 
 module.exports = router;
 
-// router.get('/', (req, res, next) => {
-//   Order.findAll({
-//     include: [{ all: true }]
-//   })
-//   .then(orders => res.json(orders))
-//   .catch(next);
-// });
+router.get('/', (req, res, next) => {
+  Order.findAll({
+    include: [{ all: true }]
+  })
+  .then(orders => res.json(orders))
+  .catch(next);
+});
 
-// router.get('/:orderId', (req, res, next) => {
-//   Order.findById(req.params.orderId)
-//   .then(order => res.json(order))
-//   .catch(next);
-// });
+router.get('/:orderId', (req, res, next) => {
+  Order.findById(req.params.orderId)
+  .then(order => res.json(order))
+  .catch(next);
+});
 
 // router.put('/:orderId', (req, res, next) => {
 //   Order.update(req.body, {

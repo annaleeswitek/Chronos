@@ -1,27 +1,27 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { getOrders } from '../store';
 
-class AllOrders extends Component {
+/* ---- Component ---- */
+const AllOrders = () => {
+  const { orderHistory, user } = this.props;
+      return (
+        <div>
+        {this.props.user.name}
+        </div>
+    );
+};
 
-  render() {
-    const { orderHistory, user } = this.props;
-    return (
-      <div>
-        {state.user.name}
-      </div>
-    )
-  }
-}
-
+/* ---- Container ---- */
 const mapStateToProps = state => ({
-  orderHistory: state.orderHistory, 
+  orderHistory: state.orderHistory,
   user: state.user
-})
+});
 
 const mapDispatchToProps = dispatch => ({
   getOrders(user){
-    dispatch(getOrders(user))
+    dispatch(getOrders(user));
   }
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllOrders);

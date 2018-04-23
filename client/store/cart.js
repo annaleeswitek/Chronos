@@ -1,18 +1,15 @@
 import axios from 'axios';
 
 /* ---- Action Types ---- */
-
 const GET_CART = 'GET_CART';
 
 /* ---- Action Creators --- */
-
 const getCart = cart => {
   return {
     type: GET_CART,
     cart
-  }
+  };
 };
-
 
 /* --- Thunks --- */
 export const loadCart = () => {
@@ -24,7 +21,7 @@ export const loadCart = () => {
       })
       .then(cart => {
         const action = getCart(cart);
-        console.log('the action:', action)
+        console.log('the action:', action);
         dispatch(action);
       })
       .catch(err => console.error(err));
@@ -36,9 +33,9 @@ export const addToCart = (product) => {
     return axios.post(`/api/cart/add-to-cart/products/${product.id}`, product)
       .then(res => res.data)
       .then(cart => dispatch(getCart(cart)))
-      .catch(err => console.error(err))
-  }
-}
+      .catch(err => console.error(err));
+  };
+};
 
 /* --- Reducer --- */
 export default function (state = [], action) {
