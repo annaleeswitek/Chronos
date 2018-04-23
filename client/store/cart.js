@@ -37,6 +37,15 @@ export const addToCart = (product) => {
   };
 };
 
+export const updateCart = function(cart) {
+  return function thunk(dispatch) {
+    return axios.put(`/api/cart`, cart)
+    .then(res => res.data)
+    .then(updatedCart => dispatch(getCart(updatedCart)))
+    .catch(err => console.error(err))
+  }
+}
+
 /* --- Reducer --- */
 export default function (state = [], action) {
   switch (action.type) {

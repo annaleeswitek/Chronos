@@ -1,13 +1,26 @@
+'use strict';
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getOrders } from '../store';
 
 /* ---- Component ---- */
-const AllOrders = () => {
+export const AllOrders = () => {
+  const productStatus = [
+    { status: 'pending' },
+    { status: 'completed' },
+    { status: 'cancelled' }
+  ];
+
+  console.log('getOrders', getOrders)
+ 
   const { orderHistory, user } = this.props;
       return (
         <div>
-        {this.props.user.name}
+          HELLO WORLD
+        {
+          productStatus.map(oneStatus => oneStatus.status)
+        }
         </div>
     );
 };

@@ -102,8 +102,8 @@ form div {
 }
 
 #productImg {
-    border-style: dotted;
-    border-width: .15em;
+    border-style: solid;
+    border-width: .1em;
     border-color: black;
     opacity: .85;
 }
@@ -243,8 +243,8 @@ textarea {
 }
 
 #cartContainer {
-    margin-right: 30em;
-    /* background-color: rgba(255, 192, 203, 0.459) */
+    background-color: rgba(255, 255, 255, 0.562);
+    margin-right: 40em;
 }
 
 #checkoutBtn {

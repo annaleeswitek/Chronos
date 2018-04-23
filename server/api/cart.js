@@ -21,6 +21,15 @@ router.get('/', (req, res, next) => {
   res.send(req.cart);
 });
 
+router.put('/', async (req, res, next) => {
+  const [ rows, order ] = await Order.update({ status: 'pending' }, {
+    where: { id: req.cart.id },
+    returning: true,
+    plain: true
+  })
+  .catch(next);
+  console.log('req.cart.id', req.cart.id)
+})
 
 // router.get('/products', (req, res, next) => {
 //   req.cart.getProducts()

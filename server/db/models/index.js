@@ -13,14 +13,14 @@ const LineItems = require('./lineItems');
  */
 
 Product.belongsToMany(Category, { through: 'product_categories'});
-Category.belongsToMany(Product, { through: 'product_categories'})
+Category.belongsToMany(Product, { through: 'product_categories'});
 
 User.hasMany(Order);
 Order.belongsTo(User);
 
 Product.belongsToMany(Order, { through: LineItems });
 Order.belongsToMany(Product, { through: LineItems });
-Order.hasMany(LineItems)
+Order.hasMany(LineItems);
 
 module.exports = {
   User,

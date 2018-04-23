@@ -11,7 +11,6 @@ class AllCategories extends Component {
   }
 
   render () {
-
     const { categories } = this.props;
     return (
       <div id="allCategories">
