@@ -29,7 +29,6 @@ class EditProduct extends Component {
     if (!this.props.product) this.props.fetchOneProduct(productId);
   }
   handleChange(event){
-    console.log('im hereeee')
     this.setState({ [event.target.name]: event.target.value });
   }
 

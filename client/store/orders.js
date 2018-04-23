@@ -10,10 +10,7 @@ const getOrderHistory = orderHistory => ({ type: GET_ORDER_HISTORY, orderHistory
 export const getOrders = user => {
   dispatch => 
     axios.get(`/api/users/${user.id}/order-history`)
-      .then(res => {
-        console.log('orders: ??', res.data);
-        return res.data;
-      })
+      .then(res => res.data)
       .then(orders => dispatch(getOrderHistory(orders)))
       .catch(err => console.error(err));
 }

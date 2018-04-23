@@ -35,7 +35,7 @@ class Searchbar extends Component {
   render() {
     const inputValue = this.state.inputValue.toLowerCase();
     const filteredProducts = this.props.products && this.props.products.filter(product => product.title.toLowerCase().match(inputValue));
-    console.log('products', filteredProducts);
+  
     return (
       <div id="search-bar">
         <span>Search Product</span>

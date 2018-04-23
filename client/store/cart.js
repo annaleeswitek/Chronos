@@ -34,13 +34,7 @@ export const loadCart = () => {
 export const addToCart = (product) => {
   return function thunk (dispatch) {
     return axios.post(`/api/cart/add-to-cart/products/${product.id}`, product)
-      .then(res => {
-        //whoops res.data is actually the products but we want to be sending back the cart
-        console.log('this is the cart right heck yeah it is', res.data);
-        return res.data;
-      })
-      //think this should be cart => dispatch(getCart(cart))??
-
+      .then(res => res.data)
       .then(cart => dispatch(getCart(cart)))
       .catch(err => console.error(err))
   }

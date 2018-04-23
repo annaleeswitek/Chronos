@@ -32,12 +32,10 @@ router.post('/', async (req, res, next) => {
     console.log('req.body.categories', req.body.categories);
     const categoryNames = req.body.categories.split(', ');
     console.log('categoryNames', categoryNames)
-    // const newProduct = await Product.create(req.body).catch(next);
     const productCategoryPromises = categoryNames.map(categoryName => {
         return Category.findOrCreate({where: { name: categoryName }})
     })
     console.log('product category promises in back end: ', productCategoryPromises)
-    // let productCategoriesArray = [];
     let categoriesArrays = await Promise.all(productCategoryPromises).catch(next);
     console.log('categories arrays: ', categoriesArrays);
     let productCategoriesArray = categoriesArrays.map(categoryArray => categoryArray);

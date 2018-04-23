@@ -24,7 +24,7 @@ class SingleProduct extends Component {
   }
 
   onQuantityChange(event){
-    console.log('event in on quant change: ', event.target.value); 
+    
     if(event.target.value) this.setState({ quantity: event.target.value, disabled: false })
     else this.setState({disabled: true })
     
@@ -34,7 +34,7 @@ class SingleProduct extends Component {
     const { user, product, addToCart } = this.props;
     const { quantity, disabled } = this.state;
     const options = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    console.log('state quantity: ', quantity);
+   
     return (
       <div className="product">
         { product.id

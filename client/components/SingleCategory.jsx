@@ -23,8 +23,6 @@ class SingleCategory extends Component {
     const { selectedCategory } = this.props;
     const products = selectedCategory.products;
     const productArr = this.props.selectedCategory.product;
-    console.log('categories', selectedCategory.products)
-    console.log('props 2', this.props.selectedCategory.product)
 
     return (
       <div>

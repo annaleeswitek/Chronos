@@ -18,10 +18,7 @@ export const loadOneCategory = (categoryId) => {
   return function thunk (dispatch) {
     return axios.get(`/api/categories/${categoryId}`)
       .then(res => res.data)
-      .then(theCategory => {
-        const action = selectCategory(theCategory);
-        dispatch(action);
-      })
+      .then(theCategory => dispatch(selectCategory(theCategory)))
       .catch(err => console.error(err));
   };
 };
@@ -31,6 +28,7 @@ export default function (state = {}, action) {
   switch (action.type) {
     case SELECT_CATEGORY:
       return action.selectedCategory;
-    default: return state;
+    default: 
+      return state;
   }
 }

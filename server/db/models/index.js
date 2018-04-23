@@ -12,16 +12,8 @@ const LineItems = require('./lineItems');
  *    BlogPost.belongsTo(User)
  */
 
-Product.hasMany(Category, { as: 'categories'});
+Product.belongsToMany(Category, { through: 'product_categories'});
 Category.belongsToMany(Product, { through: 'product_categories'})
-// Category.belongsToMany(Product, {
-//   through: {
-//     model: ProductCategory, 
-//     unique: false
-//   },
-//   foreignKey: 'category_id', 
-//   constraints: false
-// });
 
 User.hasMany(Order);
 Order.belongsTo(User);
