@@ -58,11 +58,11 @@ router.post('/', async (req, res, next) => {
 
 // editing product - admin
 router.put('/:productId', (req, res, next) => {
-    const productId = +req.params.id;
     Product.update(req.body, {
-        where: {id: productId,
-        returning: true
-    }})
-    .then(updatedProduct => res.json(updatedProduct))
+        where: {id: req.params.productId},
+        returning: true,
+        plain: true
+    })
+    .then(([numOfAffected, updatedProduct]) => res.json(updatedProduct))
     .catch(next);
 });
