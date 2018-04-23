@@ -48,13 +48,8 @@ export const editProduct = function (product) {
     return function thunk(dispatch){
         return axios.put(`/api/products/${product.id}`, product)
         .then(res => res.data)
-        .then(updatedProduct => {
-            const action = getOneProduct(updatedProduct);
-            dispatch(action);
-        })
-        .catch(err => {
-            console.error(err);
-        });
+        .then(updatedProduct => dispatch(getOneProduct(updatedProduct)))
+        .catch(err => console.error(err));
     };
 };
 

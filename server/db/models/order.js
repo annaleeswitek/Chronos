@@ -1,7 +1,6 @@
 'use strict';
 
 const Sequelize = require('sequelize');
-const LineItem = require('./lineItems');
 const Product = require('./product');
 const db = require('../db');
 

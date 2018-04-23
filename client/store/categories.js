@@ -18,10 +18,7 @@ export const loadCategories = () => {
   return function thunk (dispatch) {
     return axios.get('/api/categories')
       .then(res => res.data)
-      .then(categories => {
-        const action = setCategories(categories);
-        dispatch(action);
-      })
+      .then(categories => dispatch(setCategories(categories)))
       .catch(err => console.error(err));
   };
 };
