@@ -2,8 +2,9 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
+
 import { addProduct } from '../store';
-import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap'; 
 
 /* ---- Component ---- */
 class AddProduct extends Component {
@@ -17,12 +18,11 @@ class AddProduct extends Component {
       categories: '',
       description: '', 
       disabled: true
-    }; 
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  };
+  }
 
- 
   handleChange(event){
     if(event.target.name === 'title' && event.target.value !== '') this.setState({ [event.target.name] : event.target.value, disabled: false })
     else this.setState({ [event.target.name] : event.target.value});
@@ -43,7 +43,6 @@ class AddProduct extends Component {
     // this.setState({ title: '', price: '', quantity: '', imgUrl: '', categories: '', description: ''})
   }
 
-
   render() {
     let { title, price, quantity, imgUrl, categories, description, disabled } = this.state;
     return (
@@ -55,19 +54,19 @@ class AddProduct extends Component {
               <FormControl value={title} name="title" type="text" placeholder="product name (required)" onChange={this.handleChange} />
               { this.state.disabled && <h5 id="warningName">Please enter a name</h5>}
             </ControlLabel>
-            
+
             <ControlLabel className="col-xs-2 control-label"><h5><b>Price</b></h5>
               <FormControl value={price} name="price" type="text"  placeholder="product price (required)" onChange={this.handleChange}/>
             </ControlLabel>
             </div>
             <div className="quantityImg">
             <ControlLabel className="col-xs-2 control-label"><h5><b>Quantity</b></h5>
-              <FormControl value={quantity} name="quantity" type="text"  placeholder="product quantity" value={this.state.quantity} onChange={this.handleChange}/>
+              <FormControl value={quantity} name="quantity" type="text"  placeholder="product quantity" onChange={this.handleChange} />
             </ControlLabel>
-            
-            
+
+
             <ControlLabel className="col-xs-2 control-label"><h5><b>Image</b></h5>
-              <FormControl value={imgUrl} name="imgUrl" type="text"  placeholder="product image" value={this.state.imgUrl} onChange={this.handleChange}/>
+              <FormControl value={imgUrl} name="imgUrl" type="text"  placeholder="product image" onChange={this.handleChange} />
             </ControlLabel>
             </div>
             <div className="categoriesDesc">
@@ -76,7 +75,7 @@ class AddProduct extends Component {
             </ControlLabel>
 
             <ControlLabel className="col-xs-2 control-label"><h5><b>Description</b></h5>
-              <FormControl value={description} className="desc" name="description" type="text"  componentClass="textarea" placeholder="product description" onChange={this.handleChange}/>
+              <FormControl value={description} className="desc" name="description" type="text"  componentClass="textarea" placeholder="product description" onChange={this.handleChange} />
             </ControlLabel>
             
            
@@ -87,7 +86,6 @@ class AddProduct extends Component {
       );
     }
 }
-
 
 /* ---- Container ---- */
 const mapState = state => ({

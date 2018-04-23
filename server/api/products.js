@@ -1,3 +1,5 @@
+'use strict';
+
 const router = require('express').Router();
 const { Product, Category } = require('../db/models');
 
@@ -7,7 +9,7 @@ router.get('/', (req, res, next) => {
     Product.findAll({
         include: [{ all: true }]
     })
-    .then( products => res.json(products) )
+    .then(products => res.json(products))
     .catch(next);
 });
 
@@ -60,10 +62,7 @@ router.put('/:productId', (req, res, next) => {
         where: {id: req.params.productId},
         returning: true,
         plain: true
-    }
-    )
-    .then(([numOfAffected, updatedProduct]) => {
-        res.json(updatedProduct);
     })
+    .then(([numOfAffected, updatedProduct]) => res.json(updatedProduct))
     .catch(next);
 });

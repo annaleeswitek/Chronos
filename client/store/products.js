@@ -1,5 +1,6 @@
+'use strict';
+
 import axios from 'axios';
-import history from '../history'; // Are we using history here?  Can we delete this line? --GSS
 
 /* ---- Action Types ---- */
 const GET_PRODUCTS = 'GET_PRODUCTS';

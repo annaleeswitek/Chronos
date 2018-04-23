@@ -52,6 +52,6 @@ export default function (state = [], action) {
     case GET_CART:
       return action.cart.products;
     default:
-    return state;
+      return state;
   }
 }

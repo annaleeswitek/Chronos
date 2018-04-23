@@ -1,10 +1,13 @@
+'use strict';
+
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+
 import { auth } from '../store';
 
 /* ---- Component ---- */
-const AuthForm = (props) => {
+const AuthForm = props => {
   const { name, displayName, handleSubmit, error } = props;
 
   return (
@@ -12,11 +15,11 @@ const AuthForm = (props) => {
       <div id="loginSignup">
         <form onSubmit={handleSubmit} name={name} id="loginSignupForm">
           <div>
-            <label htmlFor="email"><small>Email</small></label>
+            <label htmlFor="email">Email</label>
             <input name="email" type="text" />
           </div>
           <div>
-            <label htmlFor="password"><small>Password</small></label>
+            <label htmlFor="password">Password</label>
             <input name="password" type="password" />
           </div>
           <div>
@@ -30,12 +33,7 @@ const AuthForm = (props) => {
   );
 };
 
-/* ---- Container
- *   Note that we have two different sets of 'mapStateToProps' functions -
- *   one for Login, and one for Signup. However, they share the same 'mapDispatchToProps'
- *   function, and share the same Component. This is a good example of how we
- *   can stay DRY with interfaces that are very similar to each other!
-*/
+/* ---- Container ---- */
 const mapLogin = state => ({
   name: 'login',
   displayName: 'Login',

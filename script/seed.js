@@ -1,22 +1,11 @@
-/**
- * Welcome to the seed file! This seed file uses a newer language feature called...
- *
- *                  -=-= ASYNC...AWAIT -=-=
- *
- * Async-await is a joy to use! Read more about it in the MDN docs:
- *
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
- *
- * Now that you've got the main idea, check it out in practice below!
- */
+'use strict';
+
 const db = require('../server/db');
 const { User, Product, Category } = require('../server/db/models');
 
 async function seed () {
-  await db.sync({force: true});
+  await db.sync({ force: true });
   console.log('db synced!');
-  // Whoa! Because we `await` the promise that db.sync returns, the next line will not be
-  // executed until that promise resolves!
 
   const productsCatalog = [
     {
@@ -68,6 +57,34 @@ async function seed () {
         "A long, long time ago in a spiky, spiky galaxy ... After leaving the frantic planet Earth, a group of people fly toward a distant speck. The speck gradually resolves into a large, e-commerce web app. Civil war strikes the galaxy, which is ruled by Donald Trump, an evil gremlin capable of gluttony and terrifying violence. Terrified, a powerful woman known as Time Traveler flees the Empire, with her protector, Chronos. They head for New York on the planet Gracius Hopperus. When they finally arrive, a fight breaks out. Chronos uses his spicy arrow to defend Time. Chronos and Lady Time decide it's time to leave Gracius Hopperus and steal a tandem to shoot their way out. They encounter a tribe of men. Time Traveler is attacked and captured by the men and taken back to New York. Chronos must fight to save Lady Time but when he accidentally unearths a deprecated method, the entire future of the spiky, frantic galaxy is at stake.",
       quantity: 2,
       imgUrl: 'https://dummyimage.com/400x400/fdebff/000000.jpg&text=A+Beautiful+and+Heartbreaking+Story'
+    },
+    {
+      title: 'Yesterday',
+      price: 100.50,
+      description: 'All my troubles seemed so far away ...',
+      quantity: 4,
+      imgUrl: 'https://dummyimage.com/400x400/ffecff/000000.jpg&text=Yesterday'
+    },
+    {
+      title: 'Your First Day of High School',
+      price: 2.00,
+      description: 'Why would you want to go back to this day?!',
+      quantity: 5,
+      imgUrl: 'https://dummyimage.com/400x400/d1cfd1/000000&text=First+Day+of+High+School'
+    },
+    {
+      title: 'First Date (Good)',
+      price: 3000.50,
+      description: 'End the night with something magical',
+      quantity: 8,
+      imgUrl: 'https://dummyimage.com/400x400/edf0c9/000000&text=First+Date'
+    },
+    {
+      title: 'First Date (Bad)',
+      price: 15.00,
+      description: 'Perhaps a gag gift for a friend or an actual present for an enemy',
+      quantity: 100,
+      imgUrl: 'https://dummyimage.com/400x400/edf0c9/000000&text=First+Date'
     }
   ];
 
@@ -80,13 +97,16 @@ async function seed () {
 
   const categoriesCatalog = [
     {
-      name: 'nostalgia'
+      name: 'nostalgia',
+      productId: 1
     },
     {
-      name: 'future'
+      name: 'future',
+      productId: 2
     },
     {
-      name: 'renaissance'
+      name: 'renaissance',
+      productId: 2
     }
   ];
 
@@ -136,10 +156,6 @@ async function seed () {
   console.log(`seeded successfully`);
 }
 
-
-// Execute the `seed` function
-// `Async` functions always return a promise, so we can use `catch` to handle any errors
-// that might occur inside of `seed`
 seed()
   .catch(err => {
     console.error(err.message);
@@ -152,9 +168,4 @@ seed()
     console.log('db connection closed');
   });
 
-/*
- * note: everything outside of the async function is totally synchronous
- * The console.log below will occur before any of the logs that occur inside
- * of the async function
- */
 console.log('seeding...');

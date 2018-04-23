@@ -1,7 +1,15 @@
 body {
-    font-family: sans-serif;
-    background-image: url('./images/concrete_seamless.png');
+    background-image: url('./images/birch.png');
     font-family: 'Karla', sans-serif;
+}
+
+h1 {
+    font-family: 'Karla', sans-serif;
+    font-size: 7vh;
+    text-decoration: none;
+    border: dotted;
+    border-width: .01em;
+    padding: 0.1em 0.5em;
 }
 
 a {
@@ -26,18 +34,17 @@ nav a {
 
 nav a:hover {
     background-color: #909090;
-    color: #fff;
-    border-radius: 15%;
+    color: white;
+    border-radius: 10%;
     padding: 1em;
     text-decoration: none;
-    transition: 0.5s all ease-in-out;
+    transition: 0.75s all ease-in-out;
 }
 
 form div {
     margin: 1em;
     display: inline-block;
 }
-
 
 /* navbar */
 
@@ -46,12 +53,17 @@ form div {
     flex-direction: column;
     position: fixed;
     width: 100%;
-    z-index: 2
+    z-index: 3;
 }
 
 #navBar {
     display: flex;
-    align-self: center
+    align-self: center;
+    font-size: 2vh;
+    background-color: rgba(255, 192, 203, 0.452);
+    opacity: .9;
+    border: dotted;
+    border-width: .01em;
 }
 
 #navBarName {
@@ -75,7 +87,6 @@ form div {
     color: green
 }
 
-
 /* all products view */
 
 #allProductsView {
@@ -87,7 +98,14 @@ form div {
 
 #singleProduct {
     margin: 2em 2em 2em 0.5em;
-    padding: 2em
+    padding: 2em;
+}
+
+#productImg {
+    border-style: dotted;
+    border-width: .15em;
+    border-color: black;
+    opacity: .85;
 }
 
 input {
@@ -102,8 +120,21 @@ textarea {
     display: flex;
 }
 
+
 #allProducts {
     align-self: center
+}
+
+#addToCartBtn {
+    color: black;
+    background-color: rgba(206, 255, 208, 0.568);
+    margin: .5em;
+}
+
+#removeFromCartBtn {
+    color: black;
+    background-color: rgba(248, 168, 168, 0.658);
+    margin: .5em;
 }
 
 .titlePrice {
@@ -131,27 +162,46 @@ textarea {
 
 #search-bar {
     position: fixed;
-    margin-left: 70%;
+    margin-left: 75%;
+    margin-top: 8%;
+    background-color: rgba(255, 192, 203, 0.452);
+    padding: 1vh;
+    opacity: .9;
+    border: dotted;
+    border-width: .01em;
 }
 
-
+#navBarCart {
+    font-size: 6vh;
+    position: fixed;
+    padding: 0em .2em;
+    background-color: rgba(245, 245, 245, 0.527);
+    border: dotted;
+    border-width: .01em;
+    margin-left: 75%;
+    margin-top: 2%
+}
 /* login / signup */
 
 #allLoginSignupOptions {
     display: flex;
     flex-direction: column;
-    padding-top: 15em
+    padding-top: 15em;
 }
 
 #loginSignup {
     display: flex;
-    align-self: center
+    align-self: center;
+    background-image: url('./images/concrete_seamless.png');
+    border: solid;
+    border-width: 0.1em;
+    border-color: pink;
 }
 
 #OAuth {
     align-self: center;
-    padding-right: 3em;
-    background-image: url('./images/grey-google-signin.png')
+    padding: 1em;
+    background-color: rgba(255, 192, 203, 0.432);
 }
 
 
@@ -180,12 +230,14 @@ textarea {
     display: flex;
 }
 
-#cart {
+#home {
     display: flex;
-    padding-top: 10em
+    align-content: center;
 }
 
-#shrink {
-    max-width: 250px;
-    max-height: 250px;
+#homeTitle {
+    font-size: 18vh;
+    display: flex;
+    align-content: center;
+    margin: 2em 4.5em;
 }

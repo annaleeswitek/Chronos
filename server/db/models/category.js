@@ -1,3 +1,5 @@
+'use strict';
+
 const Sequelize = require('sequelize');
 const db = require('../db');
 
@@ -8,6 +10,9 @@ const Category = db.define('category', {
     validate: {
       notEmpty: true
     }
+  },
+  productId: {
+    type: Sequelize.INTEGER
   }
 });
 

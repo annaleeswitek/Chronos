@@ -1,12 +1,14 @@
 'use strict';
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap'; 
+import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 
 import { editProduct, fetchOneProduct } from '../store';
 
+/* ---- Component ---- */
 class EditProduct extends Component {
-  constructor(props){
+  constructor(){
     super();
     this.state = {
       title: '', 
@@ -21,10 +23,10 @@ class EditProduct extends Component {
   }
 
   componentDidMount(){
-    const pathname = this.props.location.pathname
-    const productId = pathname.slice(pathname.length - 1); 
-   
-    if(!this.props.product) this.props.fetchOneProduct(productId)
+    const pathname = this.props.location.pathname;
+    const productId = pathname.slice(pathname.length - 1);
+
+    if (!this.props.product) this.props.fetchOneProduct(productId);
   }
   handleChange(event){
     console.log('im hereeee')
@@ -39,7 +41,7 @@ class EditProduct extends Component {
     this.props.editProduct({ title, price, quantity, description, imgUrl, categories }, oldProduct); 
 
   }
-  
+
   render() {
     const { product } = this.props;
     const { title, price, quantity, description, imgUrl, categories } = this.state;
@@ -53,28 +55,28 @@ class EditProduct extends Component {
             <h5>
               <b>Name</b>
             </h5>
-            <FormControl name="title" type="text" placeholder="update product name" onChange={this.handleChange} value={title}/>
+            <FormControl name="title" type="text" placeholder="update product name" onChange={this.handleChange} value={title} />
           </ControlLabel>
           <ControlLabel className="col-xs-2 control-label">
             <h5>
               <b>Price</b>
             </h5>
-            <FormControl name="price" type="text" placeholder="update product price" onChange={this.handleChange} value={price}/>
+            <FormControl name="price" type="text" placeholder="update product price" onChange={this.handleChange} value={price} />
           </ControlLabel>
           </div>
-          
+
           <div className="quantityImg">
           <ControlLabel className="col-xs-2 control-label">
             <h5>
               <b>Quantity</b>
             </h5>
-            <FormControl name="quantity" type="text" placeholder="update product quantity" onChange={this.handleChange} value={quantity}/>
+            <FormControl name="quantity" type="text" placeholder="update product quantity" onChange={this.handleChange} value={quantity} />
           </ControlLabel>
           <ControlLabel className="col-xs-2 control-label">
             <h5>
               <b>Image</b>
             </h5>
-            <FormControl name="imgUrl" type="text" placeholder="update product image" onChange={this.handleChange} value={imgUrl}/>
+            <FormControl name="imgUrl" type="text" placeholder="update product image" onChange={this.handleChange} value={imgUrl} />
           </ControlLabel>
           </div>
           
@@ -86,18 +88,13 @@ class EditProduct extends Component {
             <ControlLabel className="col-xs-2 control-label"><h5><b>Description</b></h5>
               <FormControl value={description} className="desc" name="description" type="text"  componentClass="textarea" placeholder="product description" onChange={this.handleChange}/>
             </ControlLabel>
-            
-           
             </div>
             <Button type="submit" className="addAndEditButton" onClick={this.handleSubmit}>Add Product to Catalog</Button>
         </FormGroup>
       </div>
     );
   }
-
-
 }
-
 
 /* ---- Container ---- */
 const mapState = state => ({product: state.product});
@@ -114,7 +111,7 @@ const mapDispatch = dispatch => ({
     newProduct.id = oldProduct.id;
     const action = editProduct(newProduct);
     dispatch(action);
-  }, 
+  },
   fetchOneProduct: productId => {
     const thunkAction = fetchOneProduct(productId);
     dispatch(thunkAction);

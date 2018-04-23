@@ -15,7 +15,7 @@ class AllCategories extends Component {
     const { categories } = this.props;
     return (
       <div id="allCategories">
-      {
+        {
           categories.map((category) => (
             <div key={category.id}>
               <Link to={`/categories/${category.id}`}>{category.name}</Link>
@@ -26,7 +26,6 @@ class AllCategories extends Component {
     );
   }
 }
-
 
 /* ---- Container ---- */
 const mapState = state => ({categories: state.categories});

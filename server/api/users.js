@@ -1,3 +1,5 @@
+'use strict';
+
 const router = require('express').Router();
 const {User, Order} = require('../db/models');
 module.exports = router;
@@ -13,9 +15,8 @@ router.get('/', (req, res, next) => {
     .catch(next);
 });
 
-//getting order history
-router.get('/:userId/order-history', (req, res, next) => {
-  Order.findAll({where: { userId: req.params.userId}})
-    .then(orders => res.json(orders))
-    .catch(next)
+router.get('/:userId', (req, res, next) => {
+  User.findById(req.params.userId)
+  .then(user => res.json(user))
+  .catch(next);
 })

@@ -1,12 +1,14 @@
+'use strict';
+
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+
 import { logout } from '../store';
-import { AllCategories, UserDropdown } from './index';
+import { AllCategories, UserDropdown, Searchbar } from './index';
 
 /* ---- Component ---- */
-
 class Navbar extends Component {
   constructor() {
     super();
@@ -27,13 +29,19 @@ class Navbar extends Component {
     return (
       <div id="navBarAll">
         <Link to="/" id="navBarName">
+        <div id="chronosName">
           <h1>Chronos</h1>
+          </div>
         </Link>
+          <span id="navBarCart">
+          <Link to="/cart">🛒</Link>
+        </span>
+          <Searchbar />
         <nav id="navBar" onMouseLeave={this.showCategories}>
           {isLoggedIn ? (
             <div>
               {/* The navbar will show these links after you log in */}
-              <Link to="/home">Home</Link>
+              <Link to="/home">home</Link>
               <a href="#" onClick={handleClick}>
                 Logout
               </a>
@@ -42,13 +50,13 @@ class Navbar extends Component {
           ) : (
             <div>
               {/* The navbar will show these links before you log in */}
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Sign Up</Link>
+              <Link to="/login">login</Link>
+              <Link to="/signup">sign up</Link>
             </div>
           )}
           <div id="alwaysShow">
             <Link to="/products" onMouseOver={this.showCategories}>
-              Catalog
+              catalog
             </Link>
             <div><UserDropdown /></div>
             <div id="categoriesInNav">

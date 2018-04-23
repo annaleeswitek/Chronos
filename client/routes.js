@@ -1,8 +1,10 @@
+'use strict';
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Login, Signup, UserHome } from './components';
+import { Login, Signup, UserHome, Homepage } from './components';
 import { me } from './store';
 
 import AllCategoriesContainer from './components/AllCategories.jsx';
@@ -23,6 +25,7 @@ class Routes extends Component {
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
+        <Route exact path="/" component={Homepage} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route exact path="/categories" component={AllCategoriesContainer} />
@@ -55,8 +58,6 @@ const mapDispatch = dispatch => ({
   }
 });
 
-// The `withRouter` wrapper makes sure that updates are not blocked
-// when the url changes
 export default withRouter(connect(mapState, mapDispatch)(Routes));
 
 /* ---- Prop Types ---- */
