@@ -6,7 +6,7 @@ import { Button, FormGroup, FormControl } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import { EditProduct } from './index';
-import { fetchOneProduct, addToCart } from '../store';
+import { fetchOneProduct, addToCart, removeFromCart } from '../store';
 
 /* ---- Component ---- */
 class SingleProduct extends Component {
@@ -31,7 +31,7 @@ class SingleProduct extends Component {
   }
 
   render(){
-    const { user, product, addToCart } = this.props;
+    const { user, product, addToCart, removeFromCart } = this.props;
     const { quantity, disabled } = this.state;
     const options = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
    
@@ -52,7 +52,8 @@ class SingleProduct extends Component {
                   <FormControl type="text" value={quantity} name="quantity" componentClass="select" onChange={this.onQuantityChange}>
                    { options.map(option => <option key={option} value={option}>{option}</option>)}
                   </FormControl>
-                  <Button onClick={addToCart.bind(this, product, quantity)} disabled={disabled}>Add To Cart</Button>
+                  <span><Button id="addToCartBtn" onClick={addToCart.bind(this, product, quantity)} disabled={disabled}>Add To Cart</Button></span>
+                  <span><Button id="removeFromCartBtn" onClick={removeFromCart.bind(this, product, quantity)}>Remove From Cart</Button></span>
                   <Link to='/cart'>Go To Checkout</Link>
 
                 </FormGroup>
@@ -87,6 +88,12 @@ const mapDispatch = dispatch => ({
     event.preventDefault();
     product.quantity = quantity;
     dispatch(addToCart(product));
+  }, 
+  removeFromCart(product, quantity, event){
+    console.log('removing  quantity: ', quantity)
+    event.preventDefault();
+    product.quantityToRemove = quantity;
+    dispatch(removeFromCart(product));
   }
 });
 

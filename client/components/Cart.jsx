@@ -22,8 +22,7 @@ class Cart extends Component {
 
   render () {
     const { productsInCart } = this.props;
-
-
+  
     return (
       <div id="cart">
         <h2> YOUR CART </h2>
@@ -34,6 +33,7 @@ class Cart extends Component {
               <img id="shrink" src={product.imgUrl} />
               <h5>{product.title}</h5>
               <h5>$ {product.price}</h5>
+              <h1>{product.lineItem.quantity}</h1>
             </Link>
           </Col>
         ))
