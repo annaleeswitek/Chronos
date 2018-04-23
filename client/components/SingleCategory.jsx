@@ -23,11 +23,11 @@ class SingleCategory extends Component {
 
   render () {
     const { selectedCategory } = this.props;
-    const products = selectedCategory.products;
     const productArr = this.props.selectedCategory.products;
     console.log('productArr', productArr);
     return (
       <div className="container" id="allProductsView">
+        <div id="buffer" />
         <Grid id="products">
           <Row className="show-grid">
             { selectedCategory
@@ -46,7 +46,6 @@ class SingleCategory extends Component {
                       </Link>
                     </Col>
                   ))
-                }
             }
           </Row>
         </Grid>

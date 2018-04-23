@@ -245,3 +245,7 @@ textarea {
 #category-title {
   background-image: url('./images/concrete_seamless.png');
 }
+
+#buffer {
+  height: 100px;
+}
