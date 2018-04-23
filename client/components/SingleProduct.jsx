@@ -2,20 +2,39 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Button, FormGroup, FormControl } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import { EditProduct } from './index';
-import { fetchOneProduct } from '../store';
+import { fetchOneProduct, addToCart } from '../store';
 
 /* ---- Component ---- */
 class SingleProduct extends Component {
+  constructor(){
+    super();
+    this.state = {
+      quantity: 0, 
+      disabled: true
+    };
+    this.onQuantityChange = this.onQuantityChange.bind(this);
+  }
 
   componentDidMount(){
     this.props.fetchOneProduct(this.props.match.params.productId);
   }
 
-  render(){
-  const { user, product } = this.props;
+  onQuantityChange(event){
+    console.log('event in on quant change: ', event.target.value); 
+    if(event.target.value) this.setState({ quantity: event.target.value, disabled: false })
+    else this.setState({disabled: true })
+    
+  }
 
+  render(){
+    const { user, product, addToCart } = this.props;
+    const { quantity, disabled } = this.state;
+    const options = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    console.log('state quantity: ', quantity);
     return (
       <div className="product">
         { product.id
@@ -23,12 +42,21 @@ class SingleProduct extends Component {
               <div id="allButDesc">
                 <h3>{ product.title }</h3>
                 <img src={ product.imgUrl } />
-                <h4>${ product.price }</h4>
-                <a href="#">Add To Cart</a>
+                
+                
               </div>
               <div id="description">
                 <h4>{ product.description }</h4>
+                <h4>${ product.price }</h4>
+                <FormGroup>
+                  <FormControl type="text" value={quantity} name="quantity" componentClass="select" onChange={this.onQuantityChange}>
+                   { options.map(option => <option key={option} value={option}>{option}</option>)}
+                  </FormControl>
+                  <Button onClick={addToCart.bind(this, product, quantity)} disabled={disabled}>Add To Cart</Button>
+                  <Link to='/cart'>Go To Checkout</Link>
 
+                </FormGroup>
+                
               </div>
             </section>
           : <h2>Product Not Found</h2>
@@ -47,13 +75,18 @@ class SingleProduct extends Component {
 /* ---- Container ---- */
 const mapState = state => ({
   product: state.product,
-  user: state.user
+  user: state.user, 
+  cart: state.cart
 });
 
 const mapDispatch = dispatch => ({
   fetchOneProduct(productId) {
-    const thunkAction = fetchOneProduct(productId);
-    dispatch(thunkAction);
+    dispatch(fetchOneProduct(productId));
+  }, 
+  addToCart(product, quantity, event){
+    event.preventDefault();
+    product.quantity = quantity;
+    dispatch(addToCart(product));
   }
 });
 

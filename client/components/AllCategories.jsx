@@ -33,6 +33,7 @@ const mapState = state => ({categories: state.categories});
 const mapDispatch = dispatch => ({
   loadCategories() {
     dispatch(loadCategories());
-}});
+  }
+});
 
 export default connect(mapState, mapDispatch)(AllCategories);

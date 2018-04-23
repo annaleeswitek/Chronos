@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { logout } from '../store';
-import { AllCategories, Searchbar } from './index';
+import { AllCategories, UserDropdown } from './index';
 
 /* ---- Component ---- */
 class Navbar extends Component {
@@ -45,6 +45,7 @@ class Navbar extends Component {
               <a href="#" onClick={handleClick}>
                 Logout
               </a>
+              
             </div>
           ) : (
             <div>
@@ -57,6 +58,7 @@ class Navbar extends Component {
             <Link to="/products" onMouseOver={this.showCategories}>
               catalog
             </Link>
+            <div><UserDropdown /></div>
             <div id="categoriesInNav">
               {this.state.showCategories && <AllCategories />}
             </div>

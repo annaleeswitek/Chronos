@@ -11,6 +11,7 @@ import AllCategoriesContainer from './components/AllCategories.jsx';
 import AllProductsContainer from './components/AllProducts.jsx';
 import SingleProductContainer from './components/SingleProduct.jsx';
 import SingleCategoryContainer from './components/SingleCategory.jsx';
+import CartContainer from './components/Cart.jsx';
 
 /* ---- Component ---- */
 class Routes extends Component {
@@ -31,6 +32,7 @@ class Routes extends Component {
         <Route path="/products/:productId" component={SingleProductContainer} />
         <Route exact path="/categories/:categoryId" component={SingleCategoryContainer} />
         <Route exact path="/products" component={AllProductsContainer} />
+        <Route exact path="/cart" component={CartContainer} />
         {/* Routes placed here are only available after logging in */}
         {
           isLoggedIn && <Route path="/home" component={UserHome} />

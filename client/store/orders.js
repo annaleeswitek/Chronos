@@ -1,10 +1,29 @@
-'use strict';
-
 import axios from 'axios';
 
 /* ---- Action Types ---- */
-const GET_ORDERS = 'GET_ORDERS';
-const NEW_ORDER = 'NEW_ORDER';
-const UPDATE_ORDER = 'UPDATE_ORDER';
+const GET_ORDER_HISTORY = 'GET_ORDER_HISTORY';
 
-// fetch, update, new
+/* ---- Action Creators ---- */
+const getOrderHistory = orderHistory => ({ type: GET_ORDER_HISTORY, orderHistory });
+
+/* ---- Thunks ---- */
+export const getOrders = user => {
+  dispatch => 
+    axios.get(`/api/users/${user.id}/order-history`)
+      .then(res => {
+        console.log('orders: ??', res.data);
+        return res.data;
+      })
+      .then(orders => dispatch(getOrderHistory(orders)))
+      .catch(err => console.error(err));
+}
+
+/* ---- Reducer ---- */
+export default function (state = [], action){
+  switch(action.type){
+    case GET_ORDER_HISTORY:
+      return action.orderHistory;
+    default:
+      return state;
+  }
+}

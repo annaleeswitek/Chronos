@@ -11,11 +11,12 @@ class EditProduct extends Component {
   constructor(){
     super();
     this.state = {
-      title: '',
-      price: '',
-      quantity: '',
-      description: '',
-      imgUrl: ''
+      title: '', 
+      price: '', 
+      quantity: '', 
+      description: '', 
+      imgUrl: '', 
+      categories: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,26 +29,27 @@ class EditProduct extends Component {
     if (!this.props.product) this.props.fetchOneProduct(productId);
   }
   handleChange(event){
+    console.log('im hereeee')
     this.setState({ [event.target.name]: event.target.value });
   }
 
   handleSubmit(event){
     event.preventDefault();
     const oldProduct = this.props.product;
-    const { title, price, quantity, description, imgUrl } = this.state;
-
-    this.props.editProduct({ title, price, quantity, description, imgUrl }, oldProduct);
+    const { title, price, quantity, description, imgUrl, categories } = this.state;
+    
+    this.props.editProduct({ title, price, quantity, description, imgUrl, categories }, oldProduct); 
 
   }
 
   render() {
     const { product } = this.props;
-    const { title, price, quantity, description, imgUrl } = this.state;
+    const { title, price, quantity, description, imgUrl, categories } = this.state;
     return (
       <div>
         <h3>Edit Product Information</h3>
-        <FormGroup id="editProductForm" onSubmit={this.handleSubmit}>
-
+        <FormGroup id="editProductForm">
+        
         <div className="titlePrice">
           <ControlLabel className="col-xs-2 control-label">
             <h5>
@@ -77,17 +79,17 @@ class EditProduct extends Component {
             <FormControl name="imgUrl" type="text" placeholder="update product image" onChange={this.handleChange} value={imgUrl} />
           </ControlLabel>
           </div>
+          
+          <div className="categoriesDesc">
+            <ControlLabel className="col-xs-2 control-label"><h5><b>Categories</b></h5>
+              <FormControl value={categories} name="categories" type="text" placeholder="product categories" onChange={this.handleChange}/>
+            </ControlLabel>
 
-          <div className="descSubmit">
-          <ControlLabel className="col-xs-2 control-label">
-            <h5>
-              <b>Description</b>
-            </h5>
-            <FormControl className="desc" componentClass="textarea" name="description" type="text" placeholder="update product description" onChange={this.handleChange} value={description} />
-          </ControlLabel>
-
-          <Button type="submit" >Add Changes</Button>
-          </div>
+            <ControlLabel className="col-xs-2 control-label"><h5><b>Description</b></h5>
+              <FormControl value={description} className="desc" name="description" type="text"  componentClass="textarea" placeholder="product description" onChange={this.handleChange}/>
+            </ControlLabel>
+            </div>
+            <Button type="submit" className="addAndEditButton" onClick={this.handleSubmit}>Add Product to Catalog</Button>
         </FormGroup>
       </div>
     );
@@ -99,6 +101,8 @@ const mapState = state => ({product: state.product});
 
 const mapDispatch = dispatch => ({
   editProduct: (newProduct, oldProduct) => {
+    console.log('old product: ', oldProduct);
+    console.log('new product: ', newProduct)
     newProduct.title = newProduct.title === '' ? oldProduct.title : newProduct.title;
     newProduct.price = newProduct.price === '' ? oldProduct.price : newProduct.price;
     newProduct.imgUrl = newProduct.imgUrl === '' ? oldProduct.imgUrl : newProduct.imgUrl;

@@ -11,11 +11,12 @@ class AddProduct extends Component {
   constructor(){
     super();
     this.state = {
-      title: '',
-      price: '',
-      quantity: '',
-      imgUrl: '',
-      description: '',
+      title: '', 
+      price: '', 
+      quantity: '', 
+      imgUrl: '', 
+      categories: '',
+      description: '', 
       disabled: true
     };
     this.handleChange = this.handleChange.bind(this);
@@ -23,8 +24,9 @@ class AddProduct extends Component {
   }
 
   handleChange(event){
-    if (event.target.name === 'title' && event.target.value !== '') this.setState({ [event.target.name]: event.target.value, disabled: false });
-    else this.setState({ [event.target.name]: event.target.value});
+    if(event.target.name === 'title' && event.target.value !== '') this.setState({ [event.target.name] : event.target.value, disabled: false })
+    else this.setState({ [event.target.name] : event.target.value});
+    
   }
 
   getValidationState() {
@@ -35,13 +37,14 @@ class AddProduct extends Component {
 
   handleSubmit(event){
     event.preventDefault();
-    let { title, price, quantity, imgUrl, description } = this.state;
-    this.props.addProduct({ title, price, quantity, imgUrl, description});
-    this.setState({ title: '', price: '', quantity: '', imgUrl: '', description: ''});
+    console.log('categories', this.state.categories);
+    let { title, price, quantity, imgUrl, categories, description } = this.state;
+    this.props.addProduct({ title, price, quantity, imgUrl, categories, description });
+    // this.setState({ title: '', price: '', quantity: '', imgUrl: '', categories: '', description: ''})
   }
 
   render() {
-    let { title, price, quantity, imgUrl, description, disabled } = this.state;
+    let { title, price, quantity, imgUrl, categories, description, disabled } = this.state;
     return (
       <div>
         <h3>Add New Product</h3>
@@ -53,7 +56,7 @@ class AddProduct extends Component {
             </ControlLabel>
 
             <ControlLabel className="col-xs-2 control-label"><h5><b>Price</b></h5>
-              <FormControl value={price} name="price" type="text"  placeholder="product price (required)" onChange={this.handleChange} />
+              <FormControl value={price} name="price" type="text"  placeholder="product price (required)" onChange={this.handleChange}/>
             </ControlLabel>
             </div>
             <div className="quantityImg">
@@ -66,13 +69,18 @@ class AddProduct extends Component {
               <FormControl value={imgUrl} name="imgUrl" type="text"  placeholder="product image" onChange={this.handleChange} />
             </ControlLabel>
             </div>
-            <div className="descSubmit">
+            <div className="categoriesDesc">
+            <ControlLabel className="col-xs-2 control-label"><h5><b>Categories</b></h5>
+              <FormControl value={categories} name="categories" type="text" placeholder="product categories" onChange={this.handleChange}/>
+            </ControlLabel>
+
             <ControlLabel className="col-xs-2 control-label"><h5><b>Description</b></h5>
               <FormControl value={description} className="desc" name="description" type="text"  componentClass="textarea" placeholder="product description" onChange={this.handleChange} />
             </ControlLabel>
-
-            <Button type="submit" id="addButton" disabled={disabled} onClick={this.handleSubmit}>Add Product to Catalog</Button>
+            
+           
             </div>
+            <Button type="submit" className="addAndEditButton" disabled={disabled} onClick={this.handleSubmit}>Add Product to Catalog</Button>
           </FormGroup>
       </div>
       );
@@ -86,12 +94,14 @@ const mapState = state => ({
 
 const mapDispatch = dispatch => ({
     addProduct(product) {
+        console.log('product in map dispatch add: ', product)
         const title = product.title;
         const price = product.price === '' ? 0.00 : product.price;
-        const description = product.description === '' ? null : product.description;
+        const description = product.description;
         const quantity = product.quantity  === '' ? 0 : product.quantity;
         const imgUrl = product.imgUrl;
-        const action = addProduct({title, price, description, quantity, imgUrl});
+        const categories = product.categories;
+        const action = addProduct({title, price, description, quantity, imgUrl, categories });
         dispatch(action);
     }
 });

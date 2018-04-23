@@ -25,9 +25,13 @@ export const fetchOneProduct = function (productId){
 };
 
 export const addProduct = function (product){
+    console.log('categories in thunk: ', product.categories);
     return function thunk(dispatch){
         axios.post('/api/products', product)
-        .then(res => res.data)
+        .then(res => {
+            console.log('results from backend in front: ', res.data)
+            return res.data;
+        })
         .then(newProduct => {
             console.log('new product', newProduct);
             const action = getOneProduct(newProduct);

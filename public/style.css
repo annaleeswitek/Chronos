@@ -151,7 +151,7 @@ textarea {
     margin-bottom: 1em
 }
 
-.descSubmit {
+.categoriesDesc {
     display: flex;
     flex-direction: column
 }
@@ -171,6 +171,7 @@ textarea {
     border-width: .01em;
 }
 
+<<<<<<< HEAD
 #navBarCart {
     font-size: 6vh;
     position: fixed;
@@ -181,6 +182,9 @@ textarea {
     margin-left: 75%;
     margin-top: 2%
 }
+=======
+
+>>>>>>> master
 /* login / signup */
 
 #allLoginSignupOptions {
@@ -230,6 +234,7 @@ textarea {
     display: flex;
 }
 
+<<<<<<< HEAD
 #home {
     display: flex;
     align-content: center;
@@ -241,3 +246,14 @@ textarea {
     align-content: center;
     margin: 2em 4.5em;
 }
+=======
+#cart {
+    display: flex;
+    padding-top: 10em
+}
+
+#shrink {
+    max-width: 250px;
+    max-height: 250px;
+}
+>>>>>>> master
