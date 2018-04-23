@@ -1,11 +1,7 @@
 'use strict';
 
 const router = require('express').Router();
-<<<<<<< HEAD
-const { Product } = require('../db/models');
-=======
 const { Product, Category } = require('../db/models');
->>>>>>> master
 
 module.exports = router;
 
@@ -19,11 +15,7 @@ router.get('/', (req, res, next) => {
 
 router.get('/:productId', (req, res, next) => {
   Product.findById(req.params.productId)
-<<<<<<< HEAD
-    .then(product => res.json(product))
-=======
     .then( product => res.json(product))
->>>>>>> master
     .catch(next);
 });
 
@@ -44,9 +36,6 @@ router.post('/', async (req, res, next) => {
     const productCategoryPromises = categoryNames.map(categoryName => {
         return Category.findOrCreate({where: { name: categoryName }})
     })
-<<<<<<< HEAD
-    .then(newProduct => res.json(newProduct))
-=======
     console.log('product category promises in back end: ', productCategoryPromises)
     // let productCategoriesArray = [];
     let categoriesArrays = await Promise.all(productCategoryPromises).catch(next);
@@ -63,7 +52,6 @@ router.post('/', async (req, res, next) => {
         imgUrl: req.body.imgUrl, 
         categories: productCategories
     })
->>>>>>> master
     .catch(next);
     res.json(newProduct);
 })

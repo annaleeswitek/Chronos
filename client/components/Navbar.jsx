@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { logout } from '../store';
-import { AllCategories, UserDropdown } from './index';
+import { AllCategories, UserDropdown, Searchbar } from './index';
 
 /* ---- Component ---- */
 class Navbar extends Component {

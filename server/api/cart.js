@@ -10,17 +10,9 @@ router.use( async (req, res, next) => {
     req.cart = await Order.findById(req.session.cartId).catch(next);
     // console.log('req.session in cart id', req.session.passport.user)
     //if user is logged in AND req.cart is defined (done when user hits /api/cart), then set the cart.userId = req.session.passport.user
-<<<<<<< HEAD
-    let isLoggedIn;
-    if (req.session.passport.user) isLoggedIn = req.session.passport.user;
-    if (req.cart && isLoggedIn) {
-      req.cart.userId = req.session.passport.user;
-      console.log('req.cart in cart id', req.cart);
-=======
     if (req.cart && req.user) {
       req.cart.userId = req.user.id;
       console.log('req.cart in cart id', req.cart)
->>>>>>> master
     }
 
     if (req.cart) return next();
