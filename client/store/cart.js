@@ -1,34 +1,29 @@
 import axios from 'axios';
 
 /* ---- Action Types ---- */
-const SET_PRODUCTS_IN_CART = 'SET_PRODUCTS_IN_CART';
+
+const GET_CART = 'GET_CART';
 
 /* ---- Action Creators --- */
-const setProductsInCart = productsInCart => {
-  return {
-    type: SET_PRODUCTS_IN_CART,
-    productsInCart
-  };
-};
 
-// const getCart = cart => {
-//   return {
-//     type: GET_CART,
-//     cart
-//   }
-// };
+const getCart = cart => {
+  return {
+    type: GET_CART,
+    cart
+  }
+};
 
 
 /* --- Thunks --- */
-export const loadProductsForCart = () => {
+export const loadCart = () => {
   return function thunk (dispatch) {
-    return axios.get('/api/cart/products')
+    return axios.get('/api/cart')
       .then(res => {
         console.log('res.data on line 19', res.data);
         return res.data;
       })
-      .then(theProducts => {
-        const action = setProductsInCart(theProducts);
+      .then(cart => {
+        const action = getCart(cart);
         console.log('the action:', action)
         dispatch(action);
       })
@@ -46,7 +41,7 @@ export const addToCart = (product) => {
       })
       //think this should be cart => dispatch(getCart(cart))??
 
-      .then(products => dispatch(setProductsInCart(products)))
+      .then(cart => dispatch(getCart(cart)))
       .catch(err => console.error(err))
   }
 }
@@ -54,9 +49,8 @@ export const addToCart = (product) => {
 /* --- Reducer --- */
 export default function (state = [], action) {
   switch (action.type) {
-    case SET_PRODUCTS_IN_CART:
-      console.log('these are the cart products in reducer: ', action.productsInCart)
-      return action.productsInCart;
+    case GET_CART:
+      return action.cart.products;
     default:
     return state;
   }

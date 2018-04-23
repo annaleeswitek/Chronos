@@ -1,4 +1,6 @@
 const Sequelize = require('sequelize');
+const LineItem = require('./lineItems');
+const Product = require('./product');
 const db = require('../db');
 
 const Order = db.define('order', {
@@ -6,10 +8,13 @@ const Order = db.define('order', {
     type: Sequelize.ENUM('cart', 'completed', 'pending', 'cancelled'),
     allowNull: false,
     defaultValue: 'cart'
+  }, 
+}, {
+  defaultScope: {
+    include: Product
   }
 });
 
 //pending means that the user has checked out but order has not been shipped
 
-Order.beforeCreate()
 module.exports = Order;
