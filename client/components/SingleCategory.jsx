@@ -31,7 +31,7 @@ class SingleCategory extends Component {
         <Grid id="products">
           <Row className="show-grid">
             { selectedCategory
-              ? <h1>{selectedCategory.name}</h1>
+              ? <h1 id="category-title">{selectedCategory.name}</h1>
               : null
             }
             {
