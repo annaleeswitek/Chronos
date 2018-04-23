@@ -32,7 +32,7 @@ class Cart extends Component {
           <div key={product.id} id="singleProductInCart">
               <h4>Item: {product.title}</h4>
           <h4>Quantity: {product.lineItems.quantity}</h4>
-              <h4>$ {product.price * product.lineItems.quantity}</h4>
+              <h4>$ {(product.price * product.lineItems.quantity).toFixed(2)}</h4>
           </div>
               </Link>
           </div>
@@ -42,6 +42,7 @@ class Cart extends Component {
         productsInCart && productsInCart
               .map(product => product.lineItems.price * product.lineItems.quantity)
               .reduce((acc, val) => { return acc + val; }, 0)
+              .toFixed(2)
               }
       </h4>
       <Link to="/checkout" >
