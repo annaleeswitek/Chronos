@@ -28,8 +28,6 @@ export class AllProducts extends Component {
                       <img id="productImg" src={product.imgUrl} />
                       <h3>{product.title}</h3>
                       <h4>$ {product.price}</h4>
-                      <span><Button id="addToCartBtn">Add</Button></span>
-                      <span><Button id="removeFromCartBtn">Remove</Button></span>
                       </Link>
                     </Col>
                   ))

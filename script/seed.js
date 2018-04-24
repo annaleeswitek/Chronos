@@ -1,7 +1,7 @@
 'use strict';
 
 const db = require('../server/db');
-const { User, Product, Category } = require('../server/db/models');
+const { User, Product, Category, ProductCategory } = require('../server/db/models');
 
 async function seed () {
   await db.sync({ force: true });
@@ -98,15 +98,12 @@ async function seed () {
   const categoriesCatalog = [
     {
       name: 'nostalgia',
-      productId: 1
     },
     {
       name: 'future',
-      productId: 2
     },
     {
       name: 'renaissance',
-      productId: 2
     }
   ];
 
@@ -154,6 +151,40 @@ async function seed () {
 
   console.log(`seeded ${users.length} users`);
   console.log(`seeded successfully`);
+
+  const productCats = [
+    {
+      productId: 1,
+      categoryId: 1
+    }, {
+      productId: 2, 
+      categoryId: 2
+    }, {
+      productId: 3, 
+      categoryId: 3
+    }, {
+      productId: 4, 
+      categoryId: 3
+    }, {
+      productId: 5, 
+      categoryId: 2
+    }, {
+      productId: 6, 
+      categoryId: 1
+    },
+    {
+      productId: 7, 
+      categoryId: 1
+    },
+    {
+      productId: 8, 
+      categoryId: 3
+    }
+  ];
+
+  const productCategories = await Promise.all(
+    productCats.map(pc => ProductCategory.create(pc))
+  );
 }
 
 seed()

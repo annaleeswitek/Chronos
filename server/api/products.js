@@ -29,21 +29,16 @@ router.get('/:productId', (req, res, next) => {
 // });
 
 router.post('/', async (req, res, next) => {
-    console.log('req.body.categories', req.body.categories);
     const categoryNames = req.body.categories.split(', ');
-    console.log('categoryNames', categoryNames)
     //create new product
     let newProduct = await Product.create(req.body).catch(next);
-    //create or find categor(y)(ies) 
-    //the following returns an array of arrays [[category, bool], [category, bool]...[category, bool]]
+    //create or find categor(y)(ies)  
     const categoryPromiseArrays = categoryNames.map(async categoryName => await Category.findOrCreate({ 
         where: { name: categoryName }
-    }).catch(next))
-    console.log('category promise arrays: ', categoryPromiseArrays);
+    }).catch(next));
+    //the following returns an array of arrays [[category, bool], [category, bool]...[category, bool]]
     const categoryArrays = await Promise.all(categoryPromiseArrays);
-    console.log('category arrays: ', categoryArrays);
     const categories = categoryArrays.map(categoryArray => categoryArray[0]);
-    console.log('categories in backend: ', categories)
     //create ProductCategory instance
     if (categories) categories.map(async category => 
         await ProductCategory.create({
@@ -51,17 +46,30 @@ router.post('/', async (req, res, next) => {
              categoryId: category.id 
             })
             .catch(next));
-   
     res.json(newProduct);
 })
 
 // editing product - admin
-router.put('/:productId', (req, res, next) => {
-    Product.update(req.body, {
+router.put('/:productId', async (req, res, next) => {
+    const categoryNames = req.body.categories.split(', ');
+    const categoryPromiseArrays = categoryNames.map(async categoryName => await Category.findOrCreate({ 
+        where: { name: categoryName }
+    }).catch(next));
+    const categoryArrays = await Promise.all(categoryPromiseArrays);
+    const categories = categoryArrays.map(categoryArray => categoryArray[0]);
+    const newProduct = await Product.update(req.body, {
         where: {id: req.params.productId},
         returning: true,
         plain: true
     })
-    .then(([numOfAffected, updatedProduct]) => res.json(updatedProduct))
     .catch(next);
+
+    if (categories) categories.map(async category => 
+        await ProductCategory.create({
+             productId: newProduct.id, 
+             categoryId: category.id 
+            })
+            .catch(next));
+    res.json(newProduct);
+    
 });

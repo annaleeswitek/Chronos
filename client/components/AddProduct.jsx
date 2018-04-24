@@ -56,7 +56,7 @@ class AddProduct extends Component {
             </ControlLabel>
 
             <ControlLabel className="col-xs-2 control-label"><h5><b>Price</b></h5>
-              <FormControl value={price} name="price" type="text"  placeholder="product price (required)" onChange={this.handleChange}/>
+              <FormControl value={price} name="price" type="text"  placeholder="product price" onChange={this.handleChange}/>
             </ControlLabel>
             </div>
             <div className="quantityImg">
@@ -71,7 +71,8 @@ class AddProduct extends Component {
             </div>
             <div className="categoriesDesc">
             <ControlLabel className="col-xs-2 control-label"><h5><b>Categories</b></h5>
-              <FormControl value={categories} name="categories" type="text" placeholder="product categories" onChange={this.handleChange}/>
+              <FormControl value={categories} name="categories" type="text" placeholder="product categories (required)" onChange={this.handleChange}/>
+              { this.state.disabled && <h5 id="warningName">Please enter a category</h5>}
             </ControlLabel>
 
             <ControlLabel className="col-xs-2 control-label"><h5><b>Description</b></h5>
