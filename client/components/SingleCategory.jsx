@@ -1,7 +1,9 @@
 'use strict';
 
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Grid, Row, Col, Button } from 'react-bootstrap';
 
 import { loadOneCategory } from '../store';
 
@@ -21,25 +23,32 @@ class SingleCategory extends Component {
 
   render () {
     const { selectedCategory } = this.props;
-    const products = selectedCategory.products;
-    const productArr = this.props.selectedCategory.product;
-
+    const productArr = this.props.selectedCategory.products;
+    console.log('productArr', productArr);
     return (
-      <div>
-        { selectedCategory
-          ? <h1>{selectedCategory.name}</h1>
-          : null
-        }
-        {
-          productArr && productArr.map(product => (
-          <div key={product.id}>
-            <section className="product">
-              <div>Product</div>
-              <img src={product.imgUrl} />
-            </section>
-          </div>))
-        }
-
+      <div className="container" id="allProductsView">
+        <div id="buffer" />
+        <Grid id="products">
+          <Row className="show-grid">
+            { selectedCategory
+              ? <h1 id="category-title">{selectedCategory.name}</h1>
+              : null
+            }
+            {
+              productArr && productArr.map((product) => (
+                    <Col sm={10} md={4}  key={product.id} id="singleProduct">
+                      <Link to={`/products/${product.id}`}>
+                      <img id="productImg" src={product.imgUrl} />
+                      <h3>{product.title}</h3>
+                      <h4>$ {product.price}</h4>
+                      <span><Button id="addToCartBtn">Add</Button></span>
+                      <span><Button id="removeFromCartBtn">Remove</Button></span>
+                      </Link>
+                    </Col>
+                  ))
+            }
+          </Row>
+        </Grid>
       </div>
     );
   }

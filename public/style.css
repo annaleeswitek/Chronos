@@ -241,3 +241,11 @@ textarea {
     align-content: center;
     margin: 2em 4.5em;
 }
+
+#category-title {
+  background-image: url('./images/concrete_seamless.png');
+}
+
+#buffer {
+  height: 100px;
+}
