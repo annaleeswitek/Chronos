@@ -4,14 +4,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Login, Signup, UserHome, Homepage } from './components';
+import { Cart, AllCategories, SingleCategory, Homepage, Login, Signup, UserHome, AllProducts, SingleProduct } from './components';
 import { me } from './store';
-
-import AllCategoriesContainer from './components/AllCategories.jsx';
-import AllProductsContainer from './components/AllProducts.jsx';
-import SingleProductContainer from './components/SingleProduct.jsx';
-import SingleCategoryContainer from './components/SingleCategory.jsx';
-import CartContainer from './components/Cart.jsx';
 
 /* ---- Component ---- */
 class Routes extends Component {
@@ -28,11 +22,12 @@ class Routes extends Component {
         <Route exact path="/" component={Homepage} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route exact path="/categories" component={AllCategoriesContainer} />
-        <Route path="/products/:productId" component={SingleProductContainer} />
-        <Route exact path="/categories/:categoryId" component={SingleCategoryContainer} />
-        <Route exact path="/products" component={AllProductsContainer} />
-        <Route exact path="/cart" component={CartContainer} />
+        <Route exact path="/products" component={AllProducts} />
+        <Route path="/products/:productId" component={SingleProduct} />
+        <Route exact path="/categories" component={AllCategories} />
+        <Route path="/categories/:categoryId" component={SingleCategory} />
+        <Route path="/cart" component={Cart} />
+        <Route path="/checkout" component={Checkout} />>
         {/* Routes placed here are only available after logging in */}
         {
           isLoggedIn && <Route path="/home" component={UserHome} />
