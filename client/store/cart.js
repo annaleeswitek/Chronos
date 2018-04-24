@@ -18,15 +18,8 @@ const getCart = cart => {
 export const loadCart = () => {
   return function thunk (dispatch) {
     return axios.get('/api/cart')
-      .then(res => {
-        console.log('res.data on line 19', res.data);
-        return res.data;
-      })
-      .then(cart => {
-        const action = getCart(cart);
-        console.log('the action:', action)
-        dispatch(action);
-      })
+      .then(res => res.data)
+      .then(cart => dispatch(getCart(cart)))
       .catch(err => console.error(err));
   };
 };
@@ -34,9 +27,18 @@ export const loadCart = () => {
 export const addToCart = (product) => {
   return function thunk (dispatch) {
     return axios.post(`/api/cart/add-to-cart/products/${product.id}`, product)
-      .then(res => res.data)
+      .then(res =>  res.data)
       .then(cart => dispatch(getCart(cart)))
       .catch(err => console.error(err))
+  }
+}
+
+export const removeFromCart = (product) => {
+  return function thunk (dispatch) {
+    return axios.post(`/api/cart/remove-from-cart/products/${product.id}`, product)
+      .then(res => res.data)
+      .then(cart => dispatch(getCart(cart)))
+      .catch(err => console.error(err));
   }
 }
 

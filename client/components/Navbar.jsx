@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { logout } from '../store';
-import { AllCategories, UserDropdown, Searchbar } from './index';
+import { logout, loadCart } from '../store';
+import { AllCategories, Searchbar } from './index';
 
 /* ---- Component ---- */
 class Navbar extends Component {
@@ -18,14 +18,20 @@ class Navbar extends Component {
     this.showCategories = this.showCategories.bind(this);
   }
 
+  componentDidMount(){
+    this.props.loadCart();
+  }
+
   showCategories() {
     this.setState({ showCategories: !this.state.showCategories });
   }
 
   render() {
-    const { handleClick, isLoggedIn } = this.props;
+    const { handleClick, isLoggedIn, productsInCart } = this.props;
     console.log('this.props in Navbar:', this.props);
-
+    const productQuantity = 
+      productsInCart.length && productsInCart.map(product => product.lineItem.quantity)
+                                            .reduce((acc, val) => (acc + val), 0);
     return (
       <div id="navBarAll">
         <Link to="/" id="navBarName">
@@ -34,7 +40,7 @@ class Navbar extends Component {
           </div>
         </Link>
           <span id="navBarCart">
-          <Link to="/cart">🛒</Link>
+          <Link to="/cart">🛒 {productQuantity}</Link>
         </span>
           <Searchbar />
         <nav id="navBar" onMouseLeave={this.showCategories}>
@@ -58,7 +64,6 @@ class Navbar extends Component {
             <Link to="/products" onMouseOver={this.showCategories}>
               catalog
             </Link>
-            <div><UserDropdown /></div>
             <div id="categoriesInNav">
               {this.state.showCategories && <AllCategories />}
             </div>
@@ -72,12 +77,17 @@ class Navbar extends Component {
 /* ---- Container ---- */
 const mapState = state => ({
   isLoggedIn: !!state.user.id,
-  categories: state.categories
+  categories: state.categories, 
+  productsInCart: state.cart
 });
 
 const mapDispatch = dispatch => ({
   handleClick() {
     dispatch(logout());
+  }, 
+  loadCart() {
+    console.log('loading cart in navbar')
+    dispatch(loadCart());
   }
 });
 
