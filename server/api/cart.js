@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Order, Product, LineItems } = require('../db/models');
+const { Order, Product, LineItem } = require('../db/models');
 
 module.exports = router;
 
@@ -28,16 +28,30 @@ router.get('/', (req, res, next) => {
 //     .catch(next);
 // });
 
+// add to cart
 router.post('/add-to-cart/products/:productId', async (req, res, next) => {
+  const quantityToAdd = +req.body.quantityToAdd;
   const newProduct = await Product.findById(req.params.productId).catch(next);
-  const [lineItem]= await LineItems.findOrCreate({ 
+  const [lineItem, wasCreated]= await LineItem.findOrCreate({ 
     where: { productId: req.params.productId, orderId: req.cart.id },  
-    defaults: { quantity: req.body.quantity, price: newProduct.price }
+    defaults: { quantity: req.body.quantityToAdd, price: newProduct.price }
   });
-  lineItem.quantity = req.body.quantity;
+  if (!wasCreated) lineItem.quantity += quantityToAdd;
   await lineItem.save();
   await req.cart.reload();
   
   res.json(req.cart);
 
+})
+
+// remove from cart
+router.post('/remove-from-cart/products/:productId', async (req, res, next) => {
+  const quantityToRemove = +req.body.quantityToRemove;
+  const lineItem = await LineItem.findOne({ where: { productId: req.params.productId, orderId: req.cart.id }});
+  const currentQuantity = +lineItem.quantity;
+  const newQuantity = currentQuantity - quantityToRemove;
+  const newPrice = newQuantity*req.body.price;
+  await lineItem.update({ quantity: newQuantity, price: newPrice});
+  if (lineItem.quantity <= 0) await lineItem.destroy();
+  res.json(req.cart);
 })
