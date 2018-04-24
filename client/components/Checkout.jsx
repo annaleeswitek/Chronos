@@ -24,13 +24,12 @@ export default class Checkout extends Component {
   render() {
     console.log('window', window);
     return (
-      <div>hello from checkout</div>
+      <StripeProvider stripe={this.state.stripe}>
+        <Elements>
+          <CheckoutForm />
+        </Elements>
+      </StripeProvider>
     );
   }
 }
 
-// <StripeProvider stripe={this.state.stripe}>
-//         <Elements>
-//           <CheckoutForm />
-//         </Elements>
-//       </StripeProvider>
