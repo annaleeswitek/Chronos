@@ -34,9 +34,13 @@ router.post('/add-to-cart/products/:productId', async (req, res, next) => {
   const newProduct = await Product.findById(req.params.productId).catch(next);
   const [lineItem, wasCreated]= await LineItem.findOrCreate({ 
     where: { productId: req.params.productId, orderId: req.cart.id },  
+    //these defaults only apply if the line item is being created
     defaults: { quantity: req.body.quantityToAdd, price: newProduct.price }
   });
+  //if line item was found rather than created, then the quantity needs to be incremented
+  //price on line item table is equal to the product.price -- NOT lineItem.quantity * newProduct.price
   if (!wasCreated) lineItem.quantity += quantityToAdd;
+  
   await lineItem.save();
   await req.cart.reload();
   

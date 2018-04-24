@@ -14,13 +14,14 @@ const ProductCategory = require('./productCategory')
 
 Product.belongsToMany(Category, { through: ProductCategory });
 Category.belongsToMany(Product, { through: ProductCategory })
+Category.hasMany(ProductCategory); //sets .products on category --> allows us to map over category.products
 
 User.hasMany(Order);
 Order.belongsTo(User);
 
 Product.belongsToMany(Order, { through: LineItem });
 Order.belongsToMany(Product, { through: LineItem });
-Order.hasMany(LineItem)
+Order.hasMany(LineItem) //sets .products on order --> allows us to map over req.cart.products
 
 module.exports = {
   User,

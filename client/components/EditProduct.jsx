@@ -88,7 +88,7 @@ class EditProduct extends Component {
               <FormControl value={description} className="desc" name="description" type="text"  componentClass="textarea" placeholder="product description" onChange={this.handleChange}/>
             </ControlLabel>
             </div>
-            <Button type="submit" className="addAndEditButton" onClick={this.handleSubmit}>Add Product to Catalog</Button>
+            <Button type="submit" className="addAndEditButton" onClick={this.handleSubmit}>Add Changes</Button>
         </FormGroup>
       </div>
     );

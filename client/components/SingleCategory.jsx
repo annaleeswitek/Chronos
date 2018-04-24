@@ -21,13 +21,17 @@ class SingleCategory extends Component {
 
   render () {
     const { selectedCategory } = this.props;
-    const products = selectedCategory.products;
-    const productArr = this.props.selectedCategory.product;
+    let productArr = [];
+    let products = [];
+    if (selectedCategory) {
+      products = selectedCategory.products;
+      productArr = this.props.selectedCategory.product;
+    }
 
     return (
-      <div>
+      <div id="singleCategoryView">
         { selectedCategory
-          ? <h1>{selectedCategory.name}</h1>
+          ? <h1 id="singleCategoryHeader">{selectedCategory.name}</h1>
           : null
         }
         {

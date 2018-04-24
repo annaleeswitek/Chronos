@@ -49,7 +49,7 @@ class Navbar extends Component {
               {/* The navbar will show these links after you log in */}
               <Link to="/home">home</Link>
               <a href="#" onClick={handleClick}>
-                Logout
+                logout
               </a>
               
             </div>

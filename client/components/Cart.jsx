@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Grid, Row, Col, FormGroup, FormControl, Button } from 'react-bootstrap';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loadCart } from '../store';
+import { loadCart, addToCart, removeFromCart } from '../store';
 
 
 /* --- Component --- */
@@ -11,8 +11,10 @@ class Cart extends Component {
   constructor(){
     super();
     this.state = {
-      change: false
+      change: false, 
+      quantity: 0
     };
+    this.onQuantityChange = this.onQuantityChange.bind(this);
   }
 
   componentDidMount(){
@@ -20,10 +22,18 @@ class Cart extends Component {
 
   }
 
-  render () {
-    const { productsInCart } = this.props;
-    console.log('this.props in cart: ', this.props);
+  onQuantityChange(event){
+    
+    if(event.target.value) this.setState({ quantity: event.target.value, disabled: false })
+    else this.setState({disabled: true })
+    
+  }
 
+  render () {
+    const { productsInCart, addToCart, removeFromCart } = this.props;
+    const { quantity } = this.state;
+
+    const options = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     return (
       <div id="cart">
         <h2> YOUR CART </h2>
@@ -36,6 +46,13 @@ class Cart extends Component {
               <h5>$ {product.price}</h5>
               <h1>{ product.lineItem.quantity }</h1>
             </Link>
+            <FormGroup>
+              <FormControl type="text" value={quantity} name="quantity" componentClass="select" onChange={this.onQuantityChange}>
+                { options.map(option => <option key={option} value={option}>{option}</option>)}
+              </FormControl>
+              <span><Button id="addToCartBtn" onClick={addToCart.bind(this, product, quantity)}>Add {quantity}</Button></span>
+              <span><Button id="removeFromCartBtn" onClick={removeFromCart.bind(this, product, quantity)}>Remove {quantity}</Button></span>
+            </FormGroup>
           </Col>
         ))
       }
@@ -51,6 +68,16 @@ const mapState = state => ({productsInCart: state.cart});
 const mapDispatch = dispatch => ({
   loadCart() {
     dispatch(loadCart());
+  }, 
+  addToCart(product, quantity, event){
+    event.preventDefault();
+    product.quantityToAdd = quantity;
+    dispatch(addToCart(product));
+  }, 
+  removeFromCart(product, quantity, event){
+    event.preventDefault();
+    product.quantityToRemove = quantity;
+    dispatch(removeFromCart(product));
   }
 });
 

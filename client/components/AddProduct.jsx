@@ -24,14 +24,17 @@ class AddProduct extends Component {
   }
 
   handleChange(event){
-    if(event.target.name === 'title' && event.target.value !== '') this.setState({ [event.target.name] : event.target.value, disabled: false })
+    if (event.target.name === 'title' || event.target.name === 'categories'){
+     this.setState({ [event.target.name] : event.target.value, disabled: false })
+    }
     else this.setState({ [event.target.name] : event.target.value});
     
   }
 
   getValidationState() {
     let title = this.state.title;
-    if (title !== '') return 'success';
+    let categories = this.state.categories
+    if (title !== '' && categories !== '') return 'success';
     return 'error';
   }
 
@@ -40,7 +43,6 @@ class AddProduct extends Component {
     console.log('categories', this.state.categories);
     let { title, price, quantity, imgUrl, categories, description } = this.state;
     this.props.addProduct({ title, price, quantity, imgUrl, categories, description });
-    // this.setState({ title: '', price: '', quantity: '', imgUrl: '', categories: '', description: ''})
   }
 
   render() {
@@ -56,7 +58,7 @@ class AddProduct extends Component {
             </ControlLabel>
 
             <ControlLabel className="col-xs-2 control-label"><h5><b>Price</b></h5>
-              <FormControl value={price} name="price" type="text"  placeholder="product price (required)" onChange={this.handleChange}/>
+              <FormControl value={price} name="price" type="text"  placeholder="product price" onChange={this.handleChange}/>
             </ControlLabel>
             </div>
             <div className="quantityImg">
@@ -71,7 +73,8 @@ class AddProduct extends Component {
             </div>
             <div className="categoriesDesc">
             <ControlLabel className="col-xs-2 control-label"><h5><b>Categories</b></h5>
-              <FormControl value={categories} name="categories" type="text" placeholder="product categories" onChange={this.handleChange}/>
+              <FormControl value={categories} name="categories" type="text" placeholder="product categories (required)" onChange={this.handleChange}/>
+              { this.state.disabled && <h5 id="warningName">Please enter a category</h5>}
             </ControlLabel>
 
             <ControlLabel className="col-xs-2 control-label"><h5><b>Description</b></h5>
