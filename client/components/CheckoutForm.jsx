@@ -14,12 +14,14 @@ class CheckoutForm extends Component {
   render() {
     console.log('CHECKOUT FORM COMPONENT IN DA HOUSE!');
     return (
-      <form /* onSubmit={this.handleSubmit} */>
-        {/* input fields go here */}
-        <button type="submit">Confirm Order</button>
-      </form>
+      <div>HELLO FROM CHECKOUT FORM</div>
     );
   }
 }
 
 export default injectStripe(CheckoutForm);
+
+// <form /* onSubmit={this.handleSubmit} */>
+//         {/* input fields go here */}
+//         <button type="submit">Confirm Order</button>
+//       </form>
