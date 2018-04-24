@@ -253,3 +253,8 @@ textarea {
 #viewOrder {
     padding: 10em;
 }
+
+#shrink {
+    width: 30%;
+    height: 30%;
+}

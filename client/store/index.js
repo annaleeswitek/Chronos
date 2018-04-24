@@ -11,13 +11,13 @@ import cart from './cart';
 import orderHistory from './orders';
 
 
-const reducer = combineReducers({ user, 
-                                  products, 
-                                  product, 
-                                  categories, 
-                                  selectedCategory, 
-                                  cart, 
-                                  orderHistory 
+const reducer = combineReducers({ user,
+                                  products,
+                                  product,
+                                  categories,
+                                  selectedCategory,
+                                  cart,
+                                  orderHistory
                                 });
 
 const middleware = composeWithDevTools(applyMiddleware(

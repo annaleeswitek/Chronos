@@ -16,25 +16,29 @@ export class UserHome extends Component {
   console.log('user and orders', user, orders);
   return (
     <div>
-      {orders && orders.map(order => (
-        <div id="viewOrder">
-          <h2>
-            {order.status}
-          </h2>
+      {
+        orders && orders.map(order => (
+        <div id="viewOrder" key={order.id}>
+          <h3>
+            {`Your order status: ${order.status}`}
+          </h3>
           <ul>
-          {order.products.map(product => (
-            <li>
+          {
+            order.products.map(product => (
+             <li key={product.id}>
               {`Product: ${product.title}, Unit Price: ${product.price}, Quantity: ${product.lineItem.quantity}`}
-            </li>
-          ))}
-          </ul>
-        </div>
-      ))}
-      <h3>Welcome, {email}</h3>
-    </div>
-  );
+             </li>
+           ))
+          }
+           </ul>
+          </div>
+        ))
+        }
+        <h3>Welcome, {email}</h3>
+      </div>
+    );
+  }
 }
-};
 
 /* ---- Container ---- */
 const mapState = state => ({

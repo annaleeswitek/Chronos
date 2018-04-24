@@ -30,12 +30,3 @@ router.get('/:userId/order-history', (req, res, next) => {
   .catch(next);
 });
 
-// this route is for admins to see pending orders
-router.get('/:userId/order-history/pending', (req, res, next) => {
-  Order.findAll({ where: { userId: req.params.userId, status: 'pending' }})
-  .then(orders => {
-    console.log('this is the stuff: ', orders);
-    res.json(orders);
-  })
-  .catch(next);
-});

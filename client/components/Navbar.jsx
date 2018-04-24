@@ -27,7 +27,7 @@ class Navbar extends Component {
   }
 
   render() {
-    const { handleClick, isLoggedIn, productsInCart } = this.props;
+    const { handleClick, isLoggedIn, productsInCart, user } = this.props;
     console.log('this.props in Navbar:', this.props);
     const productQuantity =
       productsInCart.length && productsInCart.map(product => product.lineItem.quantity)
@@ -42,7 +42,7 @@ class Navbar extends Component {
           <span id="navBarCart">
           <Link to="/cart">🛒 {productQuantity}</Link>
         </span>
-        {isLoggedIn && <UserDropdown user={this.props.user} />}
+        {isLoggedIn && <UserDropdown user={user} />}
           <Searchbar />
         <nav id="navBar" onMouseLeave={this.showCategories}>
           {isLoggedIn ? (
@@ -50,7 +50,7 @@ class Navbar extends Component {
               {/* The navbar will show these links after you log in */}
               <Link to="/home">home</Link>
               <a href="#" onClick={handleClick}>
-                Logout
+                logout
               </a>
             </div>
           ) : (
@@ -68,6 +68,9 @@ class Navbar extends Component {
               {this.state.showCategories && <AllCategories />}
             </div>
           </div>
+          {isLoggedIn && user.isAdmin && (
+            <Link to={"/orders/pending-orders"}>pending orders</Link>
+          )}
         </nav>
       </div>
     );

@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Login, Signup, UserHome, Homepage, AllOrders } from './components';
+import { Login, Signup, UserHome, Homepage, PendingOrders } from './components';
 import { me } from './store';
 
 import AllCategoriesContainer from './components/AllCategories.jsx';
@@ -34,6 +34,10 @@ class Routes extends Component {
         <Route exact path="/products" component={AllProductsContainer} />
         <Route exact path="/cart" component={CartContainer} />
         <Route path={`/users/${user.id}/order-history`} component={UserHome} />
+        {
+          user.isAdmin &&
+          <Route path="/orders/pending-orders" component={PendingOrders} />
+        }
         {/* Routes placed here are only available after logging in */}
         {
           isLoggedIn &&
