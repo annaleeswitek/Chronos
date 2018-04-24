@@ -1,4 +1,6 @@
 export { default as Cart } from './Cart.jsx';
+export { default as Checkout } from './Checkout.jsx';
+export { default as CheckoutForm } from './CheckoutForm.jsx';
 export { default as AllCategories } from './AllCategories.jsx';
 export { default as SingleCategory } from './SingleCategory.jsx';
 export { default as AddProduct } from './AddProduct.jsx';

@@ -1,10 +1,11 @@
 'use strict';
 
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { withRouter, Route, Switch } from 'react-router-dom';
+import { StripeProvider } from 'react-stripe-elements';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Cart, AllCategories, SingleCategory, Homepage, Login, Signup, UserHome, AllProducts, SingleProduct } from './components';
+import { Cart, Checkout, AllCategories, SingleCategory, Homepage, Login, Signup, UserHome, AllProducts, SingleProduct } from './components';
 import { me } from './store';
 
 /* ---- Component ---- */
@@ -17,25 +18,27 @@ class Routes extends Component {
     const {isLoggedIn} = this.props;
 
     return (
-      <Switch>
-        {/* Routes placed here are available to all visitors */}
-        <Route exact path="/" component={Homepage} />
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
-        <Route exact path="/products" component={AllProducts} />
-        <Route path="/products/:productId" component={SingleProduct} />
-        <Route exact path="/categories" component={AllCategories} />
-        <Route path="/categories/:categoryId" component={SingleCategory} />
-        <Route path="/cart" component={Cart} />
-        <Route path="/checkout" component={Checkout} />>
-        {/* Routes placed here are only available after logging in */}
-        {
-          isLoggedIn && <Route path="/home" component={UserHome} />
+      <StripeProvider apiKey="pk_test_12345">
+        <Switch>
+          {/* Routes placed here are available to all visitors */}
+          <Route exact path="/" component={Homepage} />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
+          <Route exact path="/products" component={AllProducts} />
+          <Route path="/products/:productId" component={SingleProduct} />
+          <Route exact path="/categories" component={AllCategories} />
+          <Route path="/categories/:categoryId" component={SingleCategory} />
+          <Route path="/cart" component={Cart} />
+          <Route path="/checkout" component={Checkout} />
+          {/* Routes placed here are only available after logging in */}
+          {
+            isLoggedIn && <Route path="/home" component={UserHome} />
 
-        }
-        {/* Displays our Login component as a fallback */}
-        <Route component={Login} />
-      </Switch>
+          }
+          {/* Displays our Login component as a fallback */}
+          <Route component={Login} />
+        </Switch>
+      </StripeProvider>
     );
   }
 }
