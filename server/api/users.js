@@ -22,11 +22,20 @@ router.get('/:userId', (req, res, next) => {
 });
 
 router.get('/:userId/order-history', (req, res, next) => {
-  User.findOne({ where: { id: req.params.userId }}, {include: [{ model: Order }]})
-  .then(user => {
-    console.log('this is the stuff: ', user.orders)
-    res.json(user.orders)
+  Order.findAll({ where: { userId: req.params.userId }})
+  .then(orders => {
+    console.log('this is the stuff: ', orders);
+    res.json(orders);
   })
   .catch(next);
 });
 
+// this route is for admins to see pending orders
+router.get('/:userId/order-history/pending', (req, res, next) => {
+  Order.findAll({ where: { userId: req.params.userId, status: 'pending' }})
+  .then(orders => {
+    console.log('this is the stuff: ', orders);
+    res.json(orders);
+  })
+  .catch(next);
+});

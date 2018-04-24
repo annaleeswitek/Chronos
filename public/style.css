@@ -249,3 +249,7 @@ textarea {
 #buffer {
   height: 100px;
 }
+
+#viewOrder {
+    padding: 10em;
+}

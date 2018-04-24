@@ -34,3 +34,4 @@ export * from './products';
 export * from './singleProduct';
 export * from './user';
 export * from './cart';
+export * from './orders';
