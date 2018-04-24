@@ -33,7 +33,7 @@ class Routes extends Component {
         <Route exact path="/categories/:categoryId" component={SingleCategoryContainer} />
         <Route exact path="/products" component={AllProductsContainer} />
         <Route exact path="/cart" component={CartContainer} />
-        <Route exact path="/orders" component={AllOrders} />
+        <Route exact path="/order-history" component={AllOrders} />
         {/* Routes placed here are only available after logging in */}
         {
           isLoggedIn && <Route path="/home" component={UserHome} />

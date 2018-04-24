@@ -35,6 +35,7 @@ class Navbar extends Component {
           <span id="navBarCart">
           <Link to="/cart">🛒</Link>
         </span>
+        <Link to="/order-history" id="orderHistory">View Order History</Link>
           <Searchbar />
         <nav id="navBar" onMouseLeave={this.showCategories}>
           {isLoggedIn ? (

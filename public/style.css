@@ -181,6 +181,18 @@ textarea {
     margin-left: 75%;
     margin-top: 2%
 }
+
+#orderHistory {
+    font-size: 2vh;
+    position: fixed;
+    padding: 1em 1em;
+    border: dotted;
+    border-width: .01em;
+    background-color: rgba(245, 245, 245, 0.527);
+    margin-left: 80.5%;
+    margin-top: 3%
+}
+
 /* login / signup */
 
 #allLoginSignupOptions {
