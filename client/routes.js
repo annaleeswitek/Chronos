@@ -36,7 +36,7 @@ class Routes extends Component {
         <Route path={`/users/${user.id}/order-history`} component={UserHome} />
         {
           user.isAdmin &&
-          <Route path="/orders/pending-orders" component={PendingOrders} />
+          <Route path="/orders/order-history/pending" component={PendingOrders} />
         }
         {/* Routes placed here are only available after logging in */}
         {

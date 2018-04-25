@@ -17,6 +17,15 @@ export const getOrders = user => {
   };
 };
 
+export const getPendingOrders = () => {
+  return function thunk(dispatch) {
+    axios.get(`/api/orders/order-history/pending`)
+    .then(res => res.data)
+    .then(orders => dispatch(getOrderHistory(orders)))
+    .catch(err => console.error(err));
+  }
+}
+
 /* ---- Reducer ---- */
 export default function (state = [], action){
   switch (action.type){
