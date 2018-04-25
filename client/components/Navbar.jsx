@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { logout, loadCart } from '../store';
+import { logout, loadCart, me } from '../store';
 import { AllCategories, Searchbar } from './index';
 
 /* ---- Component ---- */
@@ -27,9 +27,9 @@ class Navbar extends Component {
   }
 
   render() {
-    const { handleClick, isLoggedIn, productsInCart } = this.props;
+    const { handleClick, isLoggedIn, productsInCart, user } = this.props;
     console.log('this.props in Navbar:', this.props);
-    const productQuantity = 
+    const productQuantity =
       productsInCart.length && productsInCart.map(product => product.lineItem.quantity)
                                             .reduce((acc, val) => (acc + val), 0);
     return (
@@ -42,6 +42,7 @@ class Navbar extends Component {
           <span id="navBarCart">
           <Link to="/cart">🛒 {productQuantity}</Link>
         </span>
+        {isLoggedIn && <UserDropdown user={user} />}
           <Searchbar />
         <nav id="navBar" onMouseLeave={this.showCategories}>
           {isLoggedIn ? (
@@ -49,9 +50,8 @@ class Navbar extends Component {
               {/* The navbar will show these links after you log in */}
               <Link to="/home">home</Link>
               <a href="#" onClick={handleClick}>
-                Logout
+                logout
               </a>
-              
             </div>
           ) : (
             <div>
@@ -68,6 +68,10 @@ class Navbar extends Component {
               {this.state.showCategories && <AllCategories />}
             </div>
           </div>
+           {/* The navbar will show these links only to logged in admin users */}
+          {isLoggedIn && user.isAdmin && (
+            <Link to={"/orders/pending-orders"}>pending orders</Link>
+          )}
         </nav>
       </div>
     );
@@ -78,7 +82,8 @@ class Navbar extends Component {
 const mapState = state => ({
   isLoggedIn: !!state.user.id,
   categories: state.categories, 
-  productsInCart: state.cart
+  productsInCart: state.cart,
+  user: state.user
 });
 
 const mapDispatch = dispatch => ({
@@ -88,6 +93,9 @@ const mapDispatch = dispatch => ({
   loadCart() {
     console.log('loading cart in navbar')
     dispatch(loadCart());
+  },
+  loadUser() {
+    dispatch(me());
   }
 });
 

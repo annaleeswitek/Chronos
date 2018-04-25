@@ -15,6 +15,14 @@ export const getOrders = user => {
       .catch(err => console.error(err));
 }
 
+export const getPendingOrders = () => {
+  dispatch => 
+    axios.get(`/api/orders/order-history/pending`)
+      .then(res => res.data)
+      .then(orders => dispatch(getOrderHistory(orders)))
+      .catch(err => console.error(err));
+}
+
 /* ---- Reducer ---- */
 export default function (state = [], action){
   switch(action.type){

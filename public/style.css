@@ -46,6 +46,7 @@ form div {
     display: inline-block;
 }
 
+
 /* navbar */
 
 #navBarAll {
@@ -87,6 +88,7 @@ form div {
     color: green
 }
 
+
 /* all products view */
 
 #allProductsView {
@@ -119,7 +121,6 @@ textarea {
 #addProductForm {
     display: flex;
 }
-
 
 #allProducts {
     align-self: center
@@ -181,6 +182,8 @@ textarea {
     margin-left: 75%;
     margin-top: 2%
 }
+
+
 /* login / signup */
 
 #allLoginSignupOptions {
@@ -243,9 +246,14 @@ textarea {
 }
 
 #category-title {
-  background-image: url('./images/concrete_seamless.png');
+    background-image: url('./images/concrete_seamless.png');
 }
 
 #buffer {
-  height: 100px;
+    height: 100px;
+}
+
+#shrink {
+    width: 30%;
+    height: 30%;
 }

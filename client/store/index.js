@@ -20,6 +20,7 @@ const reducer = combineReducers({ user,
                                   orderHistory 
                                 });
 
+
 const middleware = composeWithDevTools(applyMiddleware(
   thunkMiddleware,
   createLogger({collapsed: true})
