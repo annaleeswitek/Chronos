@@ -17,7 +17,6 @@ class Cart extends Component {
 
   componentDidMount(){
     this.props.loadCart();
-
   }
 
   render () {

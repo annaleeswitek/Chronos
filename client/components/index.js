@@ -6,3 +6,4 @@ export { default as Searchbar } from './Searchbar.jsx';
 export { default as UserHome } from './UserHome.jsx';
 export { Login, Signup } from './AuthForm.jsx';
 export { Homepage } from './Homepage.jsx';
+export { UserDropdown } from './UserDropdown.jsx';
