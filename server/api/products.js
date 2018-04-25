@@ -63,13 +63,13 @@ router.put('/:productId', async (req, res, next) => {
         plain: true
     })
     .catch(next);
-
-    if (categories) categories.map(async category => 
+   
+    if (newProduct) categories.map(async category => 
         await ProductCategory.create({
-             productId: newProduct.id, 
+             productId: newProduct[1].id, 
              categoryId: category.id 
             })
             .catch(next));
     res.json(newProduct);
-    
+
 });
