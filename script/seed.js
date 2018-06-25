@@ -146,6 +146,7 @@ async function seed () {
       googleId: 'blahblahblah',
       isAdmin: false
     }
+
   ];
 
   const users = await Promise.all(

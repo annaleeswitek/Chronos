@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, FormGroup, FormControl } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import { EditProduct } from './index';
 import { fetchOneProduct, addToCart, removeFromCart } from '../store';
@@ -19,6 +19,11 @@ class SingleProduct extends Component {
     this.onQuantityChange = this.onQuantityChange.bind(this);
   }
 
+  componentWillReceiveProps(nextProps){
+    if (nextProps.match.params.productId !== this.props.match.params.productId){
+      this.props.fetchOneProduct(nextProps.match.params.productId);
+    }
+  }
   componentDidMount(){
     this.props.fetchOneProduct(this.props.match.params.productId);
   }
@@ -96,4 +101,4 @@ const mapDispatch = dispatch => ({
   }
 });
 
-export default connect(mapState, mapDispatch)(SingleProduct);
+export default withRouter(connect(mapState, mapDispatch)(SingleProduct));

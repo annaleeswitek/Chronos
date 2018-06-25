@@ -32,22 +32,25 @@ router.post('/', async (req, res, next) => {
     const categoryArrays = await Promise.all(categoryPromiseArrays);
     const categories = categoryArrays.map(categoryArray => categoryArray[0]);
     //create ProductCategory instance
-    if (categories) categories.map(async category => 
-        await ProductCategory.create({
-             productId: newProduct.id, 
-             categoryId: category.id 
-            })
-            .catch(next));
+    if (categories) {
+        categories.map(category =>
+            ProductCategory.create({
+                productId: newProduct.id, 
+                categoryId: category.id
+                })
+                .catch(next));
+            }
     res.json(newProduct);
 });
 
-// editing product - admin
-router.put('/:productId', (req, res, next) => {
-    Product.update(req.body, {
-        where: {id: req.params.productId},
-        returning: true,
-        plain: true
-    })
-    .then(([numOfAffected, updatedProduct]) => res.json(updatedProduct))
-    .catch(next);
-});
+// // editing product - admin
+// router.put('/:productId', async (req, res, next) => {
+//     const [newProduct] = await Product.update(req.body, { where: { id: req.params.productId }, returning: true, plain: true})
+//     // Product.update(req.body, {
+//     //     where: {id: req.params.productId},
+//     //     returning: true,
+//     //     plain: true
+//     // })
+//     // .then(([numOfAffected, updatedProduct]) => res.json(updatedProduct))
+//     // .catch(next);
+// });
