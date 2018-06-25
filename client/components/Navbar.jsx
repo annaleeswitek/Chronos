@@ -56,7 +56,7 @@ class Navbar extends Component {
           ) : (
             <div>
               {/* The navbar will show these links before you log in */}
-              <Link to="/login">login</Link>
+              <Link to="/login">login here!</Link>
               <Link to="/signup">sign up</Link>
             </div>
           )}

@@ -24,8 +24,8 @@ router.post('/', async (req, res, next) => {
     const categoryNames = req.body.categories.split(', ');
     //create new product
     let newProduct = await Product.create(req.body).catch(next);
-    //create or find categor(y)(ies)  
-    const categoryPromiseArrays = categoryNames.map(async categoryName => await Category.findOrCreate({ 
+    //create or find categor(y)(ies)
+    const categoryPromiseArrays = categoryNames.map(async categoryName => await Category.findOrCreate({
         where: { name: categoryName }
     }).catch(next));
     //the following returns an array of arrays [[category, bool], [category, bool]...[category, bool]]
@@ -35,7 +35,7 @@ router.post('/', async (req, res, next) => {
     if (categories) {
         categories.map(category =>
             ProductCategory.create({
-                productId: newProduct.id, 
+                productId: newProduct.id,
                 categoryId: category.id
                 })
                 .catch(next));
