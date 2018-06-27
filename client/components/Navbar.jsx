@@ -36,7 +36,7 @@ class Navbar extends Component {
       <div id="navBarAll">
         <Link to="/" id="navBarName">
         <div id="chronosName">
-          <h1>Chronos</h1>
+          <h1>Chronos !!!</h1>
           </div>
         </Link>
           <span id="navBarCart">
