@@ -7,7 +7,7 @@ const request = require('supertest')
 const app = require('../index')
 const agent = request.agent(app)
 
-const { db, User, Order } = require('../db')
+const { db, User, Order, LineItem, Product } = require('../db')
 
 describe('Users Route:', () => {
 
@@ -62,20 +62,20 @@ describe('Users Route:', () => {
         expect(res.body.length).to.equal(2)
         expect(res.body[1].email).to.equal('the.doctor@who.com')
       })
-      
+
     })
   })
 
-  describe('GET /api/users/:userId', async () => {
+  describe('GET /api/users/:userId', () => {
     let user;
-    
+
     beforeEach(async () => {
 
       let creatingUsers = [{
-        email: 'dalek@tardis.net', 
+        email: 'dalek@tardis.net',
         password: 'mwaha'
       }, {
-        email: 'river.song@gmail.com', 
+        email: 'river.song@gmail.com',
         password: 'yanni'
       }]
       .map(async (data) => {
@@ -96,11 +96,47 @@ describe('Users Route:', () => {
         if (typeof res.body === 'string') {
           res.body = JSON.parse(res.body)
         }
-        expect(res.body.email).to.equal('dalek@tardis.net')
+        expect(res.body.email).to.equal('river.song@gmail.com')
       })
     })
   })
-  
+
+  describe('GET /api/users/:userId/order-history', () => {
+    let user, order, product, lineItem
+    beforeEach(async () => {
+      user = await User.create({
+        email: 'river.song@gmail.com',
+        password: 'yanni'
+      })
+      order = await Order.create({
+        userId: user.id,
+        status: 'cart'
+      })
+      product = await Product.create({
+        title: 'Last Christmas',
+        price: 12.25,
+        description: 'I gave you my heart',
+        quantity: 75
+      })
+      lineItem = await LineItem.create({
+        quantity: 1,
+        price: product.price,
+        productId: product.id,
+        orderId: order.id
+      })
+    })
+    it('responds with an array via JSON AND responds with all the orders associated with the user', () => {
+      return agent
+      .get(`/api/users/${user.id}/order-history`)
+      .expect(200)
+      .expect(res => {
+        expect(res.body).to.be.an.instanceOf(Array)
+        expect(res.body.length).to.equal(1)
+        expect(res.body[0].userId).to.equal(user.id)
+      })
+    })
+
+  })
 
 })
 

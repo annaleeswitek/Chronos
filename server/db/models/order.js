@@ -2,7 +2,7 @@
 
 const Sequelize = require('sequelize');
 const Product = require('./product');
-const db = require('../db');
+const db  = require('../db');
 
 const Order = db.define('order', {
   status: {
