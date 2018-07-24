@@ -1,15 +1,67 @@
 #home {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
 }
-#home #homeTitle {
+#home #homeButton {
+  background-color: none;
+  border: none;
+  padding: 37vh 0vw 60vh 0vw;
   align-self: center;
+  transition: 2s ease-in-out;
+}
+#home #homeButton #homeTitle {
   font-size: 8em;
+}
+#home #homeButton #homeCaption {
+  color: #fff;
+}
+#home #homeButton:focus {
+  outline: 0;
+}
+#home #homeButton:hover {
+  background-color: linear-gradient(to bottom right, rgba(172, 96, 96, 0.783), rgba(190, 96, 96, 0.783));
+  display: flex;
+}
+#home #homeButton:hover #homeTitle {
+  -moz-transform: translateX(-18vw);
+  -webkit-transform: translateX(-18vw);
+  transform: translateX(-18vw);
+  transition: 2s ease-in-out;
+  text-shadow: 2px 2px 2px blueviolet;
+}
+#home #homeButton:hover #homeCaption {
+  font-size: 2em;
+  margin-top: 10vh;
+  color: black;
+  -moz-transform: translateX(5vw);
+  -webkit-transform: translateX(5vw);
+  transform: translateX(5vw);
+  transition: 2s ease-in-out;
+  text-shadow: 1px 1px 2px blueviolet;
+}
+
+#allLoginSignupOptions {
+  display: flex;
+  flex-direction: column;
+}
+#allLoginSignupOptions #loginSignup {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+#allLoginSignupOptions #loginSignup form {
+  display: flex;
+  margin: 20vh 0 2vh 0vw;
+  align-self: center;
+}
+#allLoginSignupOptions #OAuth {
+  align-self: center;
+  margin-left: -5vw;
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 /*# sourceMappingURL=index.css.map */
