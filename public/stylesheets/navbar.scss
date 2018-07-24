@@ -15,10 +15,16 @@
         };
       };
     };
-   
-    #navBarCart {
-      align-self: flex-end;
-    }; 
+    
+    #loggedIn {
+      display: flex;
+      #goHome {
+        margin-left: 0.5vw;
+      };
+      #logout {
+        margin: 0 2vw 0 2vw;
+      };
+    }
     #notLoggedIn {
       display: flex;
       margin: 0 0 2vh 1vw;
@@ -50,6 +56,21 @@
       width: 100vw;
       height: auto;
       margin-bottom: 10vh;
+      #shoppingBag {
+        width: 5vw;
+        height: auto;
+        position: relative;
+        top: -1vh;
+      };
+      h3 {
+        font-size: 2em;
+        position: absolute;
+        top: -0.05vh;
+        left: 2vw;
+        width: 100%;
+        color: #fff;
+      };
     };
+  
   };
 };

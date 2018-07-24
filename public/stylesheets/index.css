@@ -77,8 +77,14 @@
 #navBar #leftNav #navBarName #chronosName h1 {
   font-size: 5em;
 }
-#navBar #leftNav #navBarCart {
-  align-self: flex-end;
+#navBar #leftNav #loggedIn {
+  display: flex;
+}
+#navBar #leftNav #loggedIn #goHome {
+  margin-left: 0.5vw;
+}
+#navBar #leftNav #loggedIn #logout {
+  margin: 0 2vw 0 2vw;
 }
 #navBar #leftNav #notLoggedIn {
   display: flex;
@@ -110,9 +116,26 @@
   height: auto;
   margin-bottom: 10vh;
 }
+#navBar #rightNav #navBarCart #shoppingBag {
+  width: 5vw;
+  height: auto;
+  position: relative;
+  top: -1vh;
+}
+#navBar #rightNav #navBarCart h3 {
+  font-size: 2em;
+  position: absolute;
+  top: -0.05vh;
+  left: 2vw;
+  width: 100%;
+  color: #fff;
+}
 
 #search-bar {
-  margin-top: 7vh;
+  margin-top: 2vh;
+}
+#search-bar form {
+  margin-left: 0.5vw;
 }
 
 body {

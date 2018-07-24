@@ -27,7 +27,6 @@ class App extends Component {
 
   render(){
     const { clickedEnter } = this.state
-    console.log('i have clicked enter: ', clickedEnter)
     return (
       <div>
       { !clickedEnter && <Homepage enterSite={this.enterSite}/>}

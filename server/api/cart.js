@@ -4,7 +4,7 @@ const { Order, Product, LineItem } = require('../db/models');
 module.exports = router;
 
 router.use( async (req, res, next) => {
-  if (req.cart) return next();
+  if (req.cart || !req.user) return next();
 
   if (req.session.cartId) {
     req.cart = await Order.findById(req.session.cartId).catch(next);

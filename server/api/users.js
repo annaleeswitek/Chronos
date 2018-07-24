@@ -23,10 +23,7 @@ router.get('/:userId', (req, res, next) => {
 
 router.get('/:userId/order-history', (req, res, next) => {
   Order.findAll({ where: { userId: req.params.userId }})
-  .then(orders => {
-    console.log('this is the stuff: ', orders);
-    res.json(orders);
-  })
+  .then(orders => res.json(orders))
   .catch(next);
 });
 
