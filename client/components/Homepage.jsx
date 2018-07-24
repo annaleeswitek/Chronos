@@ -1,19 +1,34 @@
 'use strict';
 
-import React from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react'
+import { Button } from '@material-ui/core'
 
 /* ---- Component ---- */
-export const Homepage = () => {
-  return (
-    <div id="home">
-    <title id="homeTitle">
-    <Link to="/products">
-    ⏳
-    </Link>
-    </title>
-    </div>
-  )
+export default class Homepage extends Component {
+  constructor(){
+    super()
+    this.state = {
+      showLogin: false
+    }
+    this.showLogin = this.showLogin.bind(this)
+  }
+
+  showLogin(){
+    this.setState(prevState => {
+      return { showLogin: !prevState.showLogin }
+    })
+  }
+  render(){
+    return (
+      <div id="home">
+        <Button onClick={this.showLogin}>
+          <h1 id="homeTitle">Chronos</h1>
+        </Button>
+      </div>
+    )
+  }
 }
+
+
+
 

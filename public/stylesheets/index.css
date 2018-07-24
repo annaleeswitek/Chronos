@@ -1,0 +1,15 @@
+#home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#home #homeTitle {
+  align-self: center;
+  font-size: 8em;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+/*# sourceMappingURL=index.css.map */

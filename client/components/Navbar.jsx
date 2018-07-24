@@ -28,7 +28,6 @@ class Navbar extends Component {
 
   render() {
     const { handleClick, isLoggedIn, productsInCart, user } = this.props;
-    console.log('this.props in Navbar:', this.props);
     const productQuantity =
       productsInCart.length && productsInCart.map(product => product.lineItem.quantity)
                                             .reduce((acc, val) => (acc + val), 0);
@@ -48,7 +47,7 @@ class Navbar extends Component {
           {isLoggedIn ? (
             <div>
               {/* The navbar will show these links after you log in */}
-              <Link to="/home">home</Link>
+              <Link to="/userhome">home</Link>
               <a href="#" onClick={handleClick}>
                 logout
               </a>
@@ -90,7 +89,6 @@ const mapDispatch = dispatch => ({
     dispatch(logout());
   }, 
   loadCart() {
-    console.log('loading cart in navbar')
     dispatch(loadCart());
   },
   loadUser() {

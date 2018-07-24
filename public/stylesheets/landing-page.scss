@@ -1,0 +1,9 @@
+#home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  #homeTitle {
+    align-self: center;
+    font-size: 8em;
+  };
+};
