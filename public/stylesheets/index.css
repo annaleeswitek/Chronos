@@ -60,8 +60,71 @@
   margin-left: -5vw;
 }
 
+#navBar {
+  display: flex;
+  width: 100%;
+  background-color: rgba(37, 13, 58, 0.577);
+  box-shadow: 5px 5px rgba(182, 46, 153, 0.3);
+}
+#navBar #leftNav {
+  margin: 0 0 2vh 2vw;
+}
+#navBar #leftNav #navBarName {
+  align-self: flex-start;
+  margin-left: 2vw;
+  text-shadow: 1px 1px #0d0515;
+}
+#navBar #leftNav #navBarName #chronosName h1 {
+  font-size: 5em;
+}
+#navBar #leftNav #navBarCart {
+  align-self: flex-end;
+}
+#navBar #leftNav #notLoggedIn {
+  display: flex;
+  margin: 0 0 2vh 1vw;
+}
+#navBar #leftNav #notLoggedIn #signUp {
+  margin: 0 2vw 0 2vw;
+}
+#navBar #leftNav #everythingButName {
+  display: flex;
+}
+#navBar #leftNav #everythingButName #alwaysShow {
+  display: flex;
+  flex-direction: column;
+}
+#navBar #leftNav #everythingButName #alwaysShow #categoriesInNav #allCategories {
+  display: flex;
+  flex-direction: column;
+}
+#navBar #leftNav #everythingButName #alwaysShow #categoriesInNav #allCategories #singleCategory {
+  font-size: 1em;
+}
+#navBar #rightNav {
+  margin: 6vh 0 0 70vw;
+  position: fixed;
+}
+#navBar #rightNav #navBarCart {
+  width: 100vw;
+  height: auto;
+  margin-bottom: 10vh;
+}
+
+#search-bar {
+  margin-top: 7vh;
+}
+
 body {
   font-family: "Lato", sans-serif;
+}
+body a {
+  text-decoration: none;
+  color: black;
+}
+body a:hover {
+  text-decoration: none;
+  color: rgba(182, 46, 153, 0.3);
 }
 
 /*# sourceMappingURL=index.css.map */
