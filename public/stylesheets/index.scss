@@ -2,6 +2,7 @@
 @import 'login.scss';
 @import 'navbar.scss';
 @import 'searchbar.scss';
+@import 'all-products.scss';
 
 body {
   font-family: 'Lato', sans-serif;
@@ -12,5 +13,9 @@ body {
   a:hover {
     text-decoration: none;
     color: rgba(182, 46, 153, 0.3);
+  };
+  a:active {
+    text-decoration: none;
+    color:black;
   };
 };

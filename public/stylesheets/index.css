@@ -65,6 +65,7 @@
   width: 100%;
   background-color: rgba(37, 13, 58, 0.577);
   box-shadow: 5px 5px rgba(182, 46, 153, 0.3);
+  top: 2vh;
 }
 #navBar #leftNav {
   margin: 0 0 2vh 2vw;
@@ -72,7 +73,9 @@
 #navBar #leftNav #navBarName {
   align-self: flex-start;
   margin-left: 2vw;
-  text-shadow: 1px 1px #0d0515;
+  text-shadow: 1px 1px 2px blueviolet;
+  text-decoration: none;
+  color: black;
 }
 #navBar #leftNav #navBarName #chronosName h1 {
   font-size: 5em;
@@ -82,16 +85,38 @@
 }
 #navBar #leftNav #loggedIn #goHome {
   margin-left: 0.5vw;
+  transition: 0.5s ease-in-out;
+  text-decoration: none;
+  color: black;
 }
 #navBar #leftNav #loggedIn #logout {
   margin: 0 2vw 0 2vw;
+  transition: 0.5s ease-in-out;
+  text-decoration: none;
+  color: black;
 }
 #navBar #leftNav #notLoggedIn {
   display: flex;
   margin: 0 0 2vh 1vw;
+  font-size: 1.5em;
+  transition: 0.5s ease-in-out;
+}
+#navBar #leftNav #notLoggedIn #login {
+  transition: 0.5s ease-in-out;
+  text-decoration: none;
+  color: black;
+}
+#navBar #leftNav #notLoggedIn #login:hover {
+  color: rgba(182, 46, 153, 0.3);
 }
 #navBar #leftNav #notLoggedIn #signUp {
   margin: 0 2vw 0 2vw;
+  transition: 0.5s ease-in-out;
+  text-decoration: none;
+  color: black;
+}
+#navBar #leftNav #notLoggedIn #signUp:hover {
+  color: rgba(182, 46, 153, 0.3);
 }
 #navBar #leftNav #everythingButName {
   display: flex;
@@ -99,6 +124,16 @@
 #navBar #leftNav #everythingButName #alwaysShow {
   display: flex;
   flex-direction: column;
+  transition: 0.5s ease-in-out;
+}
+#navBar #leftNav #everythingButName #alwaysShow #catalogLink {
+  transition: 0.5s ease-in-out;
+  font-size: 1.5em;
+  text-decoration: none;
+  color: black;
+}
+#navBar #leftNav #everythingButName #alwaysShow #catalogLink:hover {
+  color: rgba(182, 46, 153, 0.3);
 }
 #navBar #leftNav #everythingButName #alwaysShow #categoriesInNav #allCategories {
   display: flex;
@@ -108,8 +143,9 @@
   font-size: 1em;
 }
 #navBar #rightNav {
-  margin: 6vh 0 0 70vw;
+  margin: 6vh 0 0 75vw;
   position: fixed;
+  z-index: 1000;
 }
 #navBar #rightNav #navBarCart {
   width: 100vw;
@@ -122,6 +158,9 @@
   position: relative;
   top: -1vh;
 }
+#navBar #rightNav #navBarCart #shoppingBag:hover {
+  box-shadow: 1px 1px 2px blueviolet;
+}
 #navBar #rightNav #navBarCart h3 {
   font-size: 2em;
   position: absolute;
@@ -132,10 +171,38 @@
 }
 
 #search-bar {
-  margin-top: 2vh;
+  margin-top: 3vh;
 }
 #search-bar form {
   margin-left: 0.5vw;
+}
+#search-bar form #searchInput {
+  font-size: 1.5em;
+  border-bottom: 0.05em solid black;
+  border-right: none;
+  border-top: none;
+  border-left: none;
+  background-color: rgba(98, 75, 118, 0.577);
+  color: black;
+}
+#search-bar form #searchInput:focus {
+  outline: none;
+}
+#search-bar form #searchInput::placeholder {
+  color: #373737;
+}
+#search-bar form #searchInput::-moz-placeholder {
+  color: #373737;
+}
+#search-bar form #searchInput:-moz-placeholder {
+  color: #373737;
+}
+#search-bar form #searchInput::-webkit-input-placeholder {
+  color: #373737;
+}
+
+#allProductsView #products .show-grid #singleProduct {
+  margin: 2vw;
 }
 
 body {
@@ -148,6 +215,10 @@ body a {
 body a:hover {
   text-decoration: none;
   color: rgba(182, 46, 153, 0.3);
+}
+body a:active {
+  text-decoration: none;
+  color: black;
 }
 
 /*# sourceMappingURL=index.css.map */

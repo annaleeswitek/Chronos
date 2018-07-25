@@ -3,12 +3,15 @@
   width: 100%;
   background-color:  rgba(37, 13, 58, 0.577);
   box-shadow: 5px 5px rgba(182, 46, 153, 0.3);
+  top: 2vh;
   #leftNav {
     margin: 0 0 2vh 2vw;
     #navBarName {
       align-self: flex-start;
       margin-left: 2vw;
-      text-shadow: 1px 1px rgb(13, 5, 21);
+      text-shadow: 1px 1px 2px blueviolet;
+      text-decoration: none;
+      color: black;
       #chronosName{
         h1{
           font-size: 5em;
@@ -20,23 +23,55 @@
       display: flex;
       #goHome {
         margin-left: 0.5vw;
+        transition: 0.5s ease-in-out;
+        text-decoration: none;
+        color: black;
       };
       #logout {
         margin: 0 2vw 0 2vw;
+        transition: 0.5s ease-in-out;
+        text-decoration: none;
+        color: black;
       };
     }
     #notLoggedIn {
       display: flex;
       margin: 0 0 2vh 1vw;
+      font-size: 1.5em;
+      transition: 0.5s ease-in-out;
+      #login {
+        transition: 0.5s ease-in-out;
+        text-decoration: none;
+        color: black;
+      };
+      #login:hover {
+        color: rgba(182, 46, 153, 0.3);
+      };
       #signUp {
         margin: 0 2vw 0 2vw;
-      }
+        transition: 0.5s ease-in-out;
+        text-decoration: none;
+        color: black;
+      };
+      #signUp:hover {
+        color: rgba(182, 46, 153, 0.3);
+      };
     };
     #everythingButName {
       display: flex;
       #alwaysShow {
         display: flex;
         flex-direction: column;
+        transition: 0.5s ease-in-out;
+        #catalogLink {
+          transition: 0.5s ease-in-out;
+          font-size: 1.5em;
+          text-decoration: none;
+          color: black;
+        };
+        #catalogLink:hover {
+          color: rgba(182, 46, 153, 0.3);
+        };
         #categoriesInNav {
           #allCategories {
             display: flex;
@@ -50,8 +85,9 @@
     };
   };
   #rightNav {
-    margin: 6vh 0 0 70vw;
+    margin: 6vh 0 0 75vw;
     position: fixed;
+    z-index: 1000;
     #navBarCart {
       width: 100vw;
       height: auto;
@@ -61,6 +97,10 @@
         height: auto;
         position: relative;
         top: -1vh;
+        
+      };
+      #shoppingBag:hover {
+        box-shadow: 1px 1px 2px blueviolet;
       };
       h3 {
         font-size: 2em;

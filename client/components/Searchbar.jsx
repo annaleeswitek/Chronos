@@ -40,14 +40,11 @@ class Searchbar extends Component {
     return (
       <div id="search-bar">
         <form>
-          <TextField
+          <input
+            id="searchInput"
             onChange={this.handleChange}
             value={inputValue}
-            className="Form-control"
             placeholder="search"
-            style={{
-              width: '150%'
-            }}
           />
           
         </form>

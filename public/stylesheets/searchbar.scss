@@ -1,6 +1,30 @@
 #search-bar {
-  margin-top: 2vh;
+  margin-top: 3vh;
   form {
     margin-left: 0.5vw;
+    #searchInput {
+      font-size: 1.5em;
+      border-bottom: 0.05em solid black;
+      border-right: none;
+      border-top: none;
+      border-left: none;
+      background-color:  rgba(98, 75, 118, 0.577);
+      color: black;
+    };
+    #searchInput:focus {
+      outline: none;
+    };
+    #searchInput::placeholder {
+      color: #373737;
+    };
+    #searchInput::-moz-placeholder {
+      color: #373737;
+    };
+    #searchInput:-moz-placeholder {
+      color: #373737;
+    };
+    #searchInput::-webkit-input-placeholder {
+      color: #373737;
+    };
   }
 }

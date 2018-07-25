@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { logout, loadCart, me } from '../store';
-import { AllCategories, Searchbar, UserDropdown } from './index';
+import { AllCategories, Searchbar } from './index';
 
 /* ---- Component ---- */
 class Navbar extends Component {
@@ -32,7 +32,7 @@ class Navbar extends Component {
       productsInCart.length && productsInCart.map(product => product.lineItem.quantity)
                                             .reduce((acc, val) => (acc + val), 0);
     return (
-      <nav id="navBar" onMouseLeave={this.showCategories}>
+      <nav id="navBar">
         <div id="leftNav">
           <Link to="/" id="navBarName">
             <div id="chronosName">
@@ -51,12 +51,12 @@ class Navbar extends Component {
               ) : (
                 <div id="notLoggedIn">
                   {/* The navbar will show these links before you log in */}
-                  <Link to="/login">login</Link>
+                  <Link to="/login" id="login">login</Link>
                   <Link to="/signup" id="signUp">sign up</Link>
                 </div>
               )}
-              <div id="alwaysShow">
-                <Link to="/products" onMouseOver={this.showCategories}>
+              <div id="alwaysShow" onMouseLeave={this.showCategories}>
+                <Link to="/products" onMouseOver={this.showCategories} id="catalogLink">
                   catalog
                 </Link>
                 <div id="categoriesInNav">
@@ -80,10 +80,7 @@ class Navbar extends Component {
             </span>
             <Searchbar />
           </div>
-        
         </nav>
-
-     
     );
   }
 }
