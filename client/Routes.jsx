@@ -1,17 +1,17 @@
 'use strict';
 
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { withRouter, Route, Switch } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { Login, Signup, UserHome, Homepage, PendingOrders } from './components';
-import { me } from './store';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { withRouter, Route, Switch } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { Login, Signup, UserHome, PendingOrders } from './components'
+import { me } from './store'
 
-import AllCategoriesContainer from './components/AllCategories.jsx';
-import AllProductsContainer from './components/AllProducts.jsx';
-import SingleProductContainer from './components/SingleProduct.jsx';
-import SingleCategoryContainer from './components/SingleCategory.jsx';
-import CartContainer from './components/Cart.jsx';
+import AllCategoriesContainer from './components/AllCategories.jsx'
+import AllProductsContainer from './components/AllProducts.jsx'
+import SingleProductContainer from './components/SingleProduct.jsx'
+import SingleCategoryContainer from './components/SingleCategory.jsx'
+import CartContainer from './components/Cart.jsx'
 
 /* ---- Component ---- */
 class Routes extends Component {
@@ -25,7 +25,6 @@ class Routes extends Component {
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
-        <Route exact path="/" component={Homepage} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route exact path="/categories" component={AllCategoriesContainer} />
@@ -41,7 +40,7 @@ class Routes extends Component {
         {/* Routes placed here are only available after logging in */}
         {
           isLoggedIn &&
-          <Route path="/home" component={UserHome} />
+          <Route path="/userhome" component={UserHome} />
         }
         {/* Displays our Login component as a fallback */}
         <Route component={Login} />

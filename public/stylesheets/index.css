@@ -1,0 +1,153 @@
+#home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#home #homeButton {
+  background-color: none;
+  border: none;
+  padding: 37vh 0vw 60vh 0vw;
+  align-self: center;
+  transition: 2s ease-in-out;
+}
+#home #homeButton #homeTitle {
+  font-size: 8em;
+}
+#home #homeButton #homeCaption {
+  color: #fff;
+}
+#home #homeButton:focus {
+  outline: 0;
+}
+#home #homeButton:hover {
+  background-color: linear-gradient(to bottom right, rgba(172, 96, 96, 0.783), rgba(190, 96, 96, 0.783));
+  display: flex;
+}
+#home #homeButton:hover #homeTitle {
+  -moz-transform: translateX(-18vw);
+  -webkit-transform: translateX(-18vw);
+  transform: translateX(-18vw);
+  transition: 2s ease-in-out;
+  text-shadow: 2px 2px 2px blueviolet;
+}
+#home #homeButton:hover #homeCaption {
+  font-size: 2em;
+  margin-top: 10vh;
+  color: black;
+  -moz-transform: translateX(5vw);
+  -webkit-transform: translateX(5vw);
+  transform: translateX(5vw);
+  transition: 2s ease-in-out;
+  text-shadow: 1px 1px 2px blueviolet;
+}
+
+#allLoginSignupOptions {
+  display: flex;
+  flex-direction: column;
+}
+#allLoginSignupOptions #loginSignup {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+#allLoginSignupOptions #loginSignup form {
+  display: flex;
+  margin: 20vh 0 2vh 0vw;
+  align-self: center;
+}
+#allLoginSignupOptions #OAuth {
+  align-self: center;
+  margin-left: -5vw;
+}
+
+#navBar {
+  display: flex;
+  width: 100%;
+  background-color: rgba(37, 13, 58, 0.577);
+  box-shadow: 5px 5px rgba(182, 46, 153, 0.3);
+}
+#navBar #leftNav {
+  margin: 0 0 2vh 2vw;
+}
+#navBar #leftNav #navBarName {
+  align-self: flex-start;
+  margin-left: 2vw;
+  text-shadow: 1px 1px #0d0515;
+}
+#navBar #leftNav #navBarName #chronosName h1 {
+  font-size: 5em;
+}
+#navBar #leftNav #loggedIn {
+  display: flex;
+}
+#navBar #leftNav #loggedIn #goHome {
+  margin-left: 0.5vw;
+}
+#navBar #leftNav #loggedIn #logout {
+  margin: 0 2vw 0 2vw;
+}
+#navBar #leftNav #notLoggedIn {
+  display: flex;
+  margin: 0 0 2vh 1vw;
+}
+#navBar #leftNav #notLoggedIn #signUp {
+  margin: 0 2vw 0 2vw;
+}
+#navBar #leftNav #everythingButName {
+  display: flex;
+}
+#navBar #leftNav #everythingButName #alwaysShow {
+  display: flex;
+  flex-direction: column;
+}
+#navBar #leftNav #everythingButName #alwaysShow #categoriesInNav #allCategories {
+  display: flex;
+  flex-direction: column;
+}
+#navBar #leftNav #everythingButName #alwaysShow #categoriesInNav #allCategories #singleCategory {
+  font-size: 1em;
+}
+#navBar #rightNav {
+  margin: 6vh 0 0 70vw;
+  position: fixed;
+}
+#navBar #rightNav #navBarCart {
+  width: 100vw;
+  height: auto;
+  margin-bottom: 10vh;
+}
+#navBar #rightNav #navBarCart #shoppingBag {
+  width: 5vw;
+  height: auto;
+  position: relative;
+  top: -1vh;
+}
+#navBar #rightNav #navBarCart h3 {
+  font-size: 2em;
+  position: absolute;
+  top: -0.05vh;
+  left: 2vw;
+  width: 100%;
+  color: #fff;
+}
+
+#search-bar {
+  margin-top: 2vh;
+}
+#search-bar form {
+  margin-left: 0.5vw;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+}
+body a {
+  text-decoration: none;
+  color: black;
+}
+body a:hover {
+  text-decoration: none;
+  color: rgba(182, 46, 153, 0.3);
+}
+
+/*# sourceMappingURL=index.css.map */

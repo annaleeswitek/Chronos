@@ -1,0 +1,76 @@
+#navBar {
+  display: flex;
+  width: 100%;
+  background-color:  rgba(37, 13, 58, 0.577);
+  box-shadow: 5px 5px rgba(182, 46, 153, 0.3);
+  #leftNav {
+    margin: 0 0 2vh 2vw;
+    #navBarName {
+      align-self: flex-start;
+      margin-left: 2vw;
+      text-shadow: 1px 1px rgb(13, 5, 21);
+      #chronosName{
+        h1{
+          font-size: 5em;
+        };
+      };
+    };
+    
+    #loggedIn {
+      display: flex;
+      #goHome {
+        margin-left: 0.5vw;
+      };
+      #logout {
+        margin: 0 2vw 0 2vw;
+      };
+    }
+    #notLoggedIn {
+      display: flex;
+      margin: 0 0 2vh 1vw;
+      #signUp {
+        margin: 0 2vw 0 2vw;
+      }
+    };
+    #everythingButName {
+      display: flex;
+      #alwaysShow {
+        display: flex;
+        flex-direction: column;
+        #categoriesInNav {
+          #allCategories {
+            display: flex;
+            flex-direction: column;
+            #singleCategory {
+              font-size: 1em;
+            };
+          };
+        };
+      };
+    };
+  };
+  #rightNav {
+    margin: 6vh 0 0 70vw;
+    position: fixed;
+    #navBarCart {
+      width: 100vw;
+      height: auto;
+      margin-bottom: 10vh;
+      #shoppingBag {
+        width: 5vw;
+        height: auto;
+        position: relative;
+        top: -1vh;
+      };
+      h3 {
+        font-size: 2em;
+        position: absolute;
+        top: -0.05vh;
+        left: 2vw;
+        width: 100%;
+        color: #fff;
+      };
+    };
+  
+  };
+};
