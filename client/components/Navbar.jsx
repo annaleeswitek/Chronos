@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { logout, loadCart, me } from '../store';
-import { AllCategories, Searchbar, UserDropdown } from './index';
+import { AllCategories, Searchbar } from './index';
 
 /* ---- Component ---- */
 class Navbar extends Component {
@@ -28,51 +28,59 @@ class Navbar extends Component {
 
   render() {
     const { handleClick, isLoggedIn, productsInCart, user } = this.props;
-    console.log('this.props in Navbar:', this.props);
     const productQuantity =
       productsInCart.length && productsInCart.map(product => product.lineItem.quantity)
                                             .reduce((acc, val) => (acc + val), 0);
     return (
-      <div id="navBarAll">
-        <Link to="/" id="navBarName">
-        <div id="chronosName">
-          <h1>Chronos</h1>
+      <nav id="navBar">
+        <div id="leftNav">
+          <Link to="/" id="navBarName">
+            <div id="chronosName">
+              <h1>Chronos</h1>
+            </div>
+          </Link>
+            <div id="everythingButName">
+              {isLoggedIn ? (
+                <div id="loggedIn">
+                  {/* The navbar will show these links after you log in */}
+                  <Link to="/userhome" id="goHome">home</Link>
+                  <a href="#" onClick={handleClick} id="logout">
+                    logout
+                  </a>
+                </div>
+              ) : (
+                <div id="notLoggedIn">
+                  {/* The navbar will show these links before you log in */}
+                  <Link to="/login" id="login">login</Link>
+                  <Link to="/signup" id="signUp">sign up</Link>
+                </div>
+              )}
+              <div id="alwaysShow" onMouseLeave={this.showCategories}>
+                <Link to="/products" onMouseOver={this.showCategories} id="catalogLink">
+                  catalog
+                </Link>
+                <div id="categoriesInNav">
+                  {this.state.showCategories && <AllCategories />}
+                </div>
+              </div>
+              {isLoggedIn && user.isAdmin && (
+                <Link to={'/orders/order-history/pending'}>pending orders</Link>
+              )}
+            </div>
           </div>
-        </Link>
-          <span id="navBarCart">
-          <Link to="/cart">🛒 {productQuantity}</Link>
-        </span>
-        {isLoggedIn && <UserDropdown user={user} />}
-          <Searchbar />
-        <nav id="navBar" onMouseLeave={this.showCategories}>
-          {isLoggedIn ? (
-            <div>
-              {/* The navbar will show these links after you log in */}
-              <Link to="/home">home</Link>
-              <a href="#" onClick={handleClick}>
-                logout
-              </a>
-            </div>
-          ) : (
-            <div>
-              {/* The navbar will show these links before you log in */}
-              <Link to="/login">login</Link>
-              <Link to="/signup">sign up</Link>
-            </div>
-          )}
-          <div id="alwaysShow">
-            <Link to="/products" onMouseOver={this.showCategories}>
-              catalog
-            </Link>
-            <div id="categoriesInNav">
-              {this.state.showCategories && <AllCategories />}
-            </div>
+          <div id="rightNav">
+            <span id="navBarCart">
+              <Link to="/cart">
+                <img
+                  src="https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.newdesignfile.com%2Fpostpic%2F2010%2F03%2Fshopping-bag-icon-vector_392408.png&f=1"
+                  id="shoppingBag"
+                />
+                <h3>{productQuantity}</h3>
+              </Link>
+            </span>
+            <Searchbar />
           </div>
-          {isLoggedIn && user.isAdmin && (
-            <Link to={"/orders/order-history/pending"}>pending orders</Link>
-          )}
         </nav>
-      </div>
     );
   }
 }
@@ -80,7 +88,7 @@ class Navbar extends Component {
 /* ---- Container ---- */
 const mapState = state => ({
   isLoggedIn: !!state.user.id,
-  categories: state.categories, 
+  categories: state.categories,
   productsInCart: state.cart,
   user: state.user
 });
@@ -88,9 +96,8 @@ const mapState = state => ({
 const mapDispatch = dispatch => ({
   handleClick() {
     dispatch(logout());
-  }, 
+  },
   loadCart() {
-    console.log('loading cart in navbar')
     dispatch(loadCart());
   },
   loadUser() {

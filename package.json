@@ -21,6 +21,7 @@
     "author": "Fullstack Academy of Code",
     "license": "MIT",
     "dependencies": {
+        "@material-ui/core": "^1.4.1",
         "axios": "^0.15.3",
         "body-parser": "^1.16.1",
         "compression": "^1.7.1",
@@ -29,6 +30,7 @@
         "express-session": "^1.15.1",
         "file-loader": "^1.1.11",
         "history": "^4.6.3",
+        "material-ui": "^0.20.1",
         "morgan": "^1.8.1",
         "passport": "^0.3.2",
         "passport-google-oauth": "^1.0.0",
@@ -43,6 +45,7 @@
         "redux": "^3.6.0",
         "redux-logger": "^2.8.1",
         "redux-thunk": "^2.2.0",
+        "sass": "^1.10.0",
         "sequelize": "^4.3.1",
         "socket.io": "^2.0.3",
         "url-loader": "^1.0.1"

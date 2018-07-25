@@ -18,7 +18,7 @@ class AllCategories extends Component {
         {
           categories.map((category) => (
             <div key={category.id}>
-              <Link to={`/categories/${category.id}`}>{category.name}</Link>
+              <Link to={`/categories/${category.id}`} id="singleCategory">{category.name}</Link>
             </div>
           ))
         }

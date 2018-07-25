@@ -1,12 +1,11 @@
 'use strict';
 
-import React, { Component } from 'react';
-import { Grid, Row, Col, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import { Grid, Row } from 'react-bootstrap'
+import { connect } from 'react-redux'
 
-import { fetchProducts } from '../store';
-import { AddProduct} from './index';
+import { fetchProducts } from '../store'
+import { AddProduct, ProductToMap } from './index'
 
 /* ---- Component ---- */
 export class AllProducts extends Component {
@@ -22,17 +21,7 @@ export class AllProducts extends Component {
             <Grid id="products">
               <Row className="show-grid">
                 {
-                  products.map((product) => (
-                    <Col sm={10} md={4}  key={product.id} id="singleProduct">
-                      <Link to={`/products/${product.id}`}>
-                      <img id="productImg" src={product.imgUrl} />
-                      <h3>{product.title}</h3>
-                      <h4>$ {product.price}</h4>
-                      <span><Button id="addToCartBtn">Add</Button></span>
-                      <span><Button id="removeFromCartBtn">Remove</Button></span>
-                      </Link>
-                    </Col>
-                  ))
+                  products.map((product) => <ProductToMap key={product.id} product={product} />)
                 }
                 </Row>
               </Grid>
